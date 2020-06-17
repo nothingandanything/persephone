@@ -1,2 +1,0 @@
-# summer_proj
-shixi
