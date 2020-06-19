@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	共${ bean.totalCount }种商品
+	<table>
+		<tr>
+			<c:forEach items = "${ bean.productList }" var="d">
+				<td>
+					<text>
+					名称：${d.DrinkName}, 价格：${d.DrinkPrice}, 类型：${d.DrinkType}, 
+					甜度：${d.DrinkSweet}, 温度：${d.DrinkTemp}, 规格：${d.DrinkSpec},
+					描述：${d.DrinkDesc}, 图片：${d.PicAddres}
+					</text>
+				</td>
+			</c:forEach>
+		</tr>
+	</table>
+	
+</body>
+</html>

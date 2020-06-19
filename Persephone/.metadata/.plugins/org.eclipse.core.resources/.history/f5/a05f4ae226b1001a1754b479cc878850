@@ -1,0 +1,19 @@
+package com.web.dao.impl;
+
+import com.web.dao.UserDao;
+import com.web.entity.User;
+
+/**
+ * 用户的数据访问层实现类
+ * @author 王佳祺
+ *
+ */
+public class UserDaoImpl implements UserDao {
+
+	@Override
+	public boolean add(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

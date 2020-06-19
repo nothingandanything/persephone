@@ -1,20 +1,20 @@
 package com.web.entity;
 
 public class OrderItem {
-	private String OrderID;
-	private String DrinkID;
+	private Integer OrderID;
+	private Integer DrinkID;
 	private Integer Number;
 	
-	public String getOrderID() {
+	public Integer getOrderID() {
 		return OrderID;
 	}
-	public void setOrderID(String orderID) {
+	public void setOrderID(Integer orderID) {
 		OrderID = orderID;
 	}
-	public String getDrinkID() {
+	public Integer getDrinkID() {
 		return DrinkID;
 	}
-	public void setDrinkID(String drinkID) {
+	public void setDrinkID(Integer drinkID) {
 		DrinkID = drinkID;
 	}
 	public Integer getNumber() {

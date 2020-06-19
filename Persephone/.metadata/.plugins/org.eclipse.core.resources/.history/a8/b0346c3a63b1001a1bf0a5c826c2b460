@@ -1,0 +1,14 @@
+package com.web.biz.impl;
+
+import com.web.biz.ProductBiz;
+import com.web.util.PageBean;
+
+public class ProductBizImpl implements ProductBiz {
+
+	@Override
+	public PageBean findBookByName(int currentPage, int currentCount, String searchfield) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

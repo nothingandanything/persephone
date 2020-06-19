@@ -1,0 +1,59 @@
+package com.web.dao.impl;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.web.dao.UserDao;
+import com.web.entity.User;
+import com.web.util.JDBCUtil;
+
+/**
+ * 用户的数据访问层实现类
+ * @author 王佳祺
+ *
+ */
+public class UserDaoImpl implements UserDao {
+	
+	/**
+	 * 注册
+	 */
+	@Override
+	public boolean add(User user) {
+		
+		// 影响行数的变量
+		int count = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+			
+			// 编写sql
+			String sql = "INSERT INTO `user`(UserName,UserPwd,UserPhone)"
+					+ "VALUES (?,?,?);";
+			
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 设置参数
+			System.out.println(user.getUserName());
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getUserPwd());
+			ps.setString(3, user.getUserPhone());
+			
+			// 执行修改
+			count = ps.executeUpdate();
+			
+			// 关闭
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+}

@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/client/js/form.js"></script>
+<script type="text/javascript">
+	function changeImage(){
+		// 改变验证码图片中的文字
+		document.getElementById("imgCode").src = "${pageContext.request.contextPath}/imageCode?time="+new Date().getTime();
+  }
+</script>
+<script>
+	function getMsg(){
+		var check = session.getAttribute("checkcode_session");
+		alter(check);
+	}
+</script>
+<title>注册</title>
+</head>
+
+<body>
+	<div>
+		新用户注册
+		<form action="${pageContext.request.contextPath}/register" method="post" onsubmit="return checkForm();">
+			<table>
+				<tr>
+					<td>用户名：</td>
+					<td>
+						<input id="UserName" name="UserName" onkeyup="checkUserName()"/>
+					</td>
+					<td><span id="UserNameMsg"></span><font color="#999999">用户名请设置4~8位</font></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td>
+						<input type="password" id="UserPwd" name="UserPwd" onkeyup="checkUserPwd()"/>
+					</td>
+					<td><span id="UserPwdMsg"></span><font color="#999999">密码请设置4~8位</font></td>
+				</tr>
+				<tr>
+					<td>重复密码：</td>
+					<td>
+						<input type="password" id="ReUserPwd" name="ReUserPwd" onkeyup="checkReUserPwd()"/>
+					</td>
+					<td><span id="ReUserPwdMsg"></span></td>
+				</tr>
+				<tr>
+					<td>联系电话：</td>
+					<td>
+						<input id="UserPhone" name="UserPhone" onkeyup="checkUserPhone()"/>
+					</td>
+					<td><span id="UserPhoneMsg"></span></td>
+				</tr>
+				<tr>
+					<td>输入验证码：</td>
+					<td>
+						<input/>
+					</td>
+					<td><span id="UserPhoneMsg"></span></td>
+				</tr>
+				<tr>
+					<td>
+						<img src="${pageContext.request.contextPath}/imageCode" width="180"
+							height="30" class="textinput" style="height: 30px;" id="imgCode" onclick="getMsg()"/>&nbsp;&nbsp;
+						<a href="javascript:void(0);" onclick="getMsg()">看不清换一张</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" value="提交"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

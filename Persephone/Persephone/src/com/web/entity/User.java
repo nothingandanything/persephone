@@ -1,15 +1,15 @@
 package com.web.entity;
 
 public class User {
-	private String UserID;
+	private Integer UserID;
 	private String UserName;
-	private String Userpwd;
-	private String Userphone;
+	private String UserPwd;
+	private String UserPhone;
 	
-	public String getUserID() {
+	public Integer getUserID() {
 		return UserID;
 	}
-	public void setUserID(String userID) {
+	public void setUserID(Integer userID) {
 		UserID = userID;
 	}
 	public String getUserName() {
@@ -18,16 +18,16 @@ public class User {
 	public void setUserName(String userName) {
 		UserName = userName;
 	}
-	public String getUserpwd() {
-		return Userpwd;
+	public String getUserPwd() {
+		return UserPwd;
 	}
-	public void setUserpwd(String userpwd) {
-		Userpwd = userpwd;
+	public void setUserPwd(String userPwd) {
+		UserPwd = userPwd;
 	}
-	public String getUserphone() {
-		return Userphone;
+	public String getUserPhone() {
+		return UserPhone;
 	}
-	public void setUserphone(String userphone) {
-		Userphone = userphone;
+	public void setUserPhone(String userPhone) {
+		UserPhone = userPhone;
 	}
 }

@@ -1,23 +1,23 @@
 package com.web.entity;
 
 public class UserAddr {
-	private String UserID;
-	private String AddrID;
+	private Integer UserID;
+	private Integer AddrID;
 	private String City;
 	private String County;
 	private String Street;
 	private String HouseNum;
 	
-	public String getUserID() {
+	public Integer getUserID() {
 		return UserID;
 	}
-	public void setUserID(String userID) {
+	public void setUserID(Integer userID) {
 		UserID = userID;
 	}
-	public String getAddrID() {
+	public Integer getAddrID() {
 		return AddrID;
 	}
-	public void setAddrID(String addrID) {
+	public void setAddrID(Integer addrID) {
 		AddrID = addrID;
 	}
 	public String getCity() {

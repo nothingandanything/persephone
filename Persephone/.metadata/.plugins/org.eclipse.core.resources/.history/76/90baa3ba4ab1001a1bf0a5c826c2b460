@@ -1,0 +1,22 @@
+package com.web.dao.impl;
+
+import java.util.List;
+
+import com.web.dao.ProductDao;
+import com.web.entity.Drink;
+
+public class ProductDaoImpl implements ProductDao {
+
+	@Override
+	public Integer findDrinkByNameAllCount(String searchfield) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Drink> findDrinkByName(int currentPage, int currentCount, String searchfield) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

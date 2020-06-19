@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+function checkForm () {
+	var bUserID = checkUserID();
+}
+
+function checkUserID () {
+	var regex = /^.{4,8}$/;  // 任意字符, 4到8位
+	var value = UserIDObj.value;
+	var msg = "";
+	if (!value)
+		msg = "必须填写用户名";
+	else if (!regex.test(value))
+		msg = "用户名不合法";
+	UserIDMsg.innerHTML = msg;  // 将提示消息放入SPAN
+	return msg = "";
+}

@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.web.util.JDBCUtil"/>
+<fullyQualifiedTypeName name="com.web.dao.UserDao"/>
+<fullyQualifiedTypeName name="com.web.dao.impl.UserDaoImpl"/>
+<fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
+<fullyQualifiedTypeName name="com.web.biz.UserBiz"/>
+<fullyQualifiedTypeName name="com.web.biz.impl.UserBizImpl"/>
+<fullyQualifiedTypeName name="com.web.entity.User"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+<fullyQualifiedTypeName name="com.web.dao.ProductDao"/>
+<fullyQualifiedTypeName name="com.web.entity.Drink"/>
+<fullyQualifiedTypeName name="com.web.dao.impl.ProductDaoImpl"/>
+<fullyQualifiedTypeName name="com.web.biz.ProductBiz"/>
+<fullyQualifiedTypeName name="com.web.biz.impl.ProductBizImpl"/>
+<fullyQualifiedTypeName name="com.web.util.PageBean"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequestWrapper"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletException"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+</qualifiedTypeNameHistroy>
