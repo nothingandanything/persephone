@@ -52,22 +52,22 @@
                                     <div class="text-field">
                                         <label for="name">用户名*</label>
                                         <input type="text" id="UserName" name="UserName" placeholder="请设置4~8位" onkeyup="checkUserName()">
-                                        <span id="UserNameMsg"></span>
+                                        <span id="UserNameMsg">&nbsp;</span>
                                     </div>
                                     <div class="text-field">
                                         <label for="pwd1">密码*</label>
                                         <input type="password" id="UserPwd" name="UserPwd" placeholder="请设置4~8位" onkeyup="checkUserPwd()">
-                                        <span id="UserPwdMsg"></span>
+                                        <span id="UserPwdMsg">&nbsp;</span>
                                     </div>
                                     <div class="text-field">
                                         <label for="pwd2">重复密码*</label>
                                         <input type="password" id="ReUserPwd" name="ReUserPwd" placeholder="请再输入一次密码" onkeyup="checkReUserPwd()">
-                                        <span id="ReUserPwdMsg"></span>
+                                        <span id="ReUserPwdMsg">&nbsp;</span>
                                     </div>
                                     <div class="text-field">
                                         <label for="phone">联系电话*</label>
                                         <input type="text" id="UserPhone" name="UserPhone" placeholder="请输入电话号码" onkeyup="checkUserPhone()">
-                                        <span id="UserPhoneMsg"></span>
+                                        <span id="UserPhoneMsg">&nbsp;</span>
                                     </div>
                                     <div class="text-field">
                                         <label for="phone">验证码*</label>

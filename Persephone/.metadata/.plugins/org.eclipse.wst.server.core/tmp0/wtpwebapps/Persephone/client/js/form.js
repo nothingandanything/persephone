@@ -44,20 +44,20 @@ function checkUserName () {
 function checkUserPwd () {
 	var regex = /^.{4,8}$/;  // 任意字符, 4到8位
 	var value = UserPwdObj.value;
-	var msg = "";
+	var msg = "&nbsp;";
 	if (!value)
 		msg = "必须填写密码！";
 	else if (!regex.test(value))
 		msg = "密码不合法！";
 	UserPwdMsg.innerHTML = msg;
-	UserPwdObj.parentNode.parentNode.style.color = msg == "" ? "black" : "red";
-	return msg == "";
+	UserPwdObj.parentNode.parentNode.style.color = msg == "red";
+	return msg == "&nbsp;";
 }
 
 function checkReUserPwd() {		// 验证确认密码
 	var passwordValue = UserPwdObj.value;
 	var confirmValue = ReUserPwdObj.value;
-	var msg = "";
+	var msg = "&nbsp;";
 
     if(!confirmValue){
 	    msg = "必须填写确认密码！";
@@ -66,19 +66,19 @@ function checkReUserPwd() {		// 验证确认密码
 		msg = "密码必须保持一致！";
     }
 	ReUserPwdMsg.innerHTML = msg;
-	ReUserPwdObj.parentNode.parentNode.style.color = msg == "" ? "black" : "red";
-	return msg == "";
+	ReUserPwdObj.parentNode.parentNode.style.color = msg == "red";
+	return msg == "&nbsp;";
 }
 
 function checkUserPhone () {
 	var regex = /^[0-9]{11}$/;  // 11位数字
 	var value = UserPhoneObj.value;
-	var msg = "";
+	var msg = "&nbsp;";
 	if (!value)
 		msg = "必须填写联系电话！";
 	else if (!regex.test(value))
 		msg = "联系电话不合法！";
 	UserPhoneMsg.innerHTML = msg;
-	UserPhoneObj.parentNode.parentNode.style.color = msg == "" ? "black" : "red";
-	return msg == "";
+	UserPhoneObj.parentNode.parentNode.style.color = msg == "red";
+	return msg == "&nbsp;";
 }
