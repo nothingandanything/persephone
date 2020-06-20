@@ -1,0 +1,39 @@
+package com.web.controller.user;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.web.entity.User;
+
+@WebServlet(urlPatterns="/addCart")
+public class AddCartController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 获取从前台页面传过来的参数
+		String id_str = req.getParameter("id");
+		int DrinkID = Integer.valueOf(id_str).intValue();
+		
+		// 读取session中的用户信息
+		User user = (User)req.getSession().getAttribute("user");
+		int UserID = user.getUserID();
+		
+		// 获取详情页表单的参数
+		String sweet = req.getParameter("sweet");
+		String temp = req.getParameter("temp");
+		String spec = req.getParameter("spec");
+		String num_str = req.getParameter("num");
+		int num = Integer.valueOf(num_str).intValue();
+		
+		// 调用业务逻辑层的添加购物车方法
+	}
+}

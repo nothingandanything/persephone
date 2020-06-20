@@ -1,0 +1,13 @@
+package com.web.dao.impl;
+
+import com.web.dao.CartDao;
+
+public class CartDaoImpl implements CartDao {
+
+	@Override
+	public boolean addCart(int id, String sweet, String temp, String spec, int num) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

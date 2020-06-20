@@ -58,7 +58,7 @@ public class RegisterController extends HttpServlet {
 				// 调用业务逻辑层的注册方法
 				boolean flag = userBiz.register(user);
 				
-				if(flag) {  // 如果注册成功
+				if (flag) {  // 如果注册成功
 					resp.getWriter().print("<script>alert('注册成功!');window.location.href='"
 							+ req.getContextPath() + "/client/login.jsp';</script>");
 //					resp.sendRedirect(req.getContextPath()+"/client/registerSuccess.jsp");

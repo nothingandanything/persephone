@@ -1,0 +1,7 @@
+package com.web.biz;
+
+import com.web.entity.Drink;
+
+public interface AddCartBiz {
+	public boolean addCart(Drink drink);
+}

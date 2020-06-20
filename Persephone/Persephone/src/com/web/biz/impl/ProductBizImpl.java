@@ -13,6 +13,29 @@ public class ProductBizImpl implements ProductBiz {
 	ProductDao productDao = new ProductDaoImpl();
 	
 	/**
+	 * 根据类别分页查询商品数据信息
+	 */
+	@Override
+	public PageBean findDrinkByPage(int currentPage, int currentCount, String category) {
+		
+		//获取分页查询的总条数
+		Integer totalCount = productDao.findAllCount(category);
+		
+		//获取分页查询的数据信息
+		List<Drink> list = productDao.findByPage(currentPage, currentCount, category);
+		
+		PageBean bean = new PageBean();
+		bean.setCategory(category);
+		bean.setCurrentCount(currentCount);
+		bean.setCurrentPage(currentPage);
+		bean.setProductList(list);
+		bean.setSearchfield(null);
+		bean.setTotalCount(totalCount);
+		
+		return bean;
+	}
+	
+	/**
 	 * 根据名称模糊查询
 	 */
 	@Override
@@ -37,6 +60,14 @@ public class ProductBizImpl implements ProductBiz {
 		bean.setTotalCount(totalCount);
 				
 		return bean;
+	}
+
+	/**
+	 * 根据id查询商品详情
+	 */
+	@Override
+	public Drink findDrinkById(int id) {
+		return productDao.findDrinkById(id);
 	}
 
 }

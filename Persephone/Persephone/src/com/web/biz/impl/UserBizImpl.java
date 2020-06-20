@@ -6,9 +6,7 @@ import com.web.dao.impl.UserDaoImpl;
 import com.web.entity.User;
 
 /**
- * 用户的业务逻辑层实现类
- * @author 王佳祺
- *
+ * 用户的业务逻辑层
  */
 public class UserBizImpl implements UserBiz {
 	

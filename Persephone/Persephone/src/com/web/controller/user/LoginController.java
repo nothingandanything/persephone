@@ -28,26 +28,26 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//获取登录页面表单的参数值
+		// 获取登录页面表单的参数值
 		String UserName = req.getParameter("UserName");
 		String UserPwd = req.getParameter("UserPwd");
 		
-		//调用业务逻辑层的登录方法
+		// 调用业务逻辑层的登录方法
 		UserBiz userBiz = new UserBizImpl();
 		User user = userBiz.login(UserName, UserPwd);
 		
 		if (user != null) {
-			//保存用户的会话信息到session中
+			// 保存用户的会话信息到session中
 			HttpSession session = req.getSession();
 			session.setAttribute("user", user);
 			
-			//登录成功
+			// 登录成功
 			resp.getWriter().print("<script>alert('登陆成功!');window.location.href='"
 					+ req.getContextPath() + "/client/index.jsp';</script>");
 //			resp.sendRedirect(req.getContextPath()+"/client/index.jsp");
 		}
 		else {
-			//登录失败
+			// 登录失败
 			resp.getWriter().print("<script>alert('用户名或密码错误!');window.location.href='"
 					+ req.getContextPath() + "/client/login.jsp';</script>");
 //			resp.sendRedirect(req.getContextPath()+"/client/login.jsp");

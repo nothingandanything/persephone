@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
     <title>Home</title>
-
+	
     <!-- Fav Icons -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/favicon.png" type="image/x-icon">
     
@@ -22,34 +24,25 @@
                         <button ><i class="flaticon-list"></i>
                         <span>Categories</span></button>
                         <ul>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-apple"></i> Fruits and Vegetables</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-chicken-hand-drawn-outline"></i> Meat and Fish</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-pressure-washer"></i> Home and Cleaning</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-pest"></i> Pest Control</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-stationery"></i> Office Products</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-make-up"></i> Beauty Products</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-first-aid-kit"></i> Health Products</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-track"></i> Pet Care</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-sketch"></i> Home Appliances</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client/shop.jsp"><i class="flaticon-baby-boy"></i> Baby Care</a></li>
+                            <li><a href="${pageContext.request.contextPath}/showProductByPage?DrinkType=All"><i class="flaticon-apple"></i> 全部饮品</a></li>
+                            <li><a href="${pageContext.request.contextPath}/showProductByPage?DrinkType=MilkTea"><i class="flaticon-apple"></i> 醇香奶茶</a></li>
+                            <li><a href="${pageContext.request.contextPath}/showProductByPage?DrinkType=Coffee"><i class="flaticon-chicken-hand-drawn-outline"></i> 咖啡时光</a></li>
+                            <li><a href="${pageContext.request.contextPath}/showProductByPage?DrinkType=Milk"><i class="flaticon-pressure-washer"></i> 牧场牛奶</a></li>
+                            <li><a href="${pageContext.request.contextPath}/showProductByPage?DrinkType=FruitTea"><i class="flaticon-pest"></i> 清新夏日</a></li>
+                            <li><a href="${pageContext.request.contextPath}/showProductByPage?DrinkType=Tea"><i class="flaticon-stationery"></i> 原沏茗作</a></li>
                         </ul>
                     </div>
                     
-                    <form action="#" class="menu-search">
+                    <form action="${pageContext.request.contextPath}/search" class="menu-search" id="searchform">
                         <select name="select-category">
-                            <option value="option-1">All Categories</option>
-                            <option value="option-2">Fruits and Vegetables</option>
-                            <option value="option-3">Meat and Fish</option>
-                            <option value="option-4">Home and Cleaning</option>
-                            <option value="option-5">Pest Control</option>
-                            <option value="option-6">Office Products</option>
-                            <option value="option-7">Beauty Products</option>
-                            <option value="option-8">Health Products</option>
-                            <option value="option-9">Pet Care</option>
-                            <option value="option-10">Home Appliances</option>
-                            <option value="option-11">Baby Care</option>
+                            <option value="option-1">全部饮品</option>
+                            <option value="option-2">醇香奶茶</option>
+                            <option value="option-3">咖啡时光</option>
+                            <option value="option-4">牧场牛奶</option>
+                            <option value="option-5">清新夏日</option>
+                            <option value="option-6">原沏茗作</option>
                         </select>
-                        <input type="search" placeholder="Search" required>
+                        <input type="search" placeholder="Search" name="searchfield" onmouseover="this.focus();" required>
                         <button type="submit" >Search</button>
                     </form>
                     
@@ -87,10 +80,15 @@
                             <i class="flaticon-user-1"></i>
                             <div class="collection-inner">
                                 <ul>
+                                	<c:if test="${user.userName!=null}">
                                     <li><a href="${pageContext.request.contextPath}/client/cart.jsp">购物车</a></li>
                                     <li><a href="${pageContext.request.contextPath}/client/checkout.jsp">支付</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/logout">退出登陆</a></li>
+                                    </c:if>
+                                    <c:if test="${user.userName==null}">
                                     <li><a href="${pageContext.request.contextPath}/client/login.jsp">登录</a></li>
                                     <li><a href="${pageContext.request.contextPath}/client/register.jsp">注册</a></li>
+                                    </c:if>
                                 </ul>
                             </div>
                         </div>

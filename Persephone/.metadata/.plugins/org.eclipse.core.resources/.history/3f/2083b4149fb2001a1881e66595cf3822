@@ -1,0 +1,22 @@
+/**
+ * 模态框异步数据请求
+ */
+$(function () {
+	$("bModal").click(function () {
+		console.log("test");
+		// 获取DrinkID
+		DrinkID = $('#DrinkID').attr('name');
+		$.ajax({
+			type: "POST",
+			contentType: "Persephone/findProductById",
+			url: "findDrinkById",
+			data: DrinkID,
+			success: function (drink) {
+				console.log(drink.DrinkName);
+				$('DrinkName').html(drink.DrinkName);
+				$('DrinkDesc').html(drink.DrinkDesc);
+				$('DrinkPrice').html(drink.DrinkPrice);
+			}
+		});
+	});
+});

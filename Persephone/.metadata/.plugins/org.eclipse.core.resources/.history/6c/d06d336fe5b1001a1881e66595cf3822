@@ -1,0 +1,5 @@
+package com.web.biz;
+
+public interface AddCartBiz {
+	public boolean addCart(int id, String sweet, String temp, String spec, int num);
+}

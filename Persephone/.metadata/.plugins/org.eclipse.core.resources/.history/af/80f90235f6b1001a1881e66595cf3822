@@ -1,0 +1,9 @@
+package com.web.controller.user;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(urlPatterns="/addCart")
+public class AddCartController extends HttpServlet {
+
+}

@@ -17,6 +17,7 @@
 					名称：${drink.drinkName}, 价格：${drink.drinkPrice}, 类型：${drink.drinkType}, 
 					甜度：${drink.drinkSweet}, 温度：${drink.drinkTemp}, 规格：${drink.drinkSpec},
 					描述：${drink.drinkDesc}, 图片：${drink.picAddres}
+					<a href="${pageContext.request.contextPath}/findProductById?id=${drink.DrinkID}">${drink.drinkName}</a>
 				</td>
 			</c:forEach>
 		</tr>
