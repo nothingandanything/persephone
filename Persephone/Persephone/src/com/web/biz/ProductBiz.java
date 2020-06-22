@@ -20,7 +20,7 @@ public interface ProductBiz {
 	 * @param searchfield
 	 * @return
 	 */
-	public PageBean findDrinkByName(int currentPage,int currentCount,String searchfield);
+	public PageBean findDrinkByName(int currentPage,int currentCount,String searchfield,String category);
 	
 	/**
 	 * 根据id查询商品详情

@@ -49,6 +49,7 @@ public class MenuSearchCotroller extends HttpServlet {
 		
 		// 获取前台jsp页面传过来的搜索字段信息
 		String searchfield = req.getParameter("searchfield");
+		String DrinkType = req.getParameter("DrinkType");
 		
 		if ("".equals(searchfield)) {
 			// 转发到显示商品信息页面的后台控制层
@@ -56,7 +57,7 @@ public class MenuSearchCotroller extends HttpServlet {
 		}
 		else {
 			// 调用业务逻辑层根据搜索字段分页查询数据方法
-			PageBean bean = productBiz.findDrinkByName(currentPage, currentCount, searchfield);
+			PageBean bean = productBiz.findDrinkByName(currentPage, currentCount, searchfield, DrinkType);
 			
 			// 把数据传到前台jsp页面
 			req.setAttribute("bean", bean);

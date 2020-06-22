@@ -39,7 +39,7 @@ public class ProductBizImpl implements ProductBiz {
 	 * 根据名称模糊查询
 	 */
 	@Override
-	public PageBean findDrinkByName(int currentPage, int currentCount, String searchfield) {
+	public PageBean findDrinkByName(int currentPage, int currentCount, String searchfield,String category) {
 		PageBean bean = new PageBean();
 
 		// 设置每页显示的条数
@@ -49,14 +49,14 @@ public class ProductBizImpl implements ProductBiz {
 		bean.setCurrentPage(currentPage);
 				
 		// 设置数据信息
-		List<Drink> list = productDao.findDrinkByName(currentPage, currentCount, searchfield);
+		List<Drink> list = productDao.findDrinkByName(currentPage, currentCount, searchfield, category);
 		bean.setProductList(list);
 				
 		// 设置搜索的字段
 		bean.setSearchfield(searchfield);
 				
 		// 设置总条数
-		Integer totalCount = productDao.findDrinkByNameAllCount(searchfield);
+		Integer totalCount = productDao.findDrinkByNameAllCount(searchfield, category);
 		bean.setTotalCount(totalCount);
 				
 		return bean;

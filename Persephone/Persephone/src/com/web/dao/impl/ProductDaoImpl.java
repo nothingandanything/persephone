@@ -95,7 +95,9 @@ public class ProductDaoImpl implements ProductDao {
 				Drink d = new Drink();
 				d.setDrinkID(rs.getInt("DrinkID"));
 				d.setDrinkName(rs.getString("DrinkName"));
-				d.setDrinkPrice(rs.getFloat("DrinkPrice"));
+				d.setDrinkPrice_Super(rs.getFloat("DrinkPrice_Super"));
+				d.setDrinkPrice_Big(rs.getFloat("DrinkPrice_Big"));
+				d.setDrinkPrice_Medium(rs.getFloat("DrinkPrice_Medium"));
 				d.setDrinkType(rs.getString("DrinkType"));
 				d.setDrinkDesc(rs.getString("DrinkDesc"));
 				d.setPicAddres(rs.getString("PicAddres"));
@@ -115,7 +117,7 @@ public class ProductDaoImpl implements ProductDao {
 	 * 根据字段搜索总条数
 	 */
 	@Override
-	public Integer findDrinkByNameAllCount(String searchfield) {
+	public Integer findDrinkByNameAllCount(String searchfield,String DrinkType) {
 		// 定义总条数
 		Integer totalCount = 0;
 		
@@ -126,6 +128,9 @@ public class ProductDaoImpl implements ProductDao {
 			// 编写sql
 			String sql = "SELECT COUNT(*) FROM drink WHERE DrinkName LIKE '%"
 					+ searchfield + "%'";
+			if(!"All".equals(DrinkType)){
+				sql+=" AND DrinkType='"+DrinkType+"'";
+			}
 			
 			// 编译sql
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -150,7 +155,7 @@ public class ProductDaoImpl implements ProductDao {
 	 * 根据字段搜索数据
 	 */
 	@Override
-	public List<Drink> findDrinkByName(int currentPage, int currentCount, String searchfield) {
+	public List<Drink> findDrinkByName(int currentPage, int currentCount, String searchfield, String DrinkType) {
 		List<Drink> list = new  ArrayList<Drink>();
 		try {
 			// 获取数据库连接对象
@@ -158,7 +163,11 @@ public class ProductDaoImpl implements ProductDao {
 			
 			// 编写sql
 			String sql = "SELECT * FROM drink WHERE DrinkName LIKE '%"
-					+ searchfield + "%' LIMIT ?,?";
+					+ searchfield + "%'";
+			if(!"All".equals(DrinkType)){
+				sql+=" AND DrinkType='"+DrinkType+"'";
+			}
+			sql+=" LIMIT ?,?";
 			
 			// 编译sql
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -176,7 +185,9 @@ public class ProductDaoImpl implements ProductDao {
 				Drink d = new Drink();
 				d.setDrinkID(rs.getInt("DrinkID"));
 				d.setDrinkName(rs.getString("DrinkName"));
-				d.setDrinkPrice(rs.getFloat("DrinkPrice"));
+				d.setDrinkPrice_Super(rs.getFloat("DrinkPrice_Super"));
+				d.setDrinkPrice_Big(rs.getFloat("DrinkPrice_Big"));
+				d.setDrinkPrice_Medium(rs.getFloat("DrinkPrice_Medium"));
 				d.setDrinkType(rs.getString("DrinkType"));
 				d.setDrinkDesc(rs.getString("DrinkDesc"));
 				d.setPicAddres(rs.getString("PicAddres"));
@@ -214,20 +225,22 @@ public class ProductDaoImpl implements ProductDao {
 			// 设置参数
 			ps.setInt(1, id);
 			
-			//执行查询
+			// 执行查询
 			ResultSet rs = ps.executeQuery();
 			
-			//循环
+			// 循环
 			while(rs.next()){
 				Drink d = new Drink();
 				d.setDrinkID(rs.getInt("DrinkID"));
 				d.setDrinkName(rs.getString("DrinkName"));
-				d.setDrinkPrice(rs.getFloat("DrinkPrice"));
+				d.setDrinkPrice_Super(rs.getFloat("DrinkPrice_Super"));
+				d.setDrinkPrice_Big(rs.getFloat("DrinkPrice_Big"));
+				d.setDrinkPrice_Medium(rs.getFloat("DrinkPrice_Medium"));
 				d.setDrinkType(rs.getString("DrinkType"));
 				d.setDrinkDesc(rs.getString("DrinkDesc"));
 				d.setPicAddres(rs.getString("PicAddres"));
 				
-				//把商品对象添加到集合中
+				// 把商品对象添加到集合中
 				list.add(d);
 			}
 		} catch (Exception e) {

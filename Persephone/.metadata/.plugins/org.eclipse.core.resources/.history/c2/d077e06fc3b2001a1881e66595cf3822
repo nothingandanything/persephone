@@ -1,0 +1,73 @@
+package com.web.biz.impl;
+
+import java.util.List;
+
+import com.web.biz.ProductBiz;
+import com.web.dao.ProductDao;
+import com.web.dao.impl.ProductDaoImpl;
+import com.web.entity.Drink;
+import com.web.util.PageBean;
+
+public class ProductBizImpl implements ProductBiz {
+	// 实例化数据访问层
+	ProductDao productDao = new ProductDaoImpl();
+	
+	/**
+	 * 根据类别分页查询商品数据信息
+	 */
+	@Override
+	public PageBean findDrinkByPage(int currentPage, int currentCount, String category) {
+		
+		//获取分页查询的总条数
+		Integer totalCount = productDao.findAllCount(category);
+		
+		//获取分页查询的数据信息
+		List<Drink> list = productDao.findByPage(currentPage, currentCount, category);
+		
+		PageBean bean = new PageBean();
+		bean.setCategory(category);
+		bean.setCurrentCount(currentCount);
+		bean.setCurrentPage(currentPage);
+		bean.setProductList(list);
+		bean.setSearchfield(null);
+		bean.setTotalCount(totalCount);
+		
+		return bean;
+	}
+	
+	/**
+	 * 根据名称模糊查询
+	 */
+	@Override
+	public PageBean findDrinkByName(int currentPage, int currentCount, String searchfield,String category) {
+		PageBean bean = new PageBean();
+
+		// 设置每页显示的条数
+		bean.setCurrentCount(currentCount);
+				
+		// 设置当前页码
+		bean.setCurrentPage(currentPage);
+				
+		// 设置数据信息
+		List<Drink> list = productDao.findDrinkByName(currentPage, currentCount, searchfield);
+		bean.setProductList(list);
+				
+		// 设置搜索的字段
+		bean.setSearchfield(searchfield);
+				
+		// 设置总条数
+		Integer totalCount = productDao.findDrinkByNameAllCount(searchfield);
+		bean.setTotalCount(totalCount);
+				
+		return bean;
+	}
+
+	/**
+	 * 根据id查询商品详情
+	 */
+	@Override
+	public Drink findDrinkById(int id) {
+		return productDao.findDrinkById(id);
+	}
+
+}

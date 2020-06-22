@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		if("${user}" != ""){
+			$.ajax({
+				type: "GET",
+				url: "${pageContext.request.contextPath}/showCart",
+				data: {"flag": "ajax"},
+				statusCode: {
+					404: function() {  
+						alert('提交地址url未发现'); 
+					}  
+				}
+			});
+		}
+	});
+</script>
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -34,13 +52,13 @@
                     </div>
                     
                     <form action="${pageContext.request.contextPath}/search" class="menu-search" id="searchform">
-                        <select name="select-category">
-                            <option value="option-1">全部饮品</option>
-                            <option value="option-2">醇香奶茶</option>
-                            <option value="option-3">咖啡时光</option>
-                            <option value="option-4">牧场牛奶</option>
-                            <option value="option-5">清新夏日</option>
-                            <option value="option-6">原沏茗作</option>
+                        <select id="DrinkType" name="DrinkType">
+                            <option value="All">全部饮品</option>
+                            <option value="MilkTea">醇香奶茶</option>
+                            <option value="Coffee">咖啡时光</option>
+                            <option value="Milk">牧场牛奶</option>
+                            <option value="FruitTea">清新夏日</option>
+                            <option value="Tea">原沏茗作</option>
                         </select>
                         <input type="search" placeholder="Search" name="searchfield" onmouseover="this.focus();" required>
                         <button type="submit" >Search</button>
@@ -48,46 +66,66 @@
                     
                     <div class="menu-collections">
                         <div class="collection-item cart">
-                            <i class="flaticon-shopping-cart"></i>
-                            <div class="collection-inner">
-                                <div class="alert single-collection">
-                                    <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
-                                    <div class="collection-image">
-                                        <img src="${pageContext.request.contextPath}/client/img/shop/cart-1.png" alt="">
-                                    </div>
-                                    <div class="collection-content">
-                                        <p>Danish Full Cream Milk</p>
-                                        <h6>$120.00</h6>
-                                    </div>
-                                </div>
-                                <div class="alert single-collection">
-                                    <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
-                                    <div class="collection-image">
-                                        <img src="${pageContext.request.contextPath}/client/img/shop/cart-2.png" alt="">
-                                    </div>
-                                    <div class="collection-content">
-                                        <p>Healthy Yellow Papaya</p>
-                                        <h6>$120.00</h6>
-                                    </div>
-                                </div>
-                                <div class="collection-btn">
-                                    <a href="${pageContext.request.contextPath}/client/cart.jsp" class="theme-btn bg-blue no-shadow mr-10">View Cart</a>
-                                    <a href="${pageContext.request.contextPath}/client/checkout.jsp" class="theme-btn ml-auto no-shadow">Checkout</a>
-                                </div>
-                            </div>
+                        
+                        	<c:if test="${user.userName!=null}">
+                            	<i class="flaticon-shopping-cart"></i>
+                            	<div class="collection-inner">
+                            	
+                            		<c:forEach items="${CartItem}" var="item" varStatus="vs">
+                                		<div class="alert single-collection">
+                                    		<button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
+                                    		<div class="collection-image">
+                                        		<img src="${pageContext.request.contextPath}/client/img/${item.drink.picAddres}" alt="">
+                                    		</div>
+                                    		<div class="collection-content">
+                                        		<p>${item.drink.drinkName} × ${item.number}</p>
+                                        		<h6>${item.drinkSweet}·${item.drinkTemp}·${item.drinkSpec}</h6>
+                                        		
+                                        		<c:if test="${item.drinkSpec eq '超级杯'}">
+                                        		<h6>￥${item.number * item.drink.drinkPrice_Super}</h6>
+                                    			</c:if>
+                                    			<c:if test="${item.drinkSpec eq '大杯'}">
+                                        		<h6>￥${item.number * item.drink.drinkPrice_Big}</h6>
+                                    			</c:if>
+                                    			<c:if test="${item.drinkSpec eq '中杯'}">
+                                        		<h6>￥${item.number * item.drink.drinkPrice_Medium}</h6>
+                                    			</c:if>
+                                    			
+                                    		</div>
+                                		</div>
+                                	</c:forEach>
+                                	
+                                	<div class="collection-btn">
+                                    	<a href="${pageContext.request.contextPath}/showCart" class="theme-btn bg-blue no-shadow mr-10">View Cart</a>
+                                    	<a href="${pageContext.request.contextPath}/client/checkout.jsp" class="theme-btn ml-auto no-shadow">Checkout</a>
+                                	</div>
+                            	</div>
+                            </c:if>
+                            <c:if test="${user.userName==null}">
+                            	<i class="flaticon-shopping-cart"></i>
+                            	<div class="collection-inner">
+                            		<div class="collection-content">
+                                        	<p>请先注册或登陆！</p>
+                                    	</div>
+                            		<div class="collection-btn">
+                                    	<a href="${pageContext.request.contextPath}/client/register.jsp" class="theme-btn bg-blue no-shadow mr-10">注册</a>
+                                    	<a href="${pageContext.request.contextPath}/client/login.jsp" class="theme-btn ml-auto no-shadow">登陆</a>
+                                	</div>
+                            	</div>
+                            </c:if>
                         </div>
                         <div class="collection-item profile">
                             <i class="flaticon-user-1"></i>
                             <div class="collection-inner">
                                 <ul>
                                 	<c:if test="${user.userName!=null}">
-                                    <li><a href="${pageContext.request.contextPath}/client/cart.jsp">购物车</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/checkout.jsp">支付</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/logout">退出登陆</a></li>
+                                    	<li><a href="${pageContext.request.contextPath}/client/cart.jsp">购物车</a></li>
+                                    	<li><a href="${pageContext.request.contextPath}/client/checkout.jsp">支付</a></li>
+                                    	<li><a href="${pageContext.request.contextPath}/logout">退出登陆</a></li>
                                     </c:if>
                                     <c:if test="${user.userName==null}">
-                                    <li><a href="${pageContext.request.contextPath}/client/login.jsp">登录</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/register.jsp">注册</a></li>
+                                    	<li><a href="${pageContext.request.contextPath}/client/login.jsp">登录</a></li>
+                                    	<li><a href="${pageContext.request.contextPath}/client/register.jsp">注册</a></li>
                                     </c:if>
                                 </ul>
                             </div>

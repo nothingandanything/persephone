@@ -1,0 +1,68 @@
+package com.web.entity;
+
+public class Drink {
+	private Integer DrinkID;
+	private String DrinkName;
+	private float DrinkPrice;
+	private String DrinkType;
+	private String DrinkSweet;
+	private String DrinkTemp;
+	private String DrinkSpec;
+	private String DrinkDesc;
+	private String PicAddres;
+	
+	public Integer getDrinkID() {
+		return DrinkID;
+	}
+	public void setDrinkID(Integer drinkID) {
+		DrinkID = drinkID;
+	}
+	public String getDrinkName() {
+		return DrinkName;
+	}
+	public void setDrinkName(String drinkName) {
+		DrinkName = drinkName;
+	}
+	public float getDrinkPrice() {
+		return DrinkPrice;
+	}
+	public void setDrinkPrice(float drinkPrice) {
+		DrinkPrice = drinkPrice;
+	}
+	public String getDrinkType() {
+		return DrinkType;
+	}
+	public void setDrinkType(String drinkType) {
+		DrinkType = drinkType;
+	}
+	public String getDrinkSweet() {
+		return DrinkSweet;
+	}
+	public void setDrinkSweet(String drinkSweet) {
+		DrinkSweet = drinkSweet;
+	}
+	public String getDrinkTemp() {
+		return DrinkTemp;
+	}
+	public void setDrinkTemp(String drinkTemp) {
+		DrinkTemp = drinkTemp;
+	}
+	public String getDrinkSpec() {
+		return DrinkSpec;
+	}
+	public void setDrinkSpec(String drinkSpec) {
+		DrinkSpec = drinkSpec;
+	}
+	public String getDrinkDesc() {
+		return DrinkDesc;
+	}
+	public void setDrinkDesc(String drinkDesc) {
+		DrinkDesc = drinkDesc;
+	}
+	public String getPicAddres() {
+		return PicAddres;
+	}
+	public void setPicAddres(String picAddres) {
+		PicAddres = picAddres;
+	}
+}

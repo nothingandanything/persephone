@@ -1,5 +1,7 @@
 package com.web.biz.impl;
 
+import java.util.List;
+
 import com.web.biz.CartBiz;
 import com.web.dao.CartDao;
 import com.web.dao.impl.CartDaoImpl;
@@ -10,7 +12,7 @@ import com.web.entity.CartItem;
  */
 public class CartBizImpl implements CartBiz {
 	// 实例化数据访问层
-	CartDao cd = new CartDaoImpl();
+	CartDao cartDao = new CartDaoImpl();
 	
 	/**
 	 * 添加购物车
@@ -18,7 +20,15 @@ public class CartBizImpl implements CartBiz {
 	@Override
 	public boolean addCart(CartItem cartItem) {
 		// 调用数据访问层的添加购物车方法
-		return cd.addCart(cartItem);
+		return cartDao.addCart(cartItem);
+	}
+	
+	/**
+	 * 查询购物车中的饮品
+	 */
+	@Override
+	public List<CartItem> showCart(int UserID) {
+		return cartDao.showCart(UserID);
 	}
 
 }

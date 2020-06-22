@@ -26,7 +26,7 @@ public interface ProductDao {
 	 * @param searchfield
 	 * @return
 	 */
-	public Integer findDrinkByNameAllCount(String searchfield);
+	public Integer findDrinkByNameAllCount(String searchfield,String DrinkType);
 	
 	/**
 	 * 根据字段搜索数据
@@ -35,7 +35,7 @@ public interface ProductDao {
 	 * @param searchfield  搜索的字段
 	 * @return
 	 */
-	public List<Drink> findDrinkByName(int currentPage,int currentCount,String searchfield);
+	public List<Drink> findDrinkByName(int currentPage,int currentCount,String searchfield,String DrinkType);
 	
 	/**
 	 * 根据id查询商品的详情信息

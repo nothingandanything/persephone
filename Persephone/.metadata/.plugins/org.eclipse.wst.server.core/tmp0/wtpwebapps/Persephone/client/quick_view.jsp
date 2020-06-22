@@ -1,9 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script>
+	function submitForm () {
+		$.ajax({
+			type: 'POST',
+			url: $("#addCartForm").attr("action"),
+			data: $('#addCartForm').serialize(),
+			success: function (result) {
+				$('#quick-view').modal('hide');
+				if (result == "success") {
+					alert("添加成功！");
+				}
+				else if (result == "fail") {
+					alert("已添加过该饮品！");
+				}
+			}
+		});
+	}
+	
+	function selectSepc () {
+		var spec = $("input[name='DrinkSpec']:checked").val();
+		if (spec == "super") {
+			$("#Super").show();
+			$("#Big").hide();
+			$("#Medium").hide();
+		}
+		else if (spec == "big") {
+			$("#Super").hide();
+			$("#Big").show();
+			$("#Medium").hide();
+		}
+		else if (spec == "medium") {
+			$("#Super").hide();
+			$("#Big").hide();
+			$("#Medium").show();
+		}
+	}
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -50,32 +90,81 @@
 	                                                                    
 	
 										<!-- <h6>Availability: <span>In Stock</span></h6> -->
-										<h4 class="price" id="DrinkPrice"></h4>
-	
-										<div class="product-spinner mt-20">
-											<div class="number-input b1">
-												<button class="minus"></button>
-												<input min="1" name="quantity" value="1" type="number">
-												<button class="plus"></button>
+										<div id="Super" style="display:block;">
+											<h4 class="price" id="DrinkPrice_Super"></h4>
+										</div>
+										<div id="Big" style="display:none;">
+											<h4 class="price" id="DrinkPrice_Big"></h4>
+										</div>
+										<div id="Medium" style="display:none;">
+											<h4 class="price" id="DrinkPrice_Medium"></h4>
+										</div>
+
+										<form action="${pageContext.request.contextPath}/addCart" method = "post" id="addCartForm">
+											<input type="hidden" id="DrinkID" name="DrinkID" value="">
+											<div class="product-spinner mt-20">
+												<div class="number-input b1">
+													<button class="minus" type="button"></button>
+													<input min="1" max="99" id="Number" name="Number" value="1" type="number">
+													<button class="plus" type="button"></button>
+												</div>
+												<c:if test="${user.userName!=null}">
+													<a href="javascript:void(0);" class="theme-btn br-30 ml-20" onclick="submitForm();">加入购物车</a>
+												</c:if>
+												<c:if test="${user.userName==null}">
+													<a href="${pageContext.request.contextPath}/client/login.jsp" class="theme-btn br-30 ml-20">请登陆后再购买！</a>
+												</c:if>
 											</div>
-											<a href="#" class="theme-btn br-30 ml-20">加入购物车</a>
-										</div>
-										<div class = "choices mt-20" >
-											<form action="radio_submit" method = "get">
-		                                                                    	
-												<li class = "choice-control choice-radio">
-													<h6><b>请选择甜度</b> </h6>
-													<input type = "radio" class = "choice-control-input" name = "sweet" value = "1" checked> 
-													<label class="choice-control-label" for="methodone" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">全糖</label>
-												</li>
-												<input type = "radio" name = "sweet" value = "2"> <h7>七分糖</h7></label>
-		                                                                    	
-												<label>
-													<input type = "radio" name = "sweet" value = "3"> <h7>半糖</h7></label>
-												<label>
-												<input type = "radio" name = "sweet" value = "4"> <h7>三分糖</h7></label>
-											</form>
-										</div>
+										
+											<div class = "chose-sweet">
+												<h7 style = "color : #071C35;"> 请选择甜度</h7>
+												<li class="custom-control custom-radio" style = "display:inline;">
+													<input type="radio" class="custom-control-input" id="DrinkSweet1" name="DrinkSweet" value="high" checked>
+													<label class="custom-control-label" for="DrinkSweet1" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">全糖</label>
+												</li>   
+												<li class="custom-control custom-radio " style = "display:inline;">
+													<input type="radio" class="custom-control-input" id="DrinkSweet2" name="DrinkSweet" value="mid">
+													<label class="custom-control-label" for="DrinkSweet2" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">半糖</label>
+												</li> 
+												<li class="custom-control custom-radio" style = "display:inline;">   
+													<input type="radio" class="custom-control-input" id="DrinkSweet3" name="DrinkSweet" value="low">
+													<label class="custom-control-label" for="DrinkSweet3" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">少糖</label>
+												</li> 
+											</div>
+                                                                    
+											<div class = "chose-temp mt-20">
+												<h7 style = "color : #071C35;"> 请选择温度</h7>
+												<li class="custom-control custom-radio" style = "display:inline;" >
+													<input type="radio" class="custom-control-input" id="DrinkTemp1" name="DrinkTemp" value="hot" checked>
+													<label class="custom-control-label" for="DrinkTemp1" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">热</label>
+												</li>   
+												<li class="custom-control custom-radio " style = "display:inline;">
+													<input type="radio" class="custom-control-input" id="DrinkTemp2" name="DrinkTemp" value="normal">
+													<label class="custom-control-label" for="DrinkTemp2" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">常温</label>
+												</li> 
+												<li class="custom-control custom-radio" style = "display:inline;">   
+													<input type="radio" class="custom-control-input" id="DrinkTemp3" name="DrinkTemp" value="cold">
+													<label class="custom-control-label" for="DrinkTemp3" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">加冰</label>
+												</li> 
+											</div>
+                                                                    
+											<div class = "chose-sepc mt-20" onclick="selectSepc()">
+												<h7 style = "color : #071C35;"> 请选择杯型</h7>
+												<li class="custom-control custom-radio" style = "display:inline;">
+													<input type="radio" class="custom-control-input" id="DrinkSpec1" name="DrinkSpec" value="super" checked>
+													<label class="custom-control-label" for="DrinkSpec1" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">超级杯</label>
+												</li>   
+												<li class="custom-control custom-radio " style = "display:inline;">
+													<input type="radio" class="custom-control-input" id="DrinkSpec2" name="DrinkSpec" value="big">
+													<label class="custom-control-label" for="DrinkSpec2" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">大杯</label>
+												</li> 
+												<li class="custom-control custom-radio" style = "display:inline;">   
+													<input type="radio" class="custom-control-input" id="DrinkSpec3" name="DrinkSpec" value="medium">
+													<label class="custom-control-label" for="DrinkSpec3" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">中杯</label>
+												</li> 
+											</div>
+										</form>
+										
 									</div>
 								</div>
 							</div>

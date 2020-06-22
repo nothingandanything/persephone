@@ -46,7 +46,8 @@ h2 b,
 h3 b,
 h4 b,
 h5 b,
-h6 b {
+h6 b,
+h7 b {
     color: #FF9933;
 }
 
@@ -508,7 +509,9 @@ footer:after {
 .bg-color4 {
     background: rgba(202, 30, 23, 0.1);
 }
-
+.bg-color5{
+	background: #FF9933;
+}
 .light{
     color: #fff;
 }

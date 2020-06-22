@@ -1,5 +1,7 @@
 package com.web.biz;
 
+import java.util.List;
+
 import com.web.entity.CartItem;
 
 /**
@@ -18,4 +20,11 @@ public interface CartBiz {
 	 * @return
 	 */
 	public boolean addCart(CartItem cartItem);
+	
+	/**
+	 * 查询购物车中的饮品
+	 * @param UserID
+	 * @return
+	 */
+	public List<CartItem> showCart(int UserID);
 }

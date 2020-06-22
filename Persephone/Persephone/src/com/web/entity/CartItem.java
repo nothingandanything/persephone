@@ -2,7 +2,10 @@ package com.web.entity;
 
 public class CartItem {
 	private Integer UserID;
+	
 	private Integer DrinkID;
+	private Drink drink;
+	
 	private String DrinkSweet;
 	private String DrinkTemp;
 	private String DrinkSpec;
@@ -19,6 +22,12 @@ public class CartItem {
 	}
 	public void setDrinkID(Integer drinkID) {
 		DrinkID = drinkID;
+	}
+	public Drink getDrink() {
+		return drink;
+	}
+	public void setDrink(Drink drink) {
+		this.drink = drink;
 	}
 	public String getDrinkSweet() {
 		return DrinkSweet;

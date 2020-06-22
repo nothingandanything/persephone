@@ -21,7 +21,9 @@
 			success: function (drink) {
 				$('#DrinkName').html(drink.DrinkName);
 				$('#DrinkDesc').html(drink.DrinkDesc);
-				$('#DrinkPrice').html("￥"+drink.DrinkPrice);
+				$('#DrinkPrice_Super').html("￥"+drink.DrinkPrice_Super);
+				$('#DrinkPrice_Big').html("￥"+drink.DrinkPrice_Big);
+				$('#DrinkPrice_Medium').html("￥"+drink.DrinkPrice_Medium);
 				$('#PicAddres').attr('src',"${pageContext.request.contextPath}/client/img/"+drink.PicAddres);
 			}
 		});
@@ -178,7 +180,7 @@
 														id="${drink.drinkID}" onclick="showModal(this.id)">
                                                     	<i class="flaticon-shopping-cart"></i>
                                                     	<span>Quick View</span>
-                                                    	<h5 class="product-price">￥${drink.drinkPrice}</h5>
+                                                    	<h5 class="product-price">￥${drink.drinkPrice_Medium}~￥${drink.drinkPrice_Super}</h5>
                                                 	</a>
                                                 
                                             	</div>
