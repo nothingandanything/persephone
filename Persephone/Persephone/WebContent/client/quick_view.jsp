@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
 <script>
 	function submitForm () {
 		$.ajax({
@@ -20,6 +22,20 @@
 				else if (result == "fail") {
 					alert("已添加过该饮品！");
 				}
+				$.ajax({
+					type: 'GET',
+					url: "${pageContext.request.contextPath}/showCart",
+					data: {"flag": "ajax"},
+					dataType: 'json',
+					statusCode: {
+						404: function() {  
+							alert('提交地址url未发现'); 
+						}  
+					},
+					success: function (data) {
+						changeCartInnerList(data);
+					}
+				});
 			}
 		});
 	}

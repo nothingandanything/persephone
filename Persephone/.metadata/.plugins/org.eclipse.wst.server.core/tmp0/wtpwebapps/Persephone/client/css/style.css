@@ -186,7 +186,7 @@
 
 .menu-collections .cart > i:after,
 .menu-collections .watch > i:after {
-    content: '2';
+    content: '0';
     position: absolute;
     height: 17px;
     width: 17px;
@@ -1597,6 +1597,9 @@ input[type=number]::-webkit-outer-spin-button {
     width: 321px;
 }
 
+.product-title2 {
+    width: 180px;
+}
 .cart-single-item {
     display: flex;
     align-items: center;
@@ -1623,6 +1626,18 @@ input[type=number]::-webkit-outer-spin-button {
     border: 1px solid #F3F3F3;
 }
 
+.product-img2 {
+    flex: none;
+    padding: 8px;
+    height: 85px;
+    width: 85px;
+    display: flex;
+    margin-right: 18px;
+    border-radius: 5px;
+    align-items: center;
+    border: 1px solid #F3F3F3;
+}
+
 .product-name {
     color: #292633;
     font-weight: 400;
@@ -1630,21 +1645,36 @@ input[type=number]::-webkit-outer-spin-button {
     width: 185px;
 }
 
-.cart-title .quantity-title,
-.cart-single-item .number-input {
+.product-name2 {
+    color: #292633;
+    font-weight: 400;
+    line-height: 28px;
+    width: 300px;
+    padding-left:10px;
+    padding-right:10px;
+    margin-right:30px;
+}
+
+.cart-title .quantity-title
+{
     margin: 0 auto;
+}
+
+.number-input{
+	margin-left:70px;
+	margin-right:70px;
 }
 
 .cart-single-item .product-price:before,
 .total-item .price:before,
 .product-total-price:before {
-    content: '$';
+    content: '';
 }
 
 .cart-single-item .product-price:after,
 .total-item .price:after,
 .product-total-price:after {
-    content: '.00';
+    content: '';
 }
 
 .price-title,
@@ -2181,5 +2211,159 @@ a.signup-link {
  /*** 
 ====================================================================
                         End Footer Section
+====================================================================
+ ***/
+ 
+  /*** 
+====================================================================
+                        15. order Page
+====================================================================
+ ***/
+.order-cart-title {
+    margin-bottom: 20px;
+}
+
+.order-cart-heading {
+    border-bottom: 1px solid #F3F3F3;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.order-cart-title h6 {
+    color: #000000;
+    font-weight: 500;
+}
+
+.order-product-title {
+    width: 321px;
+}
+
+.order-cart-single-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.order-cart-single-item .close {
+    float: none;
+}
+
+.cart-single-item .close i:before {
+    font-size: 12px;
+}
+
+.order-product-img {
+    flex: none;
+    padding: 7px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    margin: 0 15px;
+    border-radius: 5px;
+    align-items: center;
+    border: 1px solid #F3F3F3;
+}
+
+.order-product-name {
+    color: #292633;
+    font-weight: 400;
+    line-height: 28px;
+    width: 220px;
+}
+
+.order-cart-title .order-quantity-title
+{
+    margin: 0 auto;
+}
+.order-number-input{
+	/*
+	margin-left:100px;
+	margin-right:70px;*/
+	width:200px;
+	padding-left:50px;
+	padding-right:50px;
+	
+	
+}
+
+.order-cart-single-item .order-product-price:before,
+.order-total-item .price:before,
+.product-total-price:before {
+    content: '';
+}
+
+.order-cart-single-item .order-product-price:after,
+.order-total-item .price:after,
+.order-product-total-price:after {
+    content: '';
+}
+
+.order-price-title,
+.order-product-price {
+    /*margin-right: 70px;
+    margin-left:70px;*/
+    width:150px;
+	padding-left:50px;
+	padding-right:50px;
+	margin-left:20px;
+}
+.order-product-total-price{
+	/*margin-left:70px;*/
+	width:160px;
+	padding-left:70px;
+	padding-right:70px;
+	margin-left:20px;
+	
+}
+.order-update-shopping .style-two {
+    color: #292633;
+    background: #F3F3F3;
+}
+
+.order-cart-total-price {
+    border: 1px solid #F3F3F3;
+    border-radius: 5px;
+}
+
+.order-total-item .price {
+    margin-left: auto;
+}
+
+.order-total-item {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.order-cart-total-price .order-total-item.discount {
+    border-bottom: 1px solid #F3F3F3;
+    padding: 20px 0;
+}
+
+.no-shadow {
+    box-shadow: none !important;
+}
+
+.order-cart-total-price .title,
+.order-cart-total-price .price,
+.order-checkout-cart-total .price {
+    color: #292633;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.order-total-item-wrap form input {
+    border: 1px solid #F3F3F3;
+    padding: 10px 25px;
+    margin-bottom: 25px;
+}
+
+.order-total-item-wrap form input::placeholder {
+    color: #8E8E8E;
+    font-size: 14px;
+}
+ /*** 
+====================================================================
+                        End order Page
 ====================================================================
  ***/

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
 <script>
 	$(document).ready(function(){
 		if("${user}" != ""){
@@ -10,10 +11,14 @@
 				type: "GET",
 				url: "${pageContext.request.contextPath}/showCart",
 				data: {"flag": "ajax"},
+				dataType: 'json',
 				statusCode: {
 					404: function() {  
 						alert('提交地址url未发现'); 
 					}  
+				},
+				success: function (data) {
+					changeCartInnerList(data);
 				}
 			});
 		}
@@ -65,15 +70,14 @@
                     </form>
                     
                     <div class="menu-collections">
-                        <div class="collection-item cart">
+                        <div class="collection-item cart" id="cartIcon" data-after="0">
                         
                         	<c:if test="${user.userName!=null}">
                             	<i class="flaticon-shopping-cart"></i>
-                            	<div class="collection-inner">
+                            	<div class="collection-inner" id="CartItemInnerList">
                             	
                             		<c:forEach items="${CartItem}" var="item" varStatus="vs">
                                 		<div class="alert single-collection">
-                                    		<button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
                                     		<div class="collection-image">
                                         		<img src="${pageContext.request.contextPath}/client/img/${item.drink.picAddres}" alt="">
                                     		</div>

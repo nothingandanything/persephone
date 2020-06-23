@@ -75,10 +75,10 @@ public class CartDaoImpl implements CartDao {
 			// 设置参数
 			ps.setInt(1, UserID);
 			
-			//执行查询
+			// 执行查询
 			ResultSet rs = ps.executeQuery();
 			
-			//循环
+			// 循环
 			while(rs.next()){
 				CartItem c = new CartItem();
 				c.setUserID(rs.getInt("UserID"));
@@ -127,5 +127,74 @@ public class CartDaoImpl implements CartDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	/**
+	 * 删除购物车中的饮品
+	 */
+	@Override
+	public List<CartItem> deleteCart(CartItem cartItem) {
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+			
+			// 编写sql
+			String sql = "DELETE FROM cartitem WHERE UserID = ? AND DrinkID = ? "
+					+ "AND DrinkSweet = ? AND DrinkTemp = ? AND DrinkSpec = ?";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			// 设置参数
+			ps.setInt(1, cartItem.getUserID());
+			ps.setInt(2, cartItem.getDrinkID());
+			ps.setString(3, cartItem.getDrinkSweet());
+			ps.setString(4, cartItem.getDrinkTemp());
+			ps.setString(5, cartItem.getDrinkSpec());
+			
+			// 执行修改
+			ps.executeUpdate();
+			
+			// 关闭
+			JDBCUtil.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return showCart(cartItem.getUserID());
+	}
+	
+	/**
+	 * 改变购物车数量
+	 */
+	@Override
+	public List<CartItem> changeCart(CartItem cartItem) {
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+			
+			// 编写sql
+			String sql = "UPDATE cartitem SET Number = ? WHERE UserID = ? AND DrinkID = ? "
+					+ "AND DrinkSweet = ? AND DrinkTemp = ? AND DrinkSpec = ?";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			// 设置参数
+			ps.setInt(1, cartItem.getNumber());
+			ps.setInt(2, cartItem.getUserID());
+			ps.setInt(3, cartItem.getDrinkID());
+			ps.setString(4, cartItem.getDrinkSweet());
+			ps.setString(5, cartItem.getDrinkTemp());
+			ps.setString(6, cartItem.getDrinkSpec());
+			
+			// 执行修改
+			ps.executeUpdate();
+			
+			// 关闭
+			JDBCUtil.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return showCart(cartItem.getUserID());
 	}
 }

@@ -31,4 +31,19 @@ public class CartBizImpl implements CartBiz {
 		return cartDao.showCart(UserID);
 	}
 
+	/**
+	 * 删除购物车中的饮品
+	 */
+	@Override
+	public List<CartItem> deleteCart(CartItem cartItem) {
+		return cartDao.deleteCart(cartItem);
+	}
+
+	/**
+	 * 更改购物车中的饮品
+	 */
+	@Override
+	public List<CartItem> changeCart(CartItem cartItem) {
+		return cartDao.changeCart(cartItem);
+	}
 }

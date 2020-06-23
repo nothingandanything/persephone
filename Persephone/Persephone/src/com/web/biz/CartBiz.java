@@ -27,4 +27,21 @@ public interface CartBiz {
 	 * @return
 	 */
 	public List<CartItem> showCart(int UserID);
+	
+	/**
+	 * 删除购物车中的饮品
+	 * @param UserID
+	 * @param DrinkID
+	 * @return
+	 */
+	public List<CartItem> deleteCart(CartItem cartItem);
+	
+	/**
+	 * 改变购物车数量
+	 * @param UserID
+	 * @param DrinkID
+	 * @param Number
+	 * @return
+	 */
+	public List<CartItem> changeCart(CartItem cartItem);
 }

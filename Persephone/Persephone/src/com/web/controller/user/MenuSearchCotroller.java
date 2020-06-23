@@ -40,7 +40,7 @@ public class MenuSearchCotroller extends HttpServlet {
 		}
 		
 		// 定义每页的条数，默认为8
-		Integer currentCount = 8;
+		Integer currentCount = 4;
 		String _currentCount = req.getParameter("currentCount");
 		
 		if(_currentCount != null){

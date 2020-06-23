@@ -4,6 +4,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
+<script type="text/javascript">
+	function deleteCartItem (DrinkID, DrinkSweet, DrinkTemp, DrinkSpec) {
+		$.ajax({
+			type: 'POST',
+			url: '${pageContext.request.contextPath}/deleteCart',
+			data: {"DrinkID": DrinkID, "DrinkSweet": DrinkSweet, "DrinkTemp": DrinkTemp, "DrinkSpec": DrinkSpec},
+			dataType: 'json',
+			statusCode: {
+				404: function() {  
+					alert('提交地址url未发现'); 
+				}  
+			},
+			success: function (data) {
+				changeCartList(data);
+				changeCartInnerList(data);
+			}
+		});
+	}
+
+	function changeCart (DrinkID, DrinkSweet, DrinkTemp, DrinkSpec, Number, flag) {
+		$.ajax({
+			type: 'POST',
+			url: '${pageContext.request.contextPath}/changeCart',
+			data: {"DrinkID": DrinkID, "DrinkSweet": DrinkSweet, "DrinkTemp": DrinkTemp, "DrinkSpec": DrinkSpec, "Number": Number, "flag": flag},
+			dataType: 'json',
+			statusCode: {
+				404: function() {  
+					alert('提交地址url未发现'); 
+				}  
+			},
+			success: function (data) {
+				changeCartList(data);
+				changeCartInnerList(data);
+			}
+		});
+	}
+</script>
+
 <title>Cart</title>
 </head>
 <body>
@@ -48,7 +89,7 @@
                                 <h5 class="price-title">单价</h5>
                                 <h5 class="total-title">总价</h5>
                             </div>
-                            <div class="cart-items pb-15">
+                            <div class="cart-items pb-15" id="CartItemList">
                             	
                             	<c:set var="totalPrice" value="${0}"/>
                             	<c:forEach items="${CartItem}" var="item" varStatus="vs">
@@ -65,15 +106,15 @@
                                     </c:if>
                             		
                                 	<div class="cart-single-item">
-                                    	<button type="button" class="close"><i class="flaticon-cross"></i></button>
+                                    	<button type="button" class="close" onclick="deleteCartItem('${item.drinkID}','${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}')"><i class="flaticon-cross"></i></button>
                                     	<div class="product-img">
                                         	<img src="${pageContext.request.contextPath}/client/img/${item.drink.picAddres}" alt="Product Image">
                                     	</div>
                                     	<h6 class="product-name">${item.drink.drinkName} (${item.drinkSweet}·${item.drinkTemp}·${item.drinkSpec})</h6>
                                     	<div class="number-input">
-                                      		<button class="minus"></button>
-                                      		<input class="quantity" min="1" name="quantity" value="${item.number}" type="number">
-                                      		<button class="plus"></button>
+                                      		<button class="minus" onclick="changeCart('${item.drinkID}',,'${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}' '${item.number}', 'minus')"></button>
+                                      		<input class="quantity" min="1" max="99" name="quantity" value="${item.number}" type="number">
+                                      		<button class="plus" onclick="changeCart('${item.drinkID}','${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}', '${item.number}', 'plus')"></button>
                                     	</div>
                                     	
                                     	<!-- 显示单价 -->
@@ -123,7 +164,7 @@
                             <div class="total-item-wrap">
                                 <div class="total-item sub-total">
                                     <span class="title">商品总价</span>
-                                    <span class="price">￥${totalPrice}</span>
+                                    <span class="price" id="totalPrice">￥${totalPrice}</span>
                                 </div> 
                             </div>
                             <div class="proceed-btn mt-30">

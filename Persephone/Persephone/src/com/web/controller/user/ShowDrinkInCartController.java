@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.web.biz.CartBiz;
 import com.web.biz.impl.CartBizImpl;
 import com.web.entity.CartItem;
@@ -33,15 +34,22 @@ public class ShowDrinkInCartController extends HttpServlet {
 		// 调用业务逻辑层的查询方法
 		List<CartItem> list = cartBiz.showCart(UserID);
 		
-	    // 把数据传递给jsp页面
-//		req.setAttribute("CartItem", list);
-		req.getSession().setAttribute("CartItem", list);
-		
 		// 判断是否是异步请求
 		String flag = req.getParameter("flag");
 		if(flag == null){
+			// 把数据传递给jsp页面
+			req.setAttribute("CartItem", list);
+			
 			// 转发跳转页面
 			req.getRequestDispatcher("/client/cart.jsp").forward(req, resp);
+		}
+		else {
+			// 把数据传递到前台页面
+			Gson gson = new Gson();
+			String json = gson.toJson(list);
+			resp.getWriter().append(json);
+			resp.getWriter().flush();
+			resp.getWriter().close();
 		}
 	}
 }

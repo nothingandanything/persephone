@@ -191,20 +191,32 @@
                                 </c:forEach>
                                 
                                 <!-- 分页 -->
-                                <div>
+                                <div style = "float:left;display:inline; margin-left:450px;">
 									<ul>
 										<c:if test="${bean.currentPage!=1}">
-											<a href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage-1}&searchfield=${bean.searchfield}">上一页</a>
+											<a href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage-1}&searchfield=${bean.searchfield}">
+												<button class="center-array-prev slick-arrow" style="margin-right:30px;background:transparent;">
+	                                				<i class = "flaticon-angle-pointing-to-left"></i>
+	                        					</button>
+											</a>
 										</c:if>
 										<c:if test="${bean.currentPage==1}">
-											上一页
+											<button class="center-array-prev slick-arrow" style="margin-right:30px;background:transparent;">
+	                                			<i class = "flaticon-angle-pointing-to-left"></i>
+	                        				</button>
 										</c:if>
-										<li>${ bean.currentPage }</li>
+										<h7> 当前页码：${ bean.currentPage }</h7>
 										<c:if test="${bean.currentPage!=bean.totalPage&&bean.totalPage!=0}">
-											<a href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage+1}&searchfield=${bean.searchfield}">下一页</a>
+											<a href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage+1}&searchfield=${bean.searchfield}">
+												<button class="center-array-prev slick-arrow" style="margin-left:30px;background:transparent;">
+	                                				<i class = "flaticon-angle-arrow-pointing-to-right"></i>
+	                        					</button>
+											</a>
 										</c:if>
 										<c:if test="${bean.currentPage==bean.totalPage||bean.totalPage==0}">
-											下一页
+											<button class="center-array-prev slick-arrow" style="margin-left:30px;background:transparent;">
+	                                			<i class = "flaticon-angle-arrow-pointing-to-right"></i>
+	                        				</button>
 										</c:if>
 									</ul>
 								</div>

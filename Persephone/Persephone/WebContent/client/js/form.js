@@ -37,7 +37,7 @@ function checkUserName () {
 	else if (!regex.test(value))
 		msg = "用户名不合法！";
 	UserNameMsg.innerHTML = msg;  // 将提示消息放入SPAN
-	UserNameObj.parentNode.parentNode.style.color = msg == "" ? "black" : "red";
+	UserNameObj.style.color = msg == "" ? "black" : "red";
 	return msg = "";
 }
 
@@ -50,7 +50,7 @@ function checkUserPwd () {
 	else if (!regex.test(value))
 		msg = "密码不合法！";
 	UserPwdMsg.innerHTML = msg;
-	UserPwdObj.parentNode.parentNode.style.color = msg == "red";
+	UserPwdObj.style.color = msg == "" ? "black" : "red";
 	return msg == "&nbsp;";
 }
 
@@ -66,7 +66,7 @@ function checkReUserPwd() {		// 验证确认密码
 		msg = "密码必须保持一致！";
     }
 	ReUserPwdMsg.innerHTML = msg;
-	ReUserPwdObj.parentNode.parentNode.style.color = msg == "red";
+	ReUserPwdObj.style.color = msg == "" ? "black" : "red";
 	return msg == "&nbsp;";
 }
 
@@ -79,6 +79,6 @@ function checkUserPhone () {
 	else if (!regex.test(value))
 		msg = "联系电话不合法！";
 	UserPhoneMsg.innerHTML = msg;
-	UserPhoneObj.parentNode.parentNode.style.color = msg == "red";
+	UserPhoneObj.style.color = msg == "" ? "black" : "red";
 	return msg == "&nbsp;";
 }
