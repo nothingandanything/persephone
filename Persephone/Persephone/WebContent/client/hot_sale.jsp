@@ -1,18 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!--==================================================================== 
             Start Special Offer Section
         =====================================================================-->
-        <section class="special-offer text-center pt-110 rpt-70 pb-35">
+        <section class="special-offer text-center pt-80 rpt-70 pb-35">
             <div class="container">
                 <div class="section-title mb-15">
-                    <h2>本周热卖</h2>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-1"></div>
+					  <div class="col-md-6 notice b1 br5">
+					  <h3>公告栏</h3>
+						  <div class="notice-slider">		
+						  <c:forEach items="${noticeList}" var="n">				    
+						  	<div class="notice-item">
+						  	 <h4 style="color:#292633;" class="text-left ml-20" >${n.title}</h4>
+						  	 <h5 style="color:#292633;" class="text-left ml-20" >${n.details}</h5>
+						    </div>	
+						   </c:forEach>				   
+						  </div>
+					
+                      </div>
+                     
+                      <div class="col-md-1"></div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-1"></div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-
+						<h2>本周热卖</h2>
                         <div class="special-offer-inner special-offer-slider">
 
 

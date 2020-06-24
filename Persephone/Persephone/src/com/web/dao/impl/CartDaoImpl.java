@@ -83,41 +83,15 @@ public class CartDaoImpl implements CartDao {
 				CartItem c = new CartItem();
 				c.setUserID(rs.getInt("UserID"));
 				c.setDrinkID(rs.getInt("DrinkID"));
+				c.setDrinkSweet(rs.getString("DrinkSweet"));
+				c.setDrinkTemp(rs.getString("DrinkTemp"));
+				c.setDrinkSpec(rs.getString("DrinkSpec"));
 				c.setNumber(rs.getInt("Number"));
 				
 				// 根据饮品id查询饮品信息
 				int DrinkID = c.getDrinkID();
 				Drink drink = productDao.findDrinkById(DrinkID);
 				c.setDrink(drink);
-				
-				// 将饮品规格信息转换为中文
-				if (rs.getString("DrinkSweet").equals("high")) {
-					c.setDrinkSweet("全糖");
-				}
-				else if (rs.getString("DrinkSweet").equals("mid")) {
-					c.setDrinkSweet("半糖");
-				}
-				else if (rs.getString("DrinkSweet").equals("low")) {
-					c.setDrinkSweet("无糖");
-				}
-				if (rs.getString("DrinkTemp").equals("hot")) {
-					c.setDrinkTemp("热");
-				}
-				else if (rs.getString("DrinkTemp").equals("normal")) {
-					c.setDrinkTemp("常温");
-				}
-				else if (rs.getString("DrinkTemp").equals("cold")) {
-					c.setDrinkTemp("加冰");
-				}
-				if (rs.getString("DrinkSpec").equals("super")) {
-					c.setDrinkSpec("超级杯");
-				}
-				else if (rs.getString("DrinkSpec").equals("big")) {
-					c.setDrinkSpec("大杯");
-				}
-				else if (rs.getString("DrinkSpec").equals("medium")) {
-					c.setDrinkSpec("中杯");
-				}
 				
 				// 把购物车对象添加到集合中
 				list.add(c);
@@ -196,5 +170,37 @@ public class CartDaoImpl implements CartDao {
 			e.printStackTrace();
 		}
 		return showCart(cartItem.getUserID());
+	}
+
+	/**
+	 * 清空购物车
+	 */
+	@Override
+	public boolean clearCart(int UserID) {
+		// 定义影响的行数
+		int count = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+						
+			// 编写sql
+			String sql = "DELETE FROM cartitem WHERE UserID = ?";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			// 设置参数
+			ps.setInt(1, UserID);
+			
+			// 执行修改
+			count = ps.executeUpdate();
+
+			// 关闭
+			JDBCUtil.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
 	}
 }

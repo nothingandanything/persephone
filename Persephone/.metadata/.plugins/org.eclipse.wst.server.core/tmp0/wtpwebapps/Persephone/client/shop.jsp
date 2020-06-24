@@ -190,8 +190,14 @@
                                 	</div>
                                 </c:forEach>
                                 
-                                <!-- 分页 -->
-                                <div style = "float:left;display:inline; margin-left:450px;">
+                                
+                                
+<jsp:include page="quick_view.jsp"></jsp:include>
+                            </div>
+                        </div>
+                        
+                        <!-- 分页 -->
+                        <div style = "float:left;display:inline; margin-left:450px;">
 									<ul>
 										<c:if test="${bean.currentPage!=1}">
 											<a href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage-1}&searchfield=${bean.searchfield}">
@@ -221,10 +227,6 @@
 									</ul>
 								</div>
 								<!-- 分页 -->
-                                
-<jsp:include page="quick_view.jsp"></jsp:include>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

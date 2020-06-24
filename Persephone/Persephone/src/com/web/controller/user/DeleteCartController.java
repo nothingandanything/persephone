@@ -37,33 +37,6 @@ public class DeleteCartController extends HttpServlet {
 		String DrinkSweet = req.getParameter("DrinkSweet");
 		String DrinkTemp = req.getParameter("DrinkTemp");
 		String DrinkSpec = req.getParameter("DrinkSpec");
-		if (DrinkSweet.equals("全糖")) {
-			DrinkSweet = "high";
-		}
-		else if (DrinkSweet.equals("半糖")) {
-			DrinkSweet = "mid";
-		}
-		else if (DrinkSweet.equals("无糖")) {
-			DrinkSweet = "low";
-		}
-		if (DrinkTemp.equals("热")) {
-			DrinkTemp = "hot";
-		}
-		else if (DrinkTemp.equals("常温")) {
-			DrinkTemp = "normal";
-		}
-		else if (DrinkTemp.equals("加冰")) {
-			DrinkTemp = "cold";
-		}
-		if (DrinkSpec.equals("超级杯")) {
-			DrinkSpec = "super";
-		}
-		else if (DrinkSpec.equals("大杯")) {
-			DrinkSpec = "big";
-		}
-		else if (DrinkSpec.equals("中杯")) {
-			DrinkSpec = "medium";
-		}
 		
 		// 把参数赋值给购物车对象
 		CartItem cartItem = new CartItem();

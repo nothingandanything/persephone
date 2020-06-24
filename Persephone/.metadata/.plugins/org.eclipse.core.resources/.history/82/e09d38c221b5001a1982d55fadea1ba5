@@ -1,0 +1,12 @@
+package com.web.biz;
+
+import com.web.entity.DrinkOrder;
+
+public interface OrderBiz {
+	/**
+	 * Ìí¼Ó¶©µ¥
+	 * @param drinkOrder
+	 * @return
+	 */
+	public int addOrder(DrinkOrder drinkOrder);
+}

@@ -1,0 +1,17 @@
+package com.web.dao.impl;
+
+import com.web.dao.OrderDao;
+import com.web.entity.DrinkOrder;
+
+public class OrderDaoImpl implements OrderDao {
+
+	/**
+	 * Ìí¼Ó¶©µ¥
+	 */
+	@Override
+	public boolean addOrder(DrinkOrder drinkOrder) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

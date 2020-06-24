@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/client/js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
 <script>
 	$(document).ready(function(){
@@ -101,7 +101,7 @@
                                 	
                                 	<div class="collection-btn">
                                     	<a href="${pageContext.request.contextPath}/showCart" class="theme-btn bg-blue no-shadow mr-10">View Cart</a>
-                                    	<a href="${pageContext.request.contextPath}/client/checkout.jsp" class="theme-btn ml-auto no-shadow">Checkout</a>
+                                    	<a href="${pageContext.request.contextPath}/createOrder" class="theme-btn ml-auto no-shadow">Checkout</a>
                                 	</div>
                             	</div>
                             </c:if>
@@ -124,7 +124,7 @@
                                 <ul>
                                 	<c:if test="${user.userName!=null}">
                                     	<li><a href="${pageContext.request.contextPath}/client/cart.jsp">购物车</a></li>
-                                    	<li><a href="${pageContext.request.contextPath}/client/checkout.jsp">支付</a></li>
+                                    	<li><a href="${pageContext.request.contextPath}/showMe">我的账户</a></li>
                                     	<li><a href="${pageContext.request.contextPath}/logout">退出登陆</a></li>
                                     </c:if>
                                     <c:if test="${user.userName==null}">

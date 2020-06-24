@@ -1,0 +1,54 @@
+package com.web.biz.impl;
+
+import java.util.List;
+
+import com.web.biz.CartBiz;
+import com.web.biz.OrderBiz;
+import com.web.biz.OrderItemBiz;
+import com.web.dao.OrderDao;
+import com.web.dao.impl.OrderDaoImpl;
+import com.web.entity.DrinkOrder;
+import com.web.entity.OrderItem;
+
+public class OrderBizImpl implements OrderBiz {
+	// 实例化订单的数据访问层
+	OrderDao orderDao = new OrderDaoImpl();
+
+	// 实例化订单条目的业务逻辑层
+	OrderItemBiz orderItemBiz = new OrderItemBizImpl();
+	
+	// 实例化购物车的业务逻辑层
+	CartBiz cartBiz = new CartBizImpl();
+	
+	/**
+	 * 添加订单
+	 */
+	@Override
+	public int addOrder(DrinkOrder drinkOrder) {
+		
+		int OrderID = 0;
+		
+		try {
+			// 添加订单
+			orderDao.addOrder(drinkOrder);
+			OrderID = orderDao.getOrderId();
+			
+			// 清空购物车
+			cartBiz.clearCart(drinkOrder.getUserID());
+			 
+			// 获取订单的条目信息
+			List<OrderItem> list = drinkOrder.getOrderItems();
+			
+			// 循环
+			for (OrderItem orderItem : list) {
+				 // 添加订单条目
+				orderItem.setOrderID(OrderID);
+				orderItemBiz.addOrderItem(orderItem);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return OrderID;
+	}
+
+}

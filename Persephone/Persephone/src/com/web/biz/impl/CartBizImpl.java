@@ -46,4 +46,12 @@ public class CartBizImpl implements CartBiz {
 	public List<CartItem> changeCart(CartItem cartItem) {
 		return cartDao.changeCart(cartItem);
 	}
+
+	/**
+	 * Çå¿Õ¹ºÎï³µ
+	 */
+	@Override
+	public boolean clearCart(int UserID) {
+		return cartDao.clearCart(UserID);
+	}
 }

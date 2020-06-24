@@ -69,7 +69,7 @@ function changeCartInnerList (data) {
 	}
 	$('#CartItemInnerList').append('<div class="collection-btn">\n' +
 								   '	<a href="/Persephone/showCart" class="theme-btn bg-blue no-shadow mr-10">View Cart</a>\n' +
-								   '	<a href="/Persephone/client/checkout.jsp" class="theme-btn ml-auto no-shadow">Checkout</a>\n' +
+								   '	<a href="/Persephone/createOrder" class="theme-btn ml-auto no-shadow">Checkout</a>\n' +
 								   '</div>\n');
 	// 更改购物车图标中的数字
 	var Style = document.createElement('style');

@@ -135,15 +135,15 @@
 											<div class = "chose-sweet">
 												<h7 style = "color : #071C35;"> 请选择甜度</h7>
 												<li class="custom-control custom-radio" style = "display:inline;">
-													<input type="radio" class="custom-control-input" id="DrinkSweet1" name="DrinkSweet" value="high" checked>
+													<input type="radio" class="custom-control-input" id="DrinkSweet1" name="DrinkSweet" value="全糖" checked>
 													<label class="custom-control-label" for="DrinkSweet1" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">全糖</label>
 												</li>   
 												<li class="custom-control custom-radio " style = "display:inline;">
-													<input type="radio" class="custom-control-input" id="DrinkSweet2" name="DrinkSweet" value="mid">
+													<input type="radio" class="custom-control-input" id="DrinkSweet2" name="DrinkSweet" value="半糖">
 													<label class="custom-control-label" for="DrinkSweet2" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">半糖</label>
 												</li> 
 												<li class="custom-control custom-radio" style = "display:inline;">   
-													<input type="radio" class="custom-control-input" id="DrinkSweet3" name="DrinkSweet" value="low">
+													<input type="radio" class="custom-control-input" id="DrinkSweet3" name="DrinkSweet" value="少糖">
 													<label class="custom-control-label" for="DrinkSweet3" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">少糖</label>
 												</li> 
 											</div>
@@ -151,15 +151,15 @@
 											<div class = "chose-temp mt-20">
 												<h7 style = "color : #071C35;"> 请选择温度</h7>
 												<li class="custom-control custom-radio" style = "display:inline;" >
-													<input type="radio" class="custom-control-input" id="DrinkTemp1" name="DrinkTemp" value="hot" checked>
+													<input type="radio" class="custom-control-input" id="DrinkTemp1" name="DrinkTemp" value="热" checked>
 													<label class="custom-control-label" for="DrinkTemp1" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">热</label>
 												</li>   
 												<li class="custom-control custom-radio " style = "display:inline;">
-													<input type="radio" class="custom-control-input" id="DrinkTemp2" name="DrinkTemp" value="normal">
+													<input type="radio" class="custom-control-input" id="DrinkTemp2" name="DrinkTemp" value="常温">
 													<label class="custom-control-label" for="DrinkTemp2" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">常温</label>
 												</li> 
 												<li class="custom-control custom-radio" style = "display:inline;">   
-													<input type="radio" class="custom-control-input" id="DrinkTemp3" name="DrinkTemp" value="cold">
+													<input type="radio" class="custom-control-input" id="DrinkTemp3" name="DrinkTemp" value="加冰">
 													<label class="custom-control-label" for="DrinkTemp3" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">加冰</label>
 												</li> 
 											</div>
@@ -167,15 +167,15 @@
 											<div class = "chose-sepc mt-20" onclick="selectSepc()">
 												<h7 style = "color : #071C35;"> 请选择杯型</h7>
 												<li class="custom-control custom-radio" style = "display:inline;">
-													<input type="radio" class="custom-control-input" id="DrinkSpec1" name="DrinkSpec" value="super" checked>
+													<input type="radio" class="custom-control-input" id="DrinkSpec1" name="DrinkSpec" value="超级杯" checked>
 													<label class="custom-control-label" for="DrinkSpec1" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">超级杯</label>
 												</li>   
 												<li class="custom-control custom-radio " style = "display:inline;">
-													<input type="radio" class="custom-control-input" id="DrinkSpec2" name="DrinkSpec" value="big">
+													<input type="radio" class="custom-control-input" id="DrinkSpec2" name="DrinkSpec" value="大杯">
 													<label class="custom-control-label" for="DrinkSpec2" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">大杯</label>
 												</li> 
 												<li class="custom-control custom-radio" style = "display:inline;">   
-													<input type="radio" class="custom-control-input" id="DrinkSpec3" name="DrinkSpec" value="medium">
+													<input type="radio" class="custom-control-input" id="DrinkSpec3" name="DrinkSpec" value="中杯">
 													<label class="custom-control-label" for="DrinkSpec3" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">中杯</label>
 												</li> 
 											</div>

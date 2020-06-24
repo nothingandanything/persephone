@@ -1,0 +1,16 @@
+package com.web.dao.impl;
+
+import java.util.List;
+
+import com.web.dao.NoticeDao;
+import com.web.entity.Notice;
+
+public class NoticeDaoImpl implements NoticeDao {
+
+	@Override
+	public List<Notice> getRecentNotice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

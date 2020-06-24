@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
 <script type="text/javascript">
 	function deleteCartItem (DrinkID, DrinkSweet, DrinkTemp, DrinkSpec) {
@@ -151,7 +150,7 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="update-shopping text-lg-right">
-                                        <a href="#" class="theme-btn no-shadow style-two br-10 rmt-30">更新购物车</a>
+                                        <a href="${pageContext.request.contextPath}/clearCart" class="theme-btn no-shadow style-two br-10 rmt-30">清空购物车</a>
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +167,7 @@
                                 </div> 
                             </div>
                             <div class="proceed-btn mt-30">
-                                <a href="checkout.html" class="theme-btn w-100 text-center br-10">支付</a>
+                                <a href="${pageContext.request.contextPath}/createOrder" class="theme-btn w-100 text-center br-10">支付</a>
                             </div>
                         </div>
                     </div>

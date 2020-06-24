@@ -45,4 +45,11 @@ public interface CartDao {
 	  * @return
 	  */
 	 public List<CartItem> changeCart(CartItem cartItem);
+	 
+	 /**
+	  * Çå¿Õ¹ºÎï³µ
+	  * @param UserID
+	  * @return
+	  */
+	 public boolean clearCart(int UserID);
 }

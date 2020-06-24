@@ -1,0 +1,14 @@
+package com.web.biz.impl;
+
+import com.web.biz.OrderBiz;
+import com.web.entity.DrinkOrder;
+
+public class OrderBizImpl implements OrderBiz {
+
+	@Override
+	public boolean addOrder(DrinkOrder drinkOrder) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

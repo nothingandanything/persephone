@@ -1,0 +1,44 @@
+package com.web.controller.user;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.web.biz.AddressBiz;
+import com.web.biz.impl.AddressBizImpl;
+import com.web.entity.UserAddr;
+import com.web.entity.User;
+
+
+@WebServlet(urlPatterns="/ShowAddress")
+public class ShowAddressController extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		AddressBiz addressBiz = new AddressBizImpl();
+				
+	
+		User user = (User)req.getSession().getAttribute("user");
+		int UserID = user.getUserID();
+				
+		
+		List<UserAddr> list = addressBiz.showAddress(UserID);
+		
+		req.getSession().setAttribute("UserAddr", list);
+		
+		// ×ª·¢
+		req.getRequestDispatcher("/client/showAddress.jsp").forward(req, resp);
+	}
+	
+}

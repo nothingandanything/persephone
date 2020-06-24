@@ -1,0 +1,49 @@
+package com.web.dao.impl;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+
+import com.web.dao.OrderDao;
+import com.web.entity.DrinkOrder;
+import com.web.util.JDBCUtil;
+
+public class OrderDaoImpl implements OrderDao {
+
+	/**
+	 * 添加订单
+	 */
+	@Override
+	public boolean addOrder(DrinkOrder drinkOrder) {
+		// 定义影响的行数
+		int count = 0;
+		
+		try {
+			// 获取数据库连接
+			Connection conn = JDBCUtil.getConnectinon();
+			
+			// 编写sql
+			String sql = "INSERT INTO drinkorder(UserID,AddrID,TotalPrice,"
+					+ "OrderTime) VALUES (?,?,?,?)";
+			
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 设置参数
+			ps.setInt(1, drinkOrder.getUserID());
+			ps.setInt(2, drinkOrder.getAddrID());
+			ps.setFloat(3, drinkOrder.getTotalPrice());
+			ps.setDate(4, new Date(new java.util.Date().getTime()));
+			
+			// 执行添加
+			count = ps.executeUpdate();
+
+			// 关闭
+			JDBCUtil.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+}

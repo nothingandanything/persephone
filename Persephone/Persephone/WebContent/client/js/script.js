@@ -127,6 +127,20 @@
             });
         }
         
+        //notice
+        if ($('.notice-slider').length) {
+            $('.notice-slider').slick({
+                dots: true,
+                infinite: true,
+                autoplay: true,
+                arrows: false,
+                pauseOnHover: false,
+                autoplaySpeed: 4000,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            });
+        }
+
         
         // Shop page Load More Ajax
         if($('.shop-items').length){

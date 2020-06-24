@@ -1,0 +1,14 @@
+package com.web.dao.impl;
+
+import com.web.dao.OrderItemDao;
+import com.web.entity.OrderItem;
+
+public class OrderItemDaoImpl implements OrderItemDao {
+
+	@Override
+	public boolean addOrderItem(OrderItem orderItem) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
