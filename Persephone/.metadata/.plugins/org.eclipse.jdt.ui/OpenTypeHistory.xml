@@ -8,12 +8,17 @@
 <typeInfo handle="=Persephone/src&lt;com.web.dao{ProductDao.java[ProductDao" modifiers="513" timestamp="1592636385653"/>
 <typeInfo handle="=Persephone/src&lt;com.web.biz{ProductBiz.java[ProductBiz" modifiers="513" timestamp="1592636282364"/>
 <typeInfo handle="=Persephone/C:\/Program Files\/Java\/jre1.8.0_251\/lib\/jfr.jar&lt;oracle.jrockit.jfr(ProducerDescriptor.class[ProducerDescriptor" modifiers="1050113" timestamp="1592356234028"/>
-<typeInfo handle="=Persephone/src&lt;com.web.dao{CartDao.java[CartDao" modifiers="513" timestamp="1592846860720"/>
-<typeInfo handle="=Persephone/src&lt;com.web.dao{OrderDao.java[OrderDao" modifiers="513" timestamp="1592877988250"/>
+<typeInfo handle="=Persephone/src&lt;com.web.dao{CartDao.java[CartDao" modifiers="513" timestamp="1592884984569"/>
+<typeInfo handle="=Persephone/src&lt;com.web.dao{OrderDao.java[OrderDao" modifiers="513" timestamp="1592969252987"/>
 <typeInfo handle="=Persephone/C:\/Program Files\/Java\/jre1.8.0_251\/lib\/rt.jar&lt;java.lang(Object.class[Object" modifiers="33" timestamp="1592356235628"/>
-<typeInfo handle="=Persephone/src&lt;com.web.biz{CartBiz.java[CartBiz" modifiers="513" timestamp="1592846943071"/>
-<typeInfo handle="=Persephone/src&lt;com.web.biz{OrderBiz.java[OrderBiz" modifiers="513" timestamp="1592879905317"/>
-<typeInfo handle="=Persephone/src&lt;com.web.dao{OrderItemDao.java[OrderItemDao" modifiers="513" timestamp="1592880275941"/>
-<typeInfo handle="=Persephone/src&lt;com.web.biz{OrderItemBiz.java[OrderItemBiz" modifiers="513" timestamp="1592882740280"/>
+<typeInfo handle="=Persephone/src&lt;com.web.biz{CartBiz.java[CartBiz" modifiers="513" timestamp="1592885511269"/>
+<typeInfo handle="=Persephone/src&lt;com.web.biz{OrderBiz.java[OrderBiz" modifiers="513" timestamp="1592969282244"/>
+<typeInfo handle="=Persephone/src&lt;com.web.dao{OrderItemDao.java[OrderItemDao" modifiers="513" timestamp="1592969393575"/>
+<typeInfo handle="=Persephone/src&lt;com.web.biz{OrderItemBiz.java[OrderItemBiz" modifiers="513" timestamp="1592969570103"/>
+<typeInfo handle="=Persephone/src&lt;com.web.biz{AddressBiz.java[AddressBiz" modifiers="513" timestamp="1592980607749"/>
+<typeInfo handle="=Persephone/C:\/Program Files\/Java\/jre1.8.0_251\/lib\/rt.jar&lt;com.sun.xml.internal.ws.wsdl.writer.document.http(Address.class[Address" modifiers="1537" timestamp="1592356235628"/>
+<typeInfo handle="=Persephone/src&lt;com.web.dao{AddressDao.java[AddressDao" modifiers="513" timestamp="1592980815895"/>
+<typeInfo handle="=Persephone/src&lt;com.web.biz{NoticeBiz.java[NoticeBiz" modifiers="513" timestamp="1592980996573"/>
+<typeInfo handle="=Persephone/src&lt;com.web.dao{NoticeDao.java[NoticeDao" modifiers="513" timestamp="1592981279928"/>
 <typeInfo handle="=Persephone/D:\/Git\/summer_proj\/persephone\/Persephone\/Persephone\/WebContent\/WEB-INF\/lib\/javax.servlet-api-3.1.0.jar&lt;javax.servlet.http(HttpServlet.class[HttpServlet" modifiers="1057" timestamp="1592443026018"/>
 </typeInfoHistroy>

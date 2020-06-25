@@ -93,4 +93,12 @@ public class OrderBizImpl implements OrderBiz {
 		return orderDao.cancelOrder(OrderID);
 	}
 
+	/**
+	 * 支付订单，改变订单支付状态
+	 */
+	@Override
+	public boolean payOrder(int OrderID, int AddrID) {
+		return orderDao.payOrder(OrderID, AddrID);
+	}
+
 }

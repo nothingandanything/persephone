@@ -43,4 +43,10 @@ public interface ProductDao {
 	 * @return
 	 */
 	public Drink findDrinkById(int id);
+	
+	/**
+	 * 获取本周热销商品
+	 * @return
+	 */
+	public List<Object[]> getWeekHotDrink();
 }

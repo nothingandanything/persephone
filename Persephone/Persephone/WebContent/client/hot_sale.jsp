@@ -36,113 +36,28 @@
 
 
                             <!--single Product -->
-                            <div class="single-product">
-                                <div class="special-offer-product bg-white m-25 p-25 b1 br-5">
-                                    <div class="off">10%<span>off</span></div>
-                                    <div class="product-img-wrap">
-                                        <img style = "width:220px;height:215px;" src="${pageContext.request.contextPath}/client/img/drink/drink1.jpg" alt="img">
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="offer-product-price">
-                                            <span class="discounted-price">￥18</span>
-                                            <span class="actual-price has-discount">￥20</span>
-                                        </div>
-                                        <p>巧克力奶霜拿铁 </p>
-                                    </div>
-                                    <div class="product-action">
-                                        <a href="${pageContext.request.contextPath}/client/#" class="add-to-btn">加入购物车</a>
+                            <c:forEach items="${drinkList}" var="drink" varStatus="vs">
+                            	<div class="single-product">
+                                	<div class="special-offer-product bg-white m-25 p-25 b1 br-5">
+                                    	<!-- <div class="off">10%<span>off</span></div> -->
+                                    	<div class="product-img-wrap">
+                                        	<img style = "width:220px;height:215px;" src="${pageContext.request.contextPath}/client/img/${drink[2]}" alt="img">
+                                    	</div>
+                                    	<div class="product-content">
+                                        	<div class="offer-product-price">
+                                            	<span class="discounted-price">￥${drink[4]}~￥${drink[3]}</span>
+                                            	<!-- <span class="actual-price has-discount">￥20</span> -->
+                                        	</div>
+                                        	<p>${drink[1]} </p>
+                                    	</div>
+                                    	<!-- <div class="product-action">
+                                        	<a href="${pageContext.request.contextPath}/client/#" class="add-to-btn">加入购物车</a>
                                        
-                                    </div>
-                                </div>
-                            </div>
+                                    	</div> -->
+                                	</div>
+                            	</div>
+                            </c:forEach>
 
-
-                            <!--single Product -->
-                            <div class="single-product">
-                                <div class="special-offer-product bg-white m-25 p-25 b1 br-5">
-                                    <div class="off">10%<span>off</span></div>
-                                    <div class="product-img-wrap">
-                                        <img style = "width:220px;height:215px;" src="${pageContext.request.contextPath}/client/img/drink/drink2.jpg" alt="img">
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="offer-product-price">
-                                            <span class="discounted-price">￥9</span>
-                                            <span class="actual-price has-discount">￥10</span>
-                                        </div>
-                                        <p>冻柠绿茶</p>
-                                    </div>
-                                    <div class="product-action">
-                                        <a href="${pageContext.request.contextPath}/client/#" class="add-to-btn">加入购物车</a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!--single Product -->
-                            <div class="single-product">
-                                <div class="special-offer-product bg-white m-25 p-25 b1 br-5">
-                                    <div class="off">10%<span>off</span></div>
-                                    <div class="product-img-wrap">
-                                        <img style = "width:220px;height:215px;" src="${pageContext.request.contextPath}/client/img/drink/drink3.jpg" alt="img">
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="offer-product-price">
-                                            <span class="discounted-price">￥22</span>
-                                            <span class="actual-price has-discount">￥25</span>
-                                        </div>
-                                        <p>奥利奥星冰乐</p>
-                                    </div>
-                                    <div class="product-action">
-                                        <a href="${pageContext.request.contextPath}/client/#" class="add-to-btn">加入购物车</a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!--single Product -->
-                            <div class="single-product">
-                                <div class="special-offer-product bg-white m-25 p-25 b1 br-5">
-                                    <div class="off">10%<span>off</span></div>
-                                    <div class="product-img-wrap">
-                                        <img style = "width:220px;height:215px;" src="${pageContext.request.contextPath}/client/img/drink/drink4.jpg" alt="img">
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="offer-product-price">
-                                            <span class="discounted-price">￥18</span>
-                                            <span class="actual-price has-discount">￥20</span>
-                                        </div>
-                                        <p>奥利奥奶盖茶</p>
-                                    </div>
-                                    <div class="product-action">
-                                        <a href="${pageContext.request.contextPath}/client/#" class="add-to-btn">加入购物车</a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!--single Product -->
-                            <div class="single-product">
-                                <div class="special-offer-product bg-white m-25 p-25 b1 br-5">
-                                    <div class="off">10%<span>off</span></div>
-                                    <div class="product-img-wrap">
-                                        <img style = "width:220px;height:215px;" src="${pageContext.request.contextPath}/client/img/drink/drink5.png" alt="img">
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="offer-product-price">
-                                            <span class="discounted-price">￥18</span>
-                                            <span class="actual-price has-discount">￥20</span>
-                                        </div>
-                                        <p>醇奶可可</p>
-                                    </div>
-                                    <div class="product-action">
-                                        <a href="${pageContext.request.contextPath}/client/#" class="add-to-btn">加入购物车</a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                         

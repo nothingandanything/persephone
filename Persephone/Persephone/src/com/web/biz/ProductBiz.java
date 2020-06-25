@@ -1,5 +1,7 @@
 package com.web.biz;
 
+import java.util.List;
+
 import com.web.entity.Drink;
 import com.web.util.PageBean;
 
@@ -28,4 +30,10 @@ public interface ProductBiz {
 	 * @return
 	 */
 	public Drink findDrinkById(int id);
+	
+	/**
+	 * 获取本周热销商品
+	 * @return
+	 */
+	public List<Object[]> getWeekHotDrink();
 }

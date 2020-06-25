@@ -1,6 +1,7 @@
 package com.web.controller.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +43,7 @@ public class ShowDrinkByPageController extends HttpServlet {
 		}
 		
 		// 定义每页显示的条数默认为8
-		Integer currentCount = 4;
+		Integer currentCount = 8;
 		String _currentCount = req.getParameter("currentCount");
 		
 		// 判断传过来的每页显示的条数是否为空
@@ -65,6 +66,10 @@ public class ShowDrinkByPageController extends HttpServlet {
 	
 	    // 把数据传递给jsp页面
 		req.setAttribute("bean", bean);
+		
+		// 查询本周的热销商品
+		List<Object[]> drinkList = DrinkBiz.getWeekHotDrink();
+		req.setAttribute("drinkList", drinkList);
 		
 		// 转发跳转页面
 		req.getRequestDispatcher("/client/shop.jsp").forward(req, resp);

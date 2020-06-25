@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.biz.NoticeBiz;
+import com.web.biz.ProductBiz;
 import com.web.biz.impl.NoticeBizImpl;
+import com.web.biz.impl.ProductBizImpl;
 import com.web.entity.Notice;
 
 /**
@@ -29,26 +31,26 @@ public class ShowIndexController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//查询公告版的信息
-		//实例化公告版的业务逻辑层
+		// 查询公告版的信息
+		// 实例化公告版的业务逻辑层
 		NoticeBiz noticeBiz = new NoticeBizImpl();
 		
-		//调用查询最新公告信息的方法
+		// 调用查询最新公告信息的方法
 		List<Notice> noticeList = noticeBiz.getRecentNotice();
 		
-		//把公告信息传递到前台页面
+		// 把公告信息传递到前台页面
 		req.setAttribute("noticeList", noticeList);
 		
-		//查询本周热销的商品信息
-	//	ProductBiz ProductBiz = new ProductBizImpl();
+		// 查询本周热销的商品信息
+		ProductBiz productBiz = new ProductBizImpl();
 		
-		//查询本周的热销商品
-//		List<Object[]> ProductList = ProductBiz.getWeekHotProduct();
+		// 查询本周的热销商品
+		List<Object[]> drinkList = productBiz.getWeekHotDrink();
 		
-		//把本周热销的商品信息传递到前台
-//		req.setAttribute("ProductList", ProductList);
+		// 把本周热销的商品信息传递到前台
+		req.setAttribute("drinkList", drinkList);
 		
-		//转发跳转页面
+		// 转发跳转页面
 		req.getRequestDispatcher("/client/hot_sale.jsp").include(req, resp);
 		
 	}	

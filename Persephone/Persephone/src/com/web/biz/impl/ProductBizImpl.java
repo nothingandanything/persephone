@@ -70,4 +70,12 @@ public class ProductBizImpl implements ProductBiz {
 		return productDao.findDrinkById(id);
 	}
 
+	/**
+	 * 获取本周热销商品
+	 */
+	@Override
+	public List<Object[]> getWeekHotDrink() {
+		return productDao.getWeekHotDrink();
+	}
+
 }

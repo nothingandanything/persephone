@@ -248,4 +248,46 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return list.size()>0 ? list.get(0) : null;
 	}
+
+	/**
+	 * 获取本周热销商品
+	 */
+	@Override
+	public List<Object[]> getWeekHotDrink() {
+		// 实例化集合
+		List<Object[]> list = new ArrayList<>();
+		
+		try {
+			// 获取数据库的连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+						
+			// 编写sql
+			String sql = "SELECT drink.DrinkID,drink.DrinkName,drink.PicAddres,"
+					+ "drink.DrinkPrice_Super,drink.DrinkPrice_Medium,SUM(orderitem.Number) totalsalnum "
+					+ "FROM orderitem,drinkorder,drink "
+					+ "WHERE orderitem.OrderID = drinkorder.OrderID "
+					+ "AND drink.DrinkID = orderitem.DrinkID AND drinkorder.PayState = 1 "
+					+ "AND drinkorder.OrderTime > DATE_SUB(NOW(), INTERVAL 7 DAY) "
+					+ "GROUP BY drink.DrinkID,drink.DrinkName,drink.PicAddres "
+					+ "ORDER BY totalsalnum DESC "
+					+ "LIMIT 0,4";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+			
+			// 循环
+			while(rs.next()){
+				list.add(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
+			}
+
+			// 关闭数据库
+			JDBCUtil.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

@@ -85,61 +85,30 @@
                             </div>
                             <div class="shop-widget b1">
                                 <div class="shop-widget-title">
-                                    <h5>Best Sale Today</h5>
+                                    <h5>本周热销</h5>
                                 </div>
-                                <div class="product list-product d-flex align-items-center bg-white br-5 mb-30">
-                                    <div class="product-img-wrap">
-                                        <img src="${pageContext.request.contextPath}/client/img/shop/cart-1.png" alt="img">
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-content">
-                                            <p><a href="shop-details.html">Cauliflower <br>(1kg)</a>
-                                            </p>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="add-to-btn small-btn">
-                                                <i class="flaticon-shopping-cart"></i>
-                                                <span>Add to Cart</span>
-                                                <h5 class="product-price">$120.00</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product list-product d-flex align-items-center bg-white br-5 mb-30">
-                                    <div class="product-img-wrap">
-                                        <img src="${pageContext.request.contextPath}/client/img/shop/cart-2.png" alt="img">
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-content">
-                                            <p><a href="shop-details.html">Organic Yellow Papaya (1ps)</a></p>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="add-to-btn small-btn">
-                                                <i class="flaticon-shopping-cart"></i>
-                                                <span>Add to Cart</span>
-                                                <h5 class="product-price">$120.00</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product list-product d-flex align-items-center bg-white br-5 mb-30">
-                                    <div class="product-img-wrap">
-                                        <img src="${pageContext.request.contextPath}/client/img/shop/cart-3.png" alt="img">
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-content">
-                                            <p><a href="shop-details.html">Granny Smith Apple (4ps)</a></p>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="add-to-btn small-btn">
-                                                <i class="flaticon-shopping-cart"></i>
-                                                <span>Add to Cart</span>
-                                                <h5 class="product-price">$120.00</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                
+                                <c:forEach items="${drinkList}" var="drink" varStatus="vs">
+                                	<div class="product list-product d-flex align-items-center bg-white br-5 mb-30">
+                                    	<div class="product-img-wrap">
+                                        	<img src="${pageContext.request.contextPath}/client/img/${drink[2]}" alt="img">
+                                    	</div>
+                                    	<div class="product-content-wrap">
+                                        	<div class="product-content">
+                                            	<p><a onclick="showModal(${drink[0]})">${drink[1]}</a>
+                                            	</p>
+                                        	</div>
+                                        	<div class="product-action">
+                                            	<a data-toggle="modal" data-target="#quick-view" class="add-to-btn small-btn" onclick="showModal(${drink[0]})">
+                                                	<i class="flaticon-shopping-cart"></i>
+                                                	<span>Quick View</span>
+                                                	<h5 class="product-price">￥${drink[4]}~￥${drink[3]}</h5>
+                                            	</a>
+                                        	</div>
+                                    	</div>
+                                	</div>
+                                </c:forEach>
+                                
                             </div>
                         </div>
                     </div>

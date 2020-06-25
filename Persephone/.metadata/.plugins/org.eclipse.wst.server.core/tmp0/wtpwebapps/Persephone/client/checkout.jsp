@@ -5,6 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script>
+	function orderFormSubmit() {
+		document.getElementById("orderFrom").submit();
+	}
+</script>
+
 <title>Checkout</title>
 </head>
 <body>
@@ -46,21 +53,18 @@
                                 <h4>选择地址</h4>
                             </div>
                             
-                            <form action="radio_submit" method = "get" >
-                            <ul class="list-group">
-							  <li class="list-group-item custom-control custom-radio ">
-								<input type="radio" class="custom-control-input" id="method1" name="defaultExampleRadios" checked>
-								<label class="custom-control-label" for="method1" >重庆市  南岸区  涂山镇  123号</label>
-							  </li>
-							  <li class="list-group-item custom-control custom-radio mb-10">
-								<input type="radio" class="custom-control-input" id="method2" name="defaultExampleRadios">
-								<label class="custom-control-label" for="method2" >重庆市沙坪坝区沙正街666号</label>
-							  </li>
-							  <li class="list-group-item custom-control custom-radio mb-10">
-								<input type="radio" class="custom-control-input" id="method3" name="defaultExampleRadios">
-								<label class="custom-control-label" for="method3" >重庆市南岸区涂山镇123号1234567</label>
-							  </li>
-							</ul>
+                            <form action="${pageContext.request.contextPath}/payOrder" method="post" id="orderFrom">
+                            	<input type="hidden" id="OrderID" name="OrderID" value="${order.orderID}">
+                            	<ul class="list-group">
+                            	
+                            		<c:forEach items="${addrList}" var="addr" varStatus="vs">
+										<li class="list-group-item custom-control custom-radio ">
+											<input type="radio" class="custom-control-input" id="${addr.addrID}" name="AddrID" value="${addr.addrID}" checked>
+											<label class="custom-control-label" for="${addr.addrID}" >${addr.city} ${addr.county} ${addr.street} ${addr.houseNum}</label>
+										</li>
+									</c:forEach>
+									
+								</ul>
                             </form>
                             
                         </div>
@@ -107,11 +111,11 @@
                                 </li>
                             </ul>
                             <div class="checkout-btn text-center">
-                                <button class="theme-btn br-5 w-100">支付</button>
+                                <button class="theme-btn br-5 w-100" onclick="orderFormSubmit()">支付</button>
                             </div>
                             <div class="checkout-btn text-center mt-15  br-5">
                                 <!--<button class="theme-btn br-5 w-100">取消支付</button>  -->
-                                <a href="${pageContext.request.contextPath}/client/index.jsp" class="bg-color5 theme-btn w-100" type="submit">取消支付</a>
+                                <a href="${pageContext.request.contextPath}/showMe" class="bg-color5 theme-btn w-100" type="submit">取消支付</a>
                             </div>
                         </div>
                     </div>

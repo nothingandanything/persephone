@@ -85,7 +85,7 @@
                                         	<div class="col-lg-12 col-md-4 col-sm-6 m-10 p-15 b1 bg-white alert">
                                             	<div class="my-address-info-box">
                                                 	<i class="fa fa-map-marker"></i>
-                                                	<span class = "ml-10 mr-10" style = "color:#292633;font-size:20px;">${addr.city}${addr.county}${addr.street}${addr.houseNum}</span>
+                                                	<span class = "ml-10 mr-10" style = "color:#292633;font-size:20px;">${addr.city} ${addr.county} ${addr.street} ${addr.houseNum}</span>
                                                		<!-- <i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i> --> 
                                                 	<button type="button" class="close mt-5" data-dismiss="alert"><i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i></button>
                                             	</div>

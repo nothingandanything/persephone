@@ -92,7 +92,7 @@ public class OrderDaoImpl implements OrderDao {
 			Connection conn = JDBCUtil.getConnectinon();
 						
 			// 编写sql
-			String sql = "SELECT * FROM drinkorder WHERE OrderID = '" + OrderID + "'";
+			String sql = "SELECT * FROM drinkorder WHERE OrderID = " + OrderID;
 			
 			// 编译sql
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -177,6 +177,39 @@ public class OrderDaoImpl implements OrderDao {
 
 			// 编译sql
 			PreparedStatement ps = conn.prepareStatement(sql);
+					
+			// 执行修改
+			count = ps.executeUpdate();
+
+			// 关闭
+			JDBCUtil.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 支付订单，改变订单支付状态
+	 */
+	@Override
+	public boolean payOrder(int OrderID, int AddrID) {
+		// 定义影响的行数
+		int count = 0;
+
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+						
+			// 编写sql
+			String sql = "UPDATE drinkorder SET AddrID = ?, PayState = 1 WHERE OrderID = ?";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 设置参数
+			ps.setInt(1, AddrID);
+			ps.setInt(2, OrderID);
 					
 			// 执行修改
 			count = ps.executeUpdate();

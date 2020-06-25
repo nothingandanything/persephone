@@ -1,6 +1,7 @@
 package com.web.controller.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,7 @@ public class MenuSearchCotroller extends HttpServlet {
 		}
 		
 		// 定义每页的条数，默认为8
-		Integer currentCount = 4;
+		Integer currentCount = 8;
 		String _currentCount = req.getParameter("currentCount");
 		
 		if(_currentCount != null){
@@ -61,6 +62,10 @@ public class MenuSearchCotroller extends HttpServlet {
 			
 			// 把数据传到前台jsp页面
 			req.setAttribute("bean", bean);
+			
+			// 查询本周的热销商品
+			List<Object[]> drinkList = productBiz.getWeekHotDrink();
+			req.setAttribute("drinkList", drinkList);
 			
 			// 转发跳转页面
 			req.getRequestDispatcher("/client/shop.jsp").forward(req, resp);

@@ -39,4 +39,12 @@ public interface OrderDao {
 	 * @return
 	 */
 	public boolean cancelOrder(int OrderID);
+	
+	/**
+	 * 支付订单，改变订单支付状态
+	 * @param OrderID
+	 * @param AddrID
+	 * @return
+	 */
+	public boolean payOrder(int OrderID, int AddrID);
 }
