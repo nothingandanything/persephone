@@ -92,7 +92,7 @@ public class OrderDaoImpl implements OrderDao {
 			Connection conn = JDBCUtil.getConnectinon();
 						
 			// ±àĞ´sql
-			String sql = "SELECT * FROM drinkorder WHERE OrderID = " + OrderID;
+			String sql = "SELECT * FROM drinkorder WHERE OrderID = '" + OrderID + "'";
 			
 			// ±àÒësql
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -221,5 +221,4 @@ public class OrderDaoImpl implements OrderDao {
 		}
 		return count > 0 ? true : false;
 	}
-
 }

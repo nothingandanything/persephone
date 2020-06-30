@@ -4,6 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if (window.location.href != "http://localhost:8080/Persephone/ShowIndex") {
+			window.location.href="${pageContext.request.contextPath}/ShowIndex";
+		}
+	});
+</script>
 <title>Home</title>
 </head>
 <body>
@@ -14,7 +22,7 @@
 
 <jsp:include page="slider.jsp"></jsp:include>
 
-<jsp:include page="/ShowIndex"></jsp:include>
+<jsp:include page="hot_sale.jsp"></jsp:include>
 
 <jsp:include page="foot.jsp"></jsp:include>
 

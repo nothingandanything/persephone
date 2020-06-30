@@ -34,7 +34,7 @@
                     <h2 class="page-title">我的账户</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/ShowIndex">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Me</li>
                         </ol>
                     </nav>
@@ -85,7 +85,7 @@
                                         	<div class="col-lg-12 col-md-4 col-sm-6 m-10 p-15 b1 bg-white alert">
                                             	<div class="my-address-info-box">
                                                 	<i class="fa fa-map-marker"></i>
-                                                	<span class = "ml-10 mr-10" style = "color:#292633;font-size:20px;">${addr.city} ${addr.county} ${addr.street} ${addr.houseNum}</span>
+                                                	<span class = "ml-10 mr-10" style = "color:#292633;font-size:20px;">${addr.city}${addr.county}${addr.street}${addr.houseNum}</span>
                                                		<!-- <i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i> --> 
                                                 	<button type="button" class="close mt-5" data-dismiss="alert"><i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i></button>
                                             	</div>

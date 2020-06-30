@@ -101,7 +101,7 @@
                                 	</div>
                                     <div>
 	                                    <span class="title mr-50">商品总价</span>
-	                                    <span class="price" style = "color:#aa2116;">￥${order.totalPrice}</span>
+	                                    <span class="price" style = "color:#aa2116;">${order.totalPrice}</span>
                                     </div>
                                     
                                 </div> 

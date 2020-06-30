@@ -42,17 +42,17 @@
 	
 	function selectSepc () {
 		var spec = $("input[name='DrinkSpec']:checked").val();
-		if (spec == "super") {
+		if (spec == "超级杯") {
 			$("#Super").show();
 			$("#Big").hide();
 			$("#Medium").hide();
 		}
-		else if (spec == "big") {
+		else if (spec == "大杯") {
 			$("#Super").hide();
 			$("#Big").show();
 			$("#Medium").hide();
 		}
-		else if (spec == "medium") {
+		else if (spec == "中杯") {
 			$("#Super").hide();
 			$("#Big").hide();
 			$("#Medium").show();

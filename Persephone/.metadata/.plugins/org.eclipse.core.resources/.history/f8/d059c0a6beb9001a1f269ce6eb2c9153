@@ -1,0 +1,8 @@
+package com.web.biz;
+
+import com.web.entity.Admin;
+
+public class AdminBiz {
+	
+	public Admin login(String AdminName, String AdminPwd);
+}

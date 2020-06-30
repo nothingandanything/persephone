@@ -1,0 +1,13 @@
+package com.web.biz;
+
+import com.web.entity.Admin;
+
+public interface AdminBiz {
+	/**
+	 * µÇÂ½
+	 * @param AdminName
+	 * @param AdminPwd
+	 * @return
+	 */
+	public Admin login(String AdminName, String AdminPwd);
+}

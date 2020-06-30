@@ -1,0 +1,14 @@
+package com.web.biz.impl;
+
+import com.web.biz.AdminBiz;
+import com.web.entity.Admin;
+
+public class AdminBizImpl implements AdminBiz {
+
+	@Override
+	public Admin login(String AdminName, String AdminPwd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

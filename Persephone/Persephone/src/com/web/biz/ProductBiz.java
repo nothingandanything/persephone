@@ -31,6 +31,7 @@ public interface ProductBiz {
 	 */
 	public Drink findDrinkById(int id);
 	
+
 	/**
 	 * 获取本周热销商品
 	 * @return

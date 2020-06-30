@@ -248,7 +248,7 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return list.size()>0 ? list.get(0) : null;
 	}
-
+	
 	/**
 	 * 获取本周热销商品
 	 */

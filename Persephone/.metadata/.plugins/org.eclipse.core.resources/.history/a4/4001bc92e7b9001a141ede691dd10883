@@ -1,0 +1,40 @@
+package com.web.biz.impl;
+
+import java.util.List;
+
+import com.web.biz.AdminBiz;
+import com.web.dao.AdminDao;
+import com.web.dao.impl.AdminDaoImpl;
+import com.web.entity.Admin;
+import com.web.entity.User;
+
+public class AdminBizImpl implements AdminBiz {
+	
+	// 实例化数据访问层
+	AdminDao adminDao = new AdminDaoImpl();
+
+	/**
+	 * 管理员登陆
+	 */
+	@Override
+	public Admin login(String AdminName, String AdminPwd) {
+		return adminDao.login(AdminName, AdminPwd);
+	}
+
+	/**
+	 * 后台显示用户信息
+	 */
+	@Override
+	public List<User> showUser() {
+		return adminDao.showUser();
+	}
+
+	/**
+	 * 后台更改用户信息
+	 */
+	@Override
+	public boolean changeUser(User user) {
+		return adminDao.changeUser(user);
+	}
+
+}

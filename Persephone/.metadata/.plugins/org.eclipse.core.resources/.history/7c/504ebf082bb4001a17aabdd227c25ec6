@@ -1,7 +1,0 @@
-package com.web.controller.user;
-
-import javax.servlet.http.HttpServlet;
-
-public class DeleteCartController extends HttpServlet {
-
-}

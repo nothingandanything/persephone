@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
 			
 			// 登录成功
 			resp.getWriter().print("<script>alert('登陆成功!');window.location.href='"
-					+ req.getContextPath() + "/client/index.jsp';</script>");
+					+ req.getContextPath() + "/ShowIndex';</script>");
 //			resp.sendRedirect(req.getContextPath()+"/client/index.jsp");
 		}
 		else {

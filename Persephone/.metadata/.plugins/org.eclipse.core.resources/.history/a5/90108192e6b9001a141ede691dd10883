@@ -1,0 +1,29 @@
+package com.web.dao;
+
+import java.util.List;
+
+import com.web.entity.Admin;
+import com.web.entity.User;
+
+public interface AdminDao {
+	/**
+	 * 管理员登陆
+	 * @param AdminName
+	 * @param AdminPwd
+	 * @return
+	 */
+	public Admin login(String AdminName, String AdminPwd);
+	
+	/**
+	 * 后台显示用户信息
+	 * @return
+	 */
+	public List<User> showUser();
+	
+	/**
+	 * 后台更改用户信息
+	 * @param user
+	 * @return
+	 */
+	public boolean changeUser(User user);
+}

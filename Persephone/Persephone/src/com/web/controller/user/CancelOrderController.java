@@ -35,6 +35,6 @@ public class CancelOrderController extends HttpServlet {
 		orderItemBiz.cancelOrderItem(OrderID);
 
 		// 转发跳转页面
-		req.getRequestDispatcher("/showMe").forward(req, resp);
+		resp.sendRedirect(req.getContextPath()+"/showMe");
 	}
 }

@@ -19,7 +19,7 @@ import com.web.util.JDBCUtil;
 public class UserDaoImpl implements UserDao {
 	
 	/**
-	 * 注册
+	 * 注册，或后台添加新用户
 	 */
 	@Override
 	public boolean add(User user) {
@@ -103,4 +103,113 @@ public class UserDaoImpl implements UserDao {
 		return list.size()>0 ? list.get(0) : null;
 	}
 
+	/**
+	 * 后台显示用户信息
+	 */
+	@Override
+	public List<User> showUser() {
+		List<User> list = new ArrayList<User>();
+		
+		try {
+			// 获取数据库的连接
+			Connection conn = JDBCUtil.getConnectinon();
+									
+			// 编写sql
+			String sql ="SELECT * FROM `user`";
+									
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+									
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+					
+			// 循环结果集
+			while(rs.next()){
+				// 实例化对象
+				User user = new User();
+					
+				user.setUserID(rs.getInt("UserID"));
+				user.setUserName(rs.getString("UserName"));
+				user.setUserPwd(rs.getString("UserPwd"));
+				user.setUserPhone(rs.getString("UserPhone"));
+						
+				// 把对象添加到集合中去
+				list.add(user);
+			}
+			
+			// 关闭
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 后台更改用户信息
+	 */
+	@Override
+	public boolean changeUser(User user) {
+		// 影响行数的变量
+		int count = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+						
+			// 编写sql
+			String sql = "UPDATE `user` SET UserName = ?,UserPwd = ?,"
+					+ "UserPhone = ? WHERE UserID = ?";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			// 设置参数
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getUserPwd());
+			ps.setString(3, user.getUserPhone());
+			ps.setInt(4, user.getUserID());
+						
+			// 执行修改
+			count = ps.executeUpdate();
+						
+			// 关闭
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 后台删除用户
+	 */
+	@Override
+	public boolean deleteUser(int UserID) {
+		// 影响行数的变量
+		int count = 0;
+				
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+							
+			// 编写sql
+			String sql = "DELETE FROM `user` WHERE UserID = " + UserID;
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+								
+			// 执行修改
+			count = ps.executeUpdate();
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
 }

@@ -100,5 +100,4 @@ public class OrderBizImpl implements OrderBiz {
 	public boolean payOrder(int OrderID, int AddrID) {
 		return orderDao.payOrder(OrderID, AddrID);
 	}
-
 }

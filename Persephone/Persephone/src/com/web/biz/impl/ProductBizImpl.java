@@ -77,5 +77,4 @@ public class ProductBizImpl implements ProductBiz {
 	public List<Object[]> getWeekHotDrink() {
 		return productDao.getWeekHotDrink();
 	}
-
 }

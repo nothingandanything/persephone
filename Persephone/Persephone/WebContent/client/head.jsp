@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="header-inner">
                     <div class="logo">
-                        <a href="${pageContext.request.contextPath}/client/index.jsp"><img style = "width:125px;height:50px;" src="${pageContext.request.contextPath}/client/img/logo1.1.jpg" alt="Main Logo"></a>
+                        <a href="${pageContext.request.contextPath}/ShowIndex"><img style = "width:125px;height:50px;" src="${pageContext.request.contextPath}/client/img/logo1.1.jpg" alt="Main Logo"></a>
                     </div>
                     
                     <div class="categories">
@@ -139,7 +139,7 @@
                     <div class="main-menu">
                         <button style = "background:#FF9933;"><i class="flaticon-list-menu"></i></button>
                         <ul>
-                            <li><a href="${pageContext.request.contextPath}/client/index.jsp">Home</a></li>
+                            <li><a href="${pageContext.request.contextPath}/ShowIndex">Home</a></li>
                             <li class="dropdown"><a href="#">Blog</a>
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/client/blog.jsp">All Blog</a></li>

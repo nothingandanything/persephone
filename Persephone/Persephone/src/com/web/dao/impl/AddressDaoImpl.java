@@ -81,7 +81,6 @@ public class AddressDaoImpl implements AddressDao {
 			
 			while(rs.next()){
 				UserAddr c = new UserAddr();
-				
 				c.setAddrID(rs.getInt("AddrID"));
 				c.setUserID(rs.getInt("UserID"));
 				c.setCity(rs.getString("City"));

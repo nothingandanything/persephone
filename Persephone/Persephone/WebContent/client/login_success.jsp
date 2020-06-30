@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="3;url=${pageContext.request.contextPath}/client/index.jsp">
+<meta http-equiv="refresh" content="3;url=${pageContext.request.contextPath}/ShowIndex">
 
 <title>LoginSuccess</title>  
 </head>
@@ -21,7 +21,7 @@
                 <div class="banner-inner text-center">
                     <h4 class="page-title">登录成功!3秒后为您跳转至首页</h4>
                     <h5 class="page-title">如果没有跳转,
-                    	<a href="${pageContext.request.contextPath}/client/index.jsp" class="btn btn-link">点击此处跳转</a>
+                    	<a href="${pageContext.request.contextPath}/ShowIndex" class="btn btn-link">点击此处跳转</a>
                     </h5>
                 </div>
             </div>

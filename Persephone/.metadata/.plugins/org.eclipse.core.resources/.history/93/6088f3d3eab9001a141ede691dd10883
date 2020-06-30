@@ -1,0 +1,48 @@
+package com.web.biz;
+
+import java.util.List;
+
+import com.web.entity.User;
+
+/**
+ * 用户的业务逻辑层接口
+ * @author 王佳祺
+ *
+ */
+public interface UserBiz {
+	
+	/**
+	 * 注册方法
+	 * @param user
+	 * @return
+	 */
+	public boolean register (User user);
+	
+	/**
+	 * 登陆
+	 * @param UserName
+	 * @param UserPwd
+	 * @return
+	 */
+	public User login (String UserName, String UserPwd);
+	
+	/**
+	 * 后台显示用户信息
+	 * @return
+	 */
+	public List<User> showUser();
+	
+	/**
+	 * 后台更改用户信息
+	 * @param user
+	 * @return
+	 */
+	public boolean changeUser(User user);
+
+	/**
+	 * 后台删除用户
+	 * @param UserID
+	 * @return
+	 */
+	public boolean deleteUser(int UserID);
+}

@@ -79,7 +79,7 @@ public class AddAddrController extends HttpServlet {
 	    boolean flag = addressBiz.addAddress(userAddr);
 
 		// 转发跳转页面
-	    req.getRequestDispatcher("/showMe").forward(req, resp);
+	    resp.sendRedirect(req.getContextPath()+"/showMe");
 	
 	
 	}
