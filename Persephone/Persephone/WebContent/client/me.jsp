@@ -5,6 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		if("${user}" == "")
+			window.location.href="${pageContext.request.contextPath}/client/login.jsp";
+	});
+</script>
+
 <title>Me</title>
 </head>
 <!-- jequery plugins -->
@@ -18,6 +26,153 @@
     	$(function () {
     		$('#mytab li:eq(0) a').tab('show');
     	});
+    	
+    	function deleteAddress (AddrID) {
+    		$.ajax({
+    			type: "POST",
+    			url: "${pageContext.request.contextPath}/delAddress",
+    			data: {"id": AddrID},
+    			statusCode: {
+    				404: function() {  
+    					alert('提交地址url未发现'); 
+    				}  
+    			}
+    		});
+    	}
+    	
+    	function checkNameForm(){
+    		return checkName() && checkSameName();
+    	}
+    	
+    	function checkName(){
+    		//获得表单的id
+    		var f=document.getElementById("form1");
+    									 			  
+    		if(f.UserName.value == ""){
+    			document.getElementById("UserNameMsg").innerHTML = "用户名不能为空！";
+    			document.getElementById("UserNameMsg").style.color = "red";
+    			return false;
+    		}						 			  
+    		else if(!/^.{4,8}$/.test(f.UserName.value)){
+    			document.getElementById("UserNameMsg").innerHTML = "用户名必须为4-8位！";
+    			document.getElementById("UserNameMsg").style.color = "red";
+    			return false;
+    		}
+    		else{
+    			document.getElementById("UserNameMsg").innerHTML = "&nbsp;";
+    			return true;
+    		}
+    	}
+    	
+    	function checkSameName(){
+    		var name = document.getElementById("UserName").value;
+    		$.ajax({
+    			type: "GET",
+    			url: "${pageContext.request.contextPath}/checkName",
+    			data: {"UserName": name},
+    			dataType: "text",
+    			statusCode: {
+    				404: function() {  
+    					alert('提交地址url未发现'); 
+    				}  
+    			},
+    			success: function (result) {
+    				if(result == "same") {
+    					document.getElementById("UserNameMsg").innerHTML = "用户名重复!";
+    					document.getElementById("UserNameMsg").style.color = "red";
+    					return false;
+    				}
+    				else {
+    					document.getElementById("UserNameMsg").innerHTML = "&nbsp;";
+    					return checkName();
+    				}
+    			}
+    		});
+    	}
+    	
+    	function checkPwdFrom(){
+    		return checkOldPwd() && checkPwd() && checkRePwd();
+    	}
+    	
+    	function checkOldPwd(){
+    		//获得表单的id
+    		var f=document.getElementById("form");
+    		
+    		if(f.OldUserPwd.value == ""){
+    			document.getElementById("OldUserPwdMsg").innerHTML = "不能为空!";
+				document.getElementById("OldUserPwdMsg").parentNode.style.color = "red";
+				return false;
+    		}
+    		else if(f.OldUserPwd.value != '${user.userPwd}') {
+    			document.getElementById("OldUserPwdMsg").innerHTML = "密码错误!";
+				document.getElementById("OldUserPwdMsg").parentNode.style.color = "red";
+				return false;
+    		}
+    		else {
+				document.getElementById("OldUserPwdMsg").innerHTML = "&nbsp;";
+    			return true;
+    		}
+    	}
+    	
+    	function checkPwd(){
+    		//获得表单的id
+    		var f=document.getElementById("form");
+    		
+    		if(f.UserPwd.value == ""){
+    			document.getElementById("UserPwdMsg").innerHTML = "不能为空!";
+				document.getElementById("UserPwdMsg").parentNode.style.color = "red";
+				return false;
+    		}
+    		else if(! /^.{4,8}$/.test(f.UserPwd.value)){
+				document.getElementById("UserPwdMsg").innerHTML = "密码必须是4-8位!";
+				document.getElementById("UserPwdMsg").parentNode.style.color = "red";
+    			return false;
+   			}
+    		else {
+				document.getElementById("UserPwdMsg").innerHTML = "&nbsp;";
+    			return true;
+    		}
+    	}
+    	
+    	function checkRePwd() {
+    		//获得表单的id
+    		var f=document.getElementById("form");
+    		
+    		if(f.ReUserPwd.value == ""){
+    			document.getElementById("ReUserPwdMsg").innerHTML = "不能为空!";
+				document.getElementById("ReUserPwdMsg").parentNode.style.color = "red";
+				return false;
+    		}	 			  
+    		else if(f.UserPwd.value!=f.ReUserPwd.value){
+				document.getElementById("ReUserPwdMsg").innerHTML = "两次输入的密码不一致!";
+				document.getElementById("ReUserPwdMsg").parentNode.style.color = "red";
+    			return false;
+    		}
+    		else {
+				document.getElementById("ReUserPwdMsg").innerHTML = "&nbsp;";
+    			return true;
+    		}
+    	}
+    	
+    	function checkPhone(){
+    		//获得表单的id
+    		var f=document.getElementById("form2");
+    		
+    		if(f.UserPhone.value=="") {
+    			document.getElementById("UserPhoneMsg").innerHTML = "不能为空!";
+				document.getElementById("UserPhoneMsg").parentNode.style.color = "red";
+    			return false;
+    		}
+    		else if(!/^1[3458]\d{9}$/.test(f.UserPhone.value)) {
+    			document.getElementById("UserPhoneMsg").innerHTML = "手机号码格式不正确!";
+				document.getElementById("UserPhoneMsg").parentNode.style.color = "red";
+    		    return false;
+    		}
+    		else {
+				document.getElementById("UserPhoneMsg").innerHTML = "&nbsp;";
+    			return true;
+    		}
+    	}
 	</script>
 <body>
 <div class="page-wrapper">
@@ -85,9 +240,11 @@
                                         	<div class="col-lg-12 col-md-4 col-sm-6 m-10 p-15 b1 bg-white alert">
                                             	<div class="my-address-info-box">
                                                 	<i class="fa fa-map-marker"></i>
-                                                	<span class = "ml-10 mr-10" style = "color:#292633;font-size:20px;">${addr.city}${addr.county}${addr.street}${addr.houseNum}</span>
+                                                	<span class = "ml-10 mr-10" style = "color:#292633;font-size:20px;">${addr.city} ${addr.county} ${addr.street} ${addr.houseNum}</span>
                                                		<!-- <i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i> --> 
-                                                	<button type="button" class="close mt-5" data-dismiss="alert"><i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i></button>
+                                                	<button type="button" class="close mt-5" data-dismiss="alert" onclick="deleteAddress('${addr.addrID}');">
+                                                		<i class="fa fa-minus-square" style = "margin-left:auto; color:#FF0033;"></i>
+                                                	</button>
                                             	</div>
                                         	</div>
                                         </c:forEach>
@@ -169,26 +326,28 @@
 									    	 	<h5 style="margin:0px;">用户名：</h5>
 									        </div>
 									        <div class="col-lg-8" >
-									    		<h5 style="margin:0px;">aiduhds</h5>
+									    		<h5 style="margin:0px;">${user.userName}</h5>
 									    	</div>
-									    	<button class="btn btn-danger" href="#" style = "margin-left:auto;" data-toggle="collapse" 
+									    	<button class="btn btn-danger" style = "margin-left:auto;" data-toggle="collapse" 
 									    	data-target="#changeusername" aria-expanded="false" aria-controls="changeusername">
 									 			<i class="fa fa-pencil-square-o fa-fw"></i>修改
 									 		</button>
 									 		<div class="collapse col-lg-12" id="changeusername">
-										 		<form>
+										 		<form  action="${pageContext.request.contextPath}/changeUserName" method="post" id="form1"  onsubmit="return checkNameForm()">
 										 		  <div class="row">
 												  <div class="login-form ml-10 mt-5 col-lg-8" >
-												    <input type="text" class="email-field" id="inputusername" placeholder="请输入新用户名">
+												    <input type="text" class="email-field" id="UserName" name="UserName" placeholder="请输入新用户名" onkeyup="checkName()" onblur="checkSameName()">
 												  </div>
-												  <button class="btn btn-success mt-20" href="#" style = "margin-left:auto;height:40px;">
+												  <span id="UserNameMsg" class="mt-20">&nbsp;</span>
+												  
+												  <button class="btn btn-success mt-20" style = "margin-left:auto;height:40px;">
 									 			   <i class="fa fa-check-square-o fa-fw"></i>确定
 									 		      </button>
 									 		      </div>
 												</form>
 												
 									 		</div>
-									 		</div>
+									 	</div>
 									 </li>
 									 
 									 <li class="list-group-item">
@@ -199,25 +358,48 @@
 									        <div class="col-lg-8" >
 									    		<h5 style="margin:0px;">*******</h5>
 									    	</div>
-									    	<button class="btn btn-danger" href="#" style = "margin-left:auto;"data-toggle="collapse" 
+									    	<button class="btn btn-danger" style = "margin-left:auto;"data-toggle="collapse" 
 									    	data-target="#changepwd" aria-expanded="false" aria-controls="changepwd">
 									 			<i class="fa fa-pencil-square-o fa-fw"></i>修改
 									 		</button>
 									 		<div class="collapse col-lg-12" id="changepwd">
-										 		<form>
+										 		<form action="${pageContext.request.contextPath}/changeUserPwd"  method="post" id="form"  onsubmit="return checkPwdFrom()">
 										 		  <div class="row">
-												  <div class="login-form ml-10 mt-5 col-lg-8" >
-												    <input type="password" class="email-field" id="inputpwd1" placeholder="请输入旧密码">
-												    <input type="password" class="email-field mt-5" id="inputpwd2" placeholder="请输入新密码">
-												    <input type="password" class="email-field mt-5" id="inputpwd2" placeholder="请再一次输入新密码">
+												  <div class="login-form ml-10 mt-5 col-lg-12" >
+												  	<div class="row">
+												  		<div class="col-lg-8">
+												    		<input type="password" class="email-field" id="OldUserPwd" name="OldUserPwd" placeholder="请输入旧密码"
+																	onblur="checkOldPwd()" onkeyup="document.getElementById('OldUserPwdMsg').innerHTML = '&nbsp;';">
+												  		</div>
+												  		<div class="mt-15">
+												  			<span id="OldUserPwdMsg" class="mt-20">&nbsp;</span>
+												  		</div>
+												  	</div>
+												  	<div class="row">
+												  		<div class="col-lg-8">
+														    <input type="password" class="email-field mt-5" id="UserPwd" name="UserPwd" placeholder="请输入新密码" onkeyup="checkPwd()">
+												  		</div>
+												  		<div class="mt-15">
+												  			<span id="UserPwdMsg" class="mt-20">&nbsp;</span>
+												  		</div>
+												  	</div>
+												  	<div class="row">
+												  		<div class="col-lg-8">
+												  			<input type="password" class="email-field mt-5" id="ReUserPwd" name="ReUserPwd" placeholder="请再一次输入新密码" onkeyup="checkRePwd()">
+												  		</div>
+												  		<div class="mt-15">
+												  			<span id="ReUserPwdMsg" class="mt-20">&nbsp;</span>
+												  		</div>
+												  	</div>
 												  </div>
-												  <button class="btn btn-success mt-70" href="#" style = "margin-left:auto;height:40px;">
+												  <button class="btn btn-success" style = "margin-left:auto;height:40px;">
 									 			   <i class="fa fa-check-square-o fa-fw"></i>确定
 									 		      </button>
 									 		      </div>
 												</form>
 												
 									 		</div>
+									 	</div>
 									 </li>
 									 
 									 <li class="list-group-item">
@@ -226,25 +408,28 @@
 									    	 	<h5 style="margin:0px;">联系电话：</h5>
 									        </div>
 									        <div class="col-lg-8" >
-									    		<h5 style="margin:0px;">18902521565</h5>
+									    		<h5 style="margin:0px;">${user.userPhone}</h5>
 									    	</div>
-									    	<button class="btn btn-danger" href="#" style = "margin-left:auto;" data-toggle="collapse" 
+									    	<button class="btn btn-danger" style = "margin-left:auto;" data-toggle="collapse" 
 									    	data-target="#changephone" aria-expanded="false" aria-controls="changephone">
 									 			<i class="fa fa-pencil-square-o fa-fw"></i>修改
 									 		</button>
 									 		<div class="collapse col-lg-12" id="changephone">
-										 		<form>
+										 		<form action="${pageContext.request.contextPath}/changeUserPhone" method="post" id="form2"  onsubmit="return checkPhone()">
 										 		  <div class="row">
 												  <div class="login-form ml-10 mt-5 col-lg-8" >
-												    <input type="text" class="email-field" id="inputphone" placeholder="请输入新联系方式">
+												    <input type="text" class="email-field" id="UserPhone" name="UserPhone" placeholder="请输入新联系方式" onkeyup="checkPhone()">
 												  </div>
-												  <button class="btn btn-success mt-20" href="#" style = "margin-left:auto;height:40px;">
+												  <span id="UserPhoneMsg" class="mt-20">&nbsp;</span>
+												  
+												  <button class="btn btn-success mt-20" style = "margin-left:auto;height:40px;">
 									 			   <i class="fa fa-check-square-o fa-fw"></i>确定
 									 		      </button>
 									 		      </div>
 												</form>
 												
 									 		</div>
+									 	</div>
 									 </li>
                                         
                                 	

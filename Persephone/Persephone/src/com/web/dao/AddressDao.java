@@ -26,4 +26,17 @@ public interface AddressDao {
 	 * @return
 	 */
 	public List<UserAddr> showAddress(int UserID);
+	
+	/**
+	 * 删除地址
+	 * @param AddrID
+	 * @return
+	 */
+	public boolean delAddress(int AddrID);
+	
+	/**
+	 * 显示所有地址
+	 * @return
+	 */
+	public List<UserAddr> showAllAddress();
 }

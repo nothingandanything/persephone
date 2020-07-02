@@ -5,7 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>order_detail</title>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		if("${user}" == "")
+			window.location.href="${pageContext.request.contextPath}/client/login.jsp";
+	});
+</script>
+
+<title>OrderDetail</title>
 </head>
     
 <body>

@@ -59,12 +59,12 @@ public class RegisterController extends HttpServlet {
 				boolean flag = userBiz.register(user);
 				
 				if (flag) {  // 如果注册成功
-					resp.getWriter().print("<script>alert('注册成功!');window.location.href='"
-							+ req.getContextPath() + "/client/login.jsp';</script>");
+					resp.sendRedirect(req.getContextPath()+"/client/register_success.jsp");
 //					resp.sendRedirect(req.getContextPath()+"/client/registerSuccess.jsp");
 				}
 				else
-					resp.sendRedirect(req.getContextPath()+"/client/register.jsp");
+					resp.getWriter().print("<script>alert('注册失败!');window.location.href='"
+							+ req.getContextPath() + "/client/register.jsp';</script>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

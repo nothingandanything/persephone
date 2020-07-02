@@ -1,0 +1,15 @@
+package com.web.dao;
+
+import java.util.List;
+
+import com.web.entity.Admin;
+
+public interface AdminDao {
+	/**
+	 * ¹ÜÀíÔ±µÇÂ½
+	 * @param AdminName
+	 * @param AdminPwd
+	 * @return
+	 */
+	public Admin login(String AdminName, String AdminPwd);
+}

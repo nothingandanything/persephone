@@ -49,4 +49,31 @@ public interface ProductDao {
 	 * @return
 	 */
 	public List<Object[]> getWeekHotDrink();
+	
+	/**
+	 * 后台显示饮品信息
+	 * @return
+	 */
+	public List<Drink> showAllDrink();
+	
+	/**
+	 * 后台添加新饮品
+	 * @param drink
+	 * @return
+	 */
+	public boolean addDrink(Drink drink);
+	
+	/**
+	 * 后台修改饮品信息
+	 * @param drink
+	 * @return
+	 */
+	public boolean changeDrink(Drink drink);
+	
+	/**
+	 * 后台删除饮品
+	 * @param DrinkID
+	 * @return
+	 */
+	public boolean deleteDrink(int DrinkID);
 }

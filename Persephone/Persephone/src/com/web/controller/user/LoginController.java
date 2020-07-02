@@ -42,9 +42,9 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("user", user);
 			
 			// µÇÂ¼³É¹¦
-			resp.getWriter().print("<script>alert('µÇÂ½³É¹¦!');window.location.href='"
-					+ req.getContextPath() + "/ShowIndex';</script>");
-//			resp.sendRedirect(req.getContextPath()+"/client/index.jsp");
+//			resp.getWriter().print("<script>alert('µÇÂ½³É¹¦!');window.location.href='"
+//					+ req.getContextPath() + "/ShowIndex';</script>");
+			resp.sendRedirect(req.getContextPath()+"/client/login_success.jsp");
 		}
 		else {
 			// µÇÂ¼Ê§°Ü

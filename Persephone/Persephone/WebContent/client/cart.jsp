@@ -7,6 +7,11 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
 <script type="text/javascript">
+	$(document).ready(function(){
+		if("${user}" == "")
+			window.location.href="${pageContext.request.contextPath}/client/login.jsp";
+	});
+
 	function deleteCartItem (DrinkID, DrinkSweet, DrinkTemp, DrinkSpec) {
 		$.ajax({
 			type: 'POST',

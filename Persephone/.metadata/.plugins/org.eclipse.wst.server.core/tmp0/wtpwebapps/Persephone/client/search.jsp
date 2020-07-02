@@ -30,7 +30,7 @@
 	}
 </script>
 
-<title>Insert title here</title>
+<title>Search</title>
 <!-- Fav Icons -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/favicon.png" type="image/x-icon">
     

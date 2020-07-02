@@ -198,6 +198,7 @@ public class ProductDaoImpl implements ProductDao {
 						
 			// 关闭
 			JDBCUtil.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -243,6 +244,10 @@ public class ProductDaoImpl implements ProductDao {
 				// 把商品对象添加到集合中
 				list.add(d);
 			}
+			
+			// 关闭
+			JDBCUtil.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -285,9 +290,167 @@ public class ProductDaoImpl implements ProductDao {
 
 			// 关闭数据库
 			JDBCUtil.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	/**
+	 * 后台显示饮品信息
+	 */
+	@Override
+	public List<Drink> showAllDrink() {
+		// 实例化集合
+		List<Drink> list = new ArrayList<Drink>();
+		
+		try {
+			// 获取数据库的连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+			
+			// 编写sql
+			String sql = "SELECT * FROM drink";
+						
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+			
+			// 循环
+			while(rs.next()){
+				Drink d = new Drink();
+				d.setDrinkID(rs.getInt("DrinkID"));
+				d.setDrinkName(rs.getString("DrinkName"));
+				d.setDrinkPrice_Super(rs.getFloat("DrinkPrice_Super"));
+				d.setDrinkPrice_Big(rs.getFloat("DrinkPrice_Big"));
+				d.setDrinkPrice_Medium(rs.getFloat("DrinkPrice_Medium"));
+				d.setDrinkType(rs.getString("DrinkType"));
+				d.setDrinkDesc(rs.getString("DrinkDesc"));
+				d.setPicAddres(rs.getString("PicAddres"));
+				
+				// 把商品对象添加到集合中
+				list.add(d);
+			}
+			
+			// 关闭
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 后台添加新饮品
+	 */
+	@Override
+	public boolean addDrink(Drink drink) {
+		// 影响行数的变量
+		int count = 0;
+				
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+								
+			// 编写sql
+			String sql = "INSERT INTO drink(DrinkName,DrinkPrice_Super,DrinkPrice_Big,DrinkPrice_Medium,"
+					+ "DrinkType,DrinkDesc,PicAddres) VALUES (?,?,?,?,?,?,?);";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			// 设置参数
+			ps.setString(1, drink.getDrinkName());
+			ps.setFloat(2, drink.getDrinkPrice_Super());
+			ps.setFloat(3, drink.getDrinkPrice_Big());
+			ps.setFloat(4, drink.getDrinkPrice_Medium());
+			ps.setString(5, drink.getDrinkType());
+			ps.setString(6, drink.getDrinkDesc());
+			ps.setString(7, drink.getPicAddres());
+						
+			// 执行修改
+			count = ps.executeUpdate();
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 后台修改饮品信息
+	 */
+	@Override
+	public boolean changeDrink(Drink drink) {
+		// 影响行数的变量
+		int count = 0;
+						
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+								
+			// 编写sql
+			String sql = "UPDATE drink SET DrinkName = ?, DrinkPrice_Super = ?, DrinkPrice_Big = ?, "
+					+ "DrinkPrice_Medium = ?, DrinkType = ?, DrinkDesc = ?, PicAddres = ? WHERE DrinkID = ?";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			// 设置参数
+			ps.setString(1, drink.getDrinkName());
+			ps.setFloat(2, drink.getDrinkPrice_Super());
+			ps.setFloat(3, drink.getDrinkPrice_Big());
+			ps.setFloat(4, drink.getDrinkPrice_Medium());
+			ps.setString(5, drink.getDrinkType());
+			ps.setString(6, drink.getDrinkDesc());
+			ps.setString(7, drink.getPicAddres());
+			ps.setInt(8, drink.getDrinkID());
+								
+			// 执行修改
+			count = ps.executeUpdate();
+										
+			// 关闭
+			JDBCUtil.close();
+							
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 后台删除饮品
+	 */
+	@Override
+	public boolean deleteDrink(int DrinkID) {
+		// 影响行数的变量
+		int count = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+								
+			// 编写sql
+			String sql = "DELETE FROM drink WHERE DrinkID = " + DrinkID;
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 执行修改
+			count = ps.executeUpdate();
+					
+			// 关闭
+			JDBCUtil.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
 	}
 }

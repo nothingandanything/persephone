@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script>
+	$(document).ready(function(){
+		if("${user}" == "")
+			window.location.href="${pageContext.request.contextPath}/client/login.jsp";
+	});
+
 	function orderFormSubmit() {
 		document.getElementById("orderFrom").submit();
 	}

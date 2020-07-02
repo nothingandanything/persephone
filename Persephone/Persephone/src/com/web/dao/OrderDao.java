@@ -47,4 +47,17 @@ public interface OrderDao {
 	 * @return
 	 */
 	public boolean payOrder(int OrderID, int AddrID);
+
+	/**
+	 * 后台查看订单
+	 * @return
+	 */
+	public List<DrinkOrder> showOrder();
+	
+	/**
+	 * 后台删除订单
+	 * @param OrderID
+	 * @return
+	 */
+	public boolean deleteOrder(int OrderID);
 }

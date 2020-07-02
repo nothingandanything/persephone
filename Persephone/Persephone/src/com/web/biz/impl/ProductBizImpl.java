@@ -77,4 +77,36 @@ public class ProductBizImpl implements ProductBiz {
 	public List<Object[]> getWeekHotDrink() {
 		return productDao.getWeekHotDrink();
 	}
+
+	/**
+	 * 后台显示饮品信息
+	 */
+	@Override
+	public List<Drink> showAllDrink() {
+		return productDao.showAllDrink();
+	}
+
+	/**
+	 * 后台添加新饮品
+	 */
+	@Override
+	public boolean addDrink(Drink drink) {
+		return productDao.addDrink(drink);
+	}
+
+	/**
+	 * 后台修改饮品信息
+	 */
+	@Override
+	public boolean changeDrink(Drink drink) {
+		return productDao.changeDrink(drink);
+	}
+
+	/**
+	 * 后台删除饮品
+	 */
+	@Override
+	public boolean deleteDrink(int DrinkID) {
+		return productDao.deleteDrink(DrinkID);
+	}
 }

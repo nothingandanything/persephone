@@ -7,9 +7,6 @@ public class Drink {
 	private float DrinkPrice_Big;
 	private float DrinkPrice_Medium;
 	private String DrinkType;
-	private String DrinkSweet;
-	private String DrinkTemp;
-	private String DrinkSpec;
 	private String DrinkDesc;
 	private String PicAddres;
 	
@@ -48,24 +45,6 @@ public class Drink {
 	}
 	public void setDrinkType(String drinkType) {
 		DrinkType = drinkType;
-	}
-	public String getDrinkSweet() {
-		return DrinkSweet;
-	}
-	public void setDrinkSweet(String drinkSweet) {
-		DrinkSweet = drinkSweet;
-	}
-	public String getDrinkTemp() {
-		return DrinkTemp;
-	}
-	public void setDrinkTemp(String drinkTemp) {
-		DrinkTemp = drinkTemp;
-	}
-	public String getDrinkSpec() {
-		return DrinkSpec;
-	}
-	public void setDrinkSpec(String drinkSpec) {
-		DrinkSpec = drinkSpec;
 	}
 	public String getDrinkDesc() {
 		return DrinkDesc;

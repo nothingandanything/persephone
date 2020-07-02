@@ -34,6 +34,38 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	/**
+	 * 修改名称
+	 */
+	@Override
+	public boolean changeName(int UserID, User user) {
+		return userDao.changeName(UserID,user);
+	}
+
+	/**
+	 * 修改密码
+	 */
+	@Override
+	public boolean changePwd(int UserID, User user) {
+		return userDao.changePwd(UserID,user);
+	}
+
+	/**
+	 * 修改电话
+	 */
+	@Override
+	public boolean changePhone(int UserID, User user) {
+		return userDao.changePhone(UserID,user);
+	}
+
+	/**
+	 * 检查名字是否重复
+	 */
+	@Override
+	public boolean checkName(String UserName) {
+		return userDao.checkName(UserName);
+	}
+
+	/**
 	 * 后台显示用户信息
 	 */
 	@Override

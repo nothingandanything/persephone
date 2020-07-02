@@ -5,11 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript">
-	function deleteUser (UserID) {
-		window.location.href="${pageContext.request.contextPath}/deleteUser?UserID=" + UserID;
-	}
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/userForm.js"></script>
 
     <title>Usertable</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -106,7 +102,7 @@
                                 </table>
                                 
                                 <!--修改模态框-->
-                                <form id="myUpdateForm" method="post" action="${pageContext.request.contextPath}/changeUser">
+                                <form id="myUpdateForm" method="post" action="${pageContext.request.contextPath}/changeUser" onsubmit="return checkUpdateFrom();">
                                 	<input type="hidden" id="update-id" name="update-id" value="">
                                 	<div class="modal fade" id="updateuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 									  <div class="modal-dialog" role="document">
@@ -119,15 +115,21 @@
                                 			  <input type="hidden" id="update-id" name="update-id">
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">修改用户名</label>
-									            <input type="text" class="form-control" id="update-name" name="update-name" value="">
+									            <input type="text" class="form-control" id="update-name" name="update-name"
+														value="" onkeyup="checkUpdateName()" onblur="checkUpdateSameName()">
+									            <span id="update-nameMsg">&nbsp;</span>
 									          </div>
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">修改密码</label>
-									            <input type="text" class="form-control" id="update-pwd" name="update-pwd" value="">
+									            <input type="text" class="form-control" id="update-pwd" name="update-pwd"
+														value="" onkeyup="checkUpdatePwd()">
+									            <span id="update-pwdMsg">&nbsp;</span>
 									          </div>
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">修改联系方式</label>
-									            <input type="text" class="form-control" id="update-pho" name="update-pho" value="">
+									            <input type="text" class="form-control" id="update-pho" name="update-pho"
+														value="" onkeyup="checkUpdatePhone">
+									            <span id="update-phoMsg">&nbsp;</span>
 									          </div>
 									      </div>
 									      <div class="modal-footer">
@@ -139,7 +141,7 @@
                                 </form>
                                 
                                 <!-- 添加模态框 -->
-                                <form id="myaddForm" method="post" action="${pageContext.request.contextPath}/addUser">
+                                <form id="myaddForm" method="post" action="${pageContext.request.contextPath}/addUser" onsubmit="return checkAddFrom();">
                                 	<div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 									  <div class="modal-dialog" role="document">
 									    <div class="modal-content">
@@ -150,15 +152,21 @@
 									      <div class="modal-body">
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">用户名</label>
-									            <input type="text" class="form-control" id="add-name" name="add-name">
+									            <input type="text" class="form-control" id="add-name" name="add-name"
+														value="" onkeyup="checkAddName()" onblur="checkAddSameName()">
+									            <span id="add-nameMsg">&nbsp;</span>
 									          </div>
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">密码</label>
-									            <input type="text" class="form-control" id="add-pwd" name="add-pwd">
+									            <input type="text" class="form-control" id="add-pwd" name="add-pwd"
+														value="" onkeyup="checkAddPwd()">
+									            <span id="add-pwdMsg">&nbsp;</span>
 									          </div>
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">联系方式</label>
-									            <input type="text" class="form-control" id="add-pho" name="add-pho">
+									            <input type="text" class="form-control" id="add-pho" name="add-pho"
+														value="" onkeyup="checkAddPhone">
+									            <span id="add-phoMsg">&nbsp;</span>
 									          </div>
 									      </div>
 									      <div class="modal-footer">
@@ -204,7 +212,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
-      } );
+        });
+        
+        function deleteUser (UserID) {
+        	window.location.href = "${pageContext.request.contextPath}/deleteUser?UserID=" + UserID;
+        }
   </script>
 </body>
 </html>

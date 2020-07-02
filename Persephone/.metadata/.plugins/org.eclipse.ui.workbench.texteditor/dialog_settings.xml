@@ -2,22 +2,24 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="data-name" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="drinktable"/>
+			<item value="Update"/>
+			<item value="popover"/>
+			<item value="menu-search"/>
+			<item value="请填写此字段"/>
+			<item value="showUser"/>
 			<item value="data-name"/>
 			<item value="show"/>
-			<item value="Number"/>
-			<item value="cart"/>
-			<item value="deleteCart"/>
-			<item value="${pageContext.request.contextPath}/deleteCart"/>
-			<item value="${pageContext.request.contextPath}"/>
-			<item value="toltalPrice"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Add"/>
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

@@ -84,7 +84,32 @@
         $('#update-pho').attr('value', modalpho);
     });
 
-
+	$('#drinktable').DataTable({
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]],
+        ordering: true, //排序功能
+        
+        columns: [{
+        	title: "#",},{
+        	title: "饮品id",
+        	}, {
+        	title: "饮品名称",
+        	}, {
+        	title: "超级杯",
+        	}, {
+        	title: "大杯",
+        	}, {
+        	title: "中杯",
+        	},{
+        	title: "饮品类型",
+        	},{
+        	title: "饮品描述",
+        	},{
+        	title: "图片地址",
+        	},{
+        	title: "操作",
+        	}]
+        
+    });
 
 
 })(jQuery);

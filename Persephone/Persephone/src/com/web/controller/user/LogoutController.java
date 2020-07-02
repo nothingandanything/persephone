@@ -24,6 +24,6 @@ public class LogoutController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().removeAttribute("user");
 		resp.getWriter().print("<script>alert('ÍË³öµÇÂ½³É¹¦!');window.location.href='"
-				+ req.getContextPath() + "/admin/index.jsp';</script>");
+				+ req.getContextPath() + "/ShowIndex';</script>");
 	}
 }

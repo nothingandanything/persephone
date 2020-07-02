@@ -163,6 +163,9 @@ public class OrderDaoImpl implements OrderDao {
 		return list;
 	}
 
+	/**
+	 * 取消订单
+	 */
 	@Override
 	public boolean cancelOrder(int OrderID) {
 		// 定义影响的行数
@@ -220,5 +223,81 @@ public class OrderDaoImpl implements OrderDao {
 			e.printStackTrace();
 		}
 		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 后台查看订单
+	 */
+	@Override
+	public List<DrinkOrder> showOrder() {
+		List<DrinkOrder> list = new ArrayList<DrinkOrder>();
+		
+		try {
+			// 获取数据库的连接
+			Connection conn = JDBCUtil.getConnectinon();
+									
+			// 编写sql
+			String sql ="SELECT * FROM `drinkorder`";
+									
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+									
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+					
+			// 循环结果集
+			while(rs.next()){
+				// 实例化对象
+				DrinkOrder drinkOrder = new DrinkOrder();
+					
+				drinkOrder.setOrderID(rs.getInt("OrderID"));
+				drinkOrder.setUserID(rs.getInt("UserID"));
+				drinkOrder.setAddrID(rs.getInt("AddrID"));
+				drinkOrder.setTotalPrice(rs.getFloat("TotalPrice"));
+				drinkOrder.setOrderTime(rs.getDate("OrderTime"));
+				drinkOrder.setPayState(rs.getInt("PayState"));
+						
+				// 把对象添加到集合中去
+				list.add(drinkOrder);
+			}
+			
+			// 关闭
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 后台删除订单
+	 */
+	@Override
+	public boolean deleteOrder(int OrderID) {
+		
+		int count = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+							
+			// 编写sql
+			String sql = "DELETE FROM `drinkorder` WHERE OrderID = " + OrderID;
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+								
+			// 执行修改
+			count = ps.executeUpdate();
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+					
 	}
 }

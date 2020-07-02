@@ -100,4 +100,20 @@ public class OrderBizImpl implements OrderBiz {
 	public boolean payOrder(int OrderID, int AddrID) {
 		return orderDao.payOrder(OrderID, AddrID);
 	}
+	
+	/**
+	 * 后台查看订单
+	 */
+	@Override
+	public List<DrinkOrder> showOrder(){
+		return orderDao.showOrder();
+	}
+	
+	/**
+	 * 后台删除订单
+	 */
+	@Override
+	public boolean deleteOrder(int OrderID) {
+		return orderDao.deleteOrder(OrderID);
+	}
 }

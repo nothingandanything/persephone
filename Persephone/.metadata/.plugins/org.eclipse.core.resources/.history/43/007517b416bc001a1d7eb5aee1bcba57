@@ -1,0 +1,24 @@
+package com.web.controller.admin;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(urlPatterns="/showUserAddress")
+public class ShowUserAddressController extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		AddressBiz addressBiz = new AddressBizImpl();
+		List<UserAddr> list = addressBiz.showAllAddress();
+		
+		req.setAttribute("addressList", list);
+
+		req.getRequestDispatcher("/admin/addresstable.jsp").forward(req, resp);
+	}
+}

@@ -104,6 +104,152 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	/**
+	 * 修改名称
+	 */
+	@Override
+	public boolean changeName(int UserID, User user) {
+		// 影响行数的变量
+		int count = 0;
+						
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+								
+			// 编写sql
+			String sql = "UPDATE user SET UserName = ? "
+					+ "WHERE UserID=" + UserID;
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 设置参数
+			ps.setString(1, user.getUserName());
+										
+			// 执行修改
+			count = ps.executeUpdate();
+										
+			// 关闭
+			JDBCUtil.close();
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 修改密码
+	 */
+	@Override
+	public boolean changePwd(int UserID, User user) {
+		// 影响行数的变量
+		int count = 0;
+								
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+										
+			// 编写sql
+			String sql = "UPDATE user SET UserPwd = ? "
+					+ "WHERE UserID=" + UserID;
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+					
+			// 设置参数
+			ps.setString(1, user.getUserPwd());
+												
+			// 执行修改
+			count = ps.executeUpdate();
+												
+			// 关闭
+			JDBCUtil.close();
+								
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 修改电话
+	 */
+	@Override
+	public boolean changePhone(int UserID, User user) {
+		// 影响行数的变量
+		int count = 0;
+										
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+											
+			// 编写sql
+			String sql = "UPDATE user SET UserPhone = ? "
+							+ "WHERE UserID=" + UserID;
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+							
+			// 设置参数
+			ps.setString(1, user.getUserPhone());
+														
+			// 执行修改
+			count = ps.executeUpdate();
+														
+			// 关闭
+			JDBCUtil.close();
+										
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 检查名字是否重复
+	 */
+	@Override
+	public boolean checkName(String UserName) {
+		// 实例化集合对象
+		List<User> list = new ArrayList<User>();
+												
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+													
+			// 编写sql
+			String sql = "SELECT * FROM `user` WHERE UserName = '" + UserName + "'";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+																
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+						
+			// 循环结果集
+			while(rs.next()){
+				// 实例化对象
+				User user = new User();
+				
+				user.setUserID(rs.getInt("UserID"));
+				user.setUserName(rs.getString("UserName"));
+				user.setUserPwd(rs.getString("UserPwd"));
+				user.setUserPhone(rs.getString("UserPhone"));
+						
+				// 把对象添加到集合中去
+				list.add(user);
+			}
+																
+			// 关闭
+			JDBCUtil.close();
+												
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list.size() > 0 ? true : false;
+	}
+
+	/**
 	 * 后台显示用户信息
 	 */
 	@Override

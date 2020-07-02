@@ -17,6 +17,9 @@ public class AddressBizImpl implements AddressBiz {
 	//实例化数据访问层
 	AddressDao ad = new AddressDaoImpl();
 
+	/**
+	 * 添加地址
+	 */
 	@Override
 	public boolean addAddress(UserAddr useraddr) {
 		
@@ -25,11 +28,29 @@ public class AddressBizImpl implements AddressBiz {
 		
 	}
 	
+	/**
+	 * 显示地址
+	 */
 	@Override
 	public List<UserAddr> showAddress(int UserID) {
 		return ad.showAddress(UserID);
 	}
+
+	/**
+	 * 删除地址
+	 */
+	@Override
+	public boolean delAddress(int AddrID) {
+		return ad.delAddress(AddrID);
+	}
 	
+	/**
+	 * 显示所有地址
+	 */
+	@Override
+	public List<UserAddr> showAllAddress(){
+		return ad.showAllAddress();
+	}
 }
 	
 	

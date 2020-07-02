@@ -25,20 +25,20 @@ function checkForm () {
 	var bUserPwd = checkUserPwd();
 	var bReUserPwd = checkReUserPwd();
 	var bUserPhone = checkUserPhone();
-	return bUserName && bUserPwd && bReUserPwd && bUserPhone;
+	return bUserName && bUserPwd && bReUserPwd && bUserPhone && checkSameName();
 }
 
 function checkUserName () {
 	var regex = /^.{4,8}$/;  // 任意字符, 4到8位
 	var value = UserNameObj.value;
-	var msg = "";
+	var msg = "&nbsp;";
 	if (!value)
 		msg = "必须填写用户名！";
 	else if (!regex.test(value))
 		msg = "用户名不合法！";
 	UserNameMsg.innerHTML = msg;  // 将提示消息放入SPAN
-	UserNameObj.parentNode.style.color = msg == "" ? "black" : "red";
-	return msg = "";
+	UserNameObj.parentNode.style.color = msg == "&nbsp;" ? "black" : "red";
+	return msg == "&nbsp;";
 }
 
 function checkUserPwd () {
@@ -50,7 +50,7 @@ function checkUserPwd () {
 	else if (!regex.test(value))
 		msg = "密码不合法！";
 	UserPwdMsg.innerHTML = msg;
-	UserPwdObj.parentNode.style.color = msg == "" ? "black" : "red";
+	UserPwdObj.parentNode.style.color = msg == "&nbsp;" ? "black" : "red";
 	return msg == "&nbsp;";
 }
 
@@ -66,7 +66,7 @@ function checkReUserPwd() {		// 验证确认密码
 		msg = "密码必须保持一致！";
     }
 	ReUserPwdMsg.innerHTML = msg;
-	ReUserPwdObj.parentNode.style.color = msg == "" ? "black" : "red";
+	ReUserPwdObj.parentNode.style.color = msg == "&nbsp;" ? "black" : "red";
 	return msg == "&nbsp;";
 }
 
@@ -79,6 +79,32 @@ function checkUserPhone () {
 	else if (!regex.test(value))
 		msg = "联系电话不合法！";
 	UserPhoneMsg.innerHTML = msg;
-	UserPhoneObj.parentNode.style.color = msg == "" ? "black" : "red";
+	UserPhoneObj.parentNode.style.color = msg == "&nbsp;" ? "black" : "red";
 	return msg == "&nbsp;";
+}
+
+function checkSameName(){
+	var name = UserNameObj.value;
+	$.ajax({
+		type: "GET",
+		url: "/Persephone/checkName",
+		data: {"UserName": name},
+		dataType: "text",
+		statusCode: {
+			404: function() {  
+				alert('提交地址url未发现'); 
+			}  
+		},
+		success: function (result) {
+			if(result == "same") {
+				UserNameMsg.innerHTML = "用户名重复!";
+				UserNameObj.parentNode.style.color = "red";
+				return false;
+			}
+			else {
+				UserNameMsg.innerHTML = "&nbsp;";
+				return checkUserName();
+			}
+		}
+	});
 }

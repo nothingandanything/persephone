@@ -26,7 +26,7 @@ public class AddressDaoImpl implements AddressDao {
 	public boolean addAddress(UserAddr userAddr) {
 		
 		//定义影响行数的变量
-				int count = 0;
+		int count = 0;
 				
 		try {
 					
@@ -58,12 +58,13 @@ public class AddressDaoImpl implements AddressDao {
 		}
 		
 		//如果count>0,则返回true，否则返回false
-				return count > 0 ? true : false;
+		return count > 0 ? true : false;
 		
 	}
 
-	
-	
+	/**
+	 * 显示地址
+	 */
 	@Override
 	public List<UserAddr> showAddress(int UserID) {
 		List<UserAddr> list = new ArrayList<UserAddr>();
@@ -97,9 +98,82 @@ public class AddressDaoImpl implements AddressDao {
 		}
 		return list;
 	}
+
+	/**
+	 * 删除地址
+	 */
+	@Override
+	public boolean delAddress(int AddrID) {
+		//定义影响行数的变量
+		int count = 0;
+						
+		try {
+							
+			//获取数据库连接
+			Connection conn = JDBCUtil.getConnectinon();
+					
+			//编写sql语句
+			String sql = "DELETE FROM useraddr where AddrID = " + AddrID;
+					
+			//编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+					
+			//执行修改
+			count = ps.executeUpdate();
+					
+			//关闭
+			JDBCUtil.close();
+					
+		}catch(Exception e) {
+			e.printStackTrace();//如果有错误，则在控制台抛出错误信息
+		}
+				
+		//如果count>0,则返回true，否则返回false
+		return count > 0 ? true : false;
+	}
 	
-	
-	
-	
-	
+	/**
+	 * 显示所有地址
+	 */
+	@Override
+	public List<UserAddr> showAllAddress() {
+		List<UserAddr> list = new ArrayList<UserAddr>();
+		
+		try {
+			// 获取数据库的连接
+			Connection conn = JDBCUtil.getConnectinon();
+									
+			// 编写sql
+			String sql ="SELECT * FROM useraddr";
+									
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+									
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+					
+			// 循环结果集
+			while(rs.next()){
+				// 实例化对象
+				UserAddr userAddr = new UserAddr();
+					
+				userAddr.setUserID(rs.getInt("UserID"));
+				userAddr.setAddrID(rs.getInt("AddrID"));
+				userAddr.setCity(rs.getString("City")); 
+				userAddr.setCounty(rs.getString("County"));
+				userAddr.setStreet(rs.getString("Street"));
+				userAddr.setHouseNum(rs.getString("HouseNum"));
+									
+				// 把对象添加到集合中去
+				list.add(userAddr);
+			}
+			
+			// 关闭
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

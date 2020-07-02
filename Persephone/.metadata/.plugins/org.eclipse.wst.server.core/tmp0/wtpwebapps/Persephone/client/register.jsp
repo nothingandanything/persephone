@@ -11,6 +11,11 @@
 		// 改变验证码图片中的文字
 		document.getElementById("imgCode").src = "${pageContext.request.contextPath}/imageCode?time="+new Date().getTime();
 	}
+	
+	$(document).ready(function(){
+		if("${user}" != "")
+			window.location.href="${pageContext.request.contextPath}/showMe";
+	});
 </script>
 
 <title>Register</title>  
@@ -51,7 +56,7 @@
                                 <form action="${pageContext.request.contextPath}/register" class="login-form" method="post" onsubmit="return checkForm();">
                                     <div class="text-field">
                                         <label for="name">用户名*</label>
-                                        <input type="text" id="UserName" name="UserName" placeholder="请设置4~8位" onkeyup="checkUserName()">
+                                        <input type="text" id="UserName" name="UserName" placeholder="请设置4~8位" onkeyup="checkUserName()" onblur="checkSameName()">
                                         <span id="UserNameMsg">&nbsp;</span>
                                     </div>
                                     <div class="text-field">

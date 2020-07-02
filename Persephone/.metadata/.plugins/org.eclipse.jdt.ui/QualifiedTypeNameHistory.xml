@@ -49,10 +49,10 @@
 <fullyQualifiedTypeName name="com.web.dao.AdminDao"/>
 <fullyQualifiedTypeName name="com.web.dao.impl.AdminDaoImpl"/>
 <fullyQualifiedTypeName name="com.web.entity.Admin"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.web.biz.AdminBiz"/>
 <fullyQualifiedTypeName name="com.web.biz.impl.AdminBizImpl"/>
 <fullyQualifiedTypeName name="com.web.entity.User"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.web.biz.UserBiz"/>
 <fullyQualifiedTypeName name="com.web.biz.impl.UserBizImpl"/>
 </qualifiedTypeNameHistroy>

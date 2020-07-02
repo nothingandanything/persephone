@@ -26,6 +26,37 @@ public interface UserDao {
 	public User login(String UserName, String UserPwd);
 	
 	/**
+	 * 修改名称
+	 * @param UserID
+	 * @param user
+	 * @return
+	 */
+	public boolean changeName(int UserID, User user);
+	
+	/**
+	 * 修改密码
+	 * @param UserID
+	 * @param user
+	 * @return
+	 */
+	public boolean changePwd(int UserID, User user);
+	
+	/**
+	 * 修改电话
+	 * @param UserID
+	 * @param user
+	 * @return
+	 */
+	public boolean changePhone(int UserID, User user);
+	
+	/**
+	 * 检查名字是否重复
+	 * @param UserName
+	 * @return
+	 */
+	public boolean checkName(String UserName);
+	
+	/**
 	 * 后台显示用户信息
 	 * @return
 	 */

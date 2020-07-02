@@ -1,0 +1,60 @@
+package com.web.controller.user;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import com.web.biz.UserBiz;
+import com.web.biz.impl.UserBizImpl;
+import com.web.entity.User;
+
+@WebServlet(urlPatterns="/changeUserPwd")
+public class ChangeUserPwdController extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		UserBiz userBiz = new UserBizImpl();
+		
+		User user = (User)req.getSession().getAttribute("user");
+		
+		int UserID = user.getUserID();
+			
+
+		 
+		String UserPwd = req.getParameter("UserPwd");
+		String OldUserPwd = req.getParameter("OldUserPwd");
+		
+		boolean flag1 = OldUserPwd.equals(user.getUserPwd());
+		boolean flag2 = OldUserPwd.equals(UserPwd);
+		
+		if(flag1)
+		{
+			if(flag2)
+			{
+				resp.sendRedirect(req.getContextPath()+"/client/FailChangePwd1.jsp");
+			}
+			else
+			{
+			user.setUserPwd(UserPwd);
+		    
+			userBiz.changePwd(UserID,user);
+			
+			req.getRequestDispatcher("/showMe").forward(req, resp);
+			}
+			
+		}
+		else {
+			resp.sendRedirect(req.getContextPath()+"/client/FailChangePwd.jsp");
+			
+		}
+}}
