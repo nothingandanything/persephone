@@ -29,6 +29,12 @@ public class ShowDrinkInCartController extends HttpServlet {
 				
 		// 读取session中的用户信息
 		User user = (User)req.getSession().getAttribute("user");
+		if(user == null){
+			// 未登陆
+			resp.getWriter().print("<script>alert('未登陆！');window.location.href='"
+				+ req.getContextPath() + "/client/login.jsp';</script>");
+			return;
+		}
 		int UserID = user.getUserID();
 		
 		// 调用业务逻辑层的查询方法

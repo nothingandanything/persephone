@@ -30,6 +30,12 @@ public class ShowMeController extends HttpServlet {
 		// 获取用户的信息
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
+		if(user == null){
+			// 未登陆
+			resp.getWriter().print("<script>alert('未登陆！');window.location.href='"
+				+ req.getContextPath() + "/client/login.jsp';</script>");
+			return;
+		}
 		
 		// 根据用户的信息查询订单信息
 		OrderBiz orderBiz = new OrderBizImpl();

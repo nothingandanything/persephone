@@ -30,22 +30,11 @@ window.onload = function() {
 
 // 修改模态框
 function checkUpdateFrom() {
-	var bcheckUpdateName = checkUpdateName();
-	var bcheckUpdateSameName = checkUpdateSameName();
-	var bcheckUpdatePwd = checkUpdatePwd();
-	var bcheckUpdatePhone = checkUpdatePhone();
-	alert(bcheckUpdateName);
-	alert(bcheckUpdateSameName);
-	alert(bcheckUpdatePwd);
-	alert(bcheckUpdatePhone);
-	alert(bcheckUpdateName&&bcheckUpdateSameName&&bcheckUpdatePwd&&bcheckUpdatePhone);
-	
 	return checkUpdateName() && checkUpdateSameName() && checkUpdatePwd() && checkUpdatePhone();
 }
 
 function checkUpdateName() {
 	var name = UpdateNameObj.value;
-	console.log(name);
 	if (name == "") {
 		UpdateNameMsg.innerHTML = "用户名不能为空！";
 		UpdateNameMsg.parentNode.style.color = "red";
@@ -115,7 +104,7 @@ function checkUpdatePwd() {
 		}
 	else {
 		UpdatePwdMsg.innerHTML = "&nbsp;";
-		UpdateNameMsg.parentNode.style.color = "black";
+		UpdatePwdMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -134,7 +123,7 @@ function checkUpdatePhone() {
 	}
 	else {
 		UpdatePhoneMsg.innerHTML = "&nbsp;";
-		UpdateNameMsg.parentNode.style.color = "black";
+		UpdatePhoneMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -146,7 +135,7 @@ function checkAddFrom() {
 
 function checkAddName() {
 	var name = AddNameObj.value;
-	if (value == "") {
+	if (name == "") {
 		AddNameMsg.innerHTML = "用户名不能为空！";
 		AddNameMsg.parentNode.style.color = "red";
 		return false;
@@ -158,7 +147,7 @@ function checkAddName() {
 	}
 	else {
 		AddNameMsg.innerHTML = "&nbsp;";
-		UpdateNameMsg.parentNode.style.color = "black";
+		AddNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -185,7 +174,7 @@ function checkAddSameName(){
 			}
 			else {
 				AddNameMsg.innerHTML = "&nbsp;";
-				UpdateNameMsg.parentNode.style.color = "black";
+				AddNameMsg.parentNode.style.color = "black";
 				flag = checkAddName();
 			}
 		}
@@ -207,7 +196,7 @@ function checkAddPwd() {
 		}
 	else {
 		AddPwdMsg.innerHTML = "&nbsp;";
-		UpdateNameMsg.parentNode.style.color = "black";
+		AddPwdMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -226,7 +215,7 @@ function checkAddPhone() {
 	}
 	else {
 		AddPhoneMsg.innerHTML = "&nbsp;";
-		UpdateNameMsg.parentNode.style.color = "black";
+		AddPhoneMsg.parentNode.style.color = "black";
 		return true;
 	}
 }

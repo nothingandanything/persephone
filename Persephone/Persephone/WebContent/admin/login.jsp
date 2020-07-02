@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <head>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/client/js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if("${admin}" != ""){
+			window.location.href="${pageContext.request.contextPath}/showAdminIndex";
+		}
+	});
+</script>
+
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -135,35 +135,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="main-menu">
-                        <button style = "background:#FF9933;"><i class="flaticon-list-menu"></i></button>
-                        <ul>
-                            <li><a href="${pageContext.request.contextPath}/ShowIndex">Home</a></li>
-                            <li class="dropdown"><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/client/blog.jsp">All Blog</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/blog-details.jsp">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Shop</a>
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/client/shop.jsp">Shop Page</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/cart.jsp">Cart Page</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/checkout.jsp">Checkout</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="${pageContext.request.contextPath}/client/#">Pages</a>
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/client/sign-in.jsp">Sign In</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/client/sign-up.jsp">Sign Up</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="${pageContext.request.contextPath}/client/contact.jsp">Contact</a></li>
-                        </ul>
-                        <div class="menu-overlay"></div>
-                    </div>
                 </div>
             </div>
             <div class="collection-close"></div>

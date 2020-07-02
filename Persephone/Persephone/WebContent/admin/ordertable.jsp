@@ -6,6 +6,7 @@
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
 	function deleteOrder (OrderID) {
 		window.location.href="${pageContext.request.contextPath}/deleteOrder?OrderID=" + OrderID;
@@ -79,9 +80,19 @@
                                         	<td>${order.orderID}</td>
                                         	<td>${order.userID}</td>
                                         	<td>${order.addrID}</td>
-                                        	<td>${order.totalPrice}</td>
+                                        	<td>￥${order.totalPrice}</td>
                                         	<td>${order.orderTime}</td>
-                                        	<td>${order.payState}</td>
+                                        	
+											<c:if test="${order.payState eq 1}">
+                            					<td>
+                            						已支付
+                            					</td>
+                                    		</c:if>  	
+                                    		<c:if test="${order.payState eq 0}">
+                            					<td>
+                            						未支付
+                            					</td>
+                                    		</c:if> 
                                         	
                                            
                                             <td>

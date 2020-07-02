@@ -6,6 +6,7 @@
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/client/js/cartChange.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -117,9 +118,9 @@
                                     	</div>
                                     	<h6 class="product-name">${item.drink.drinkName} (${item.drinkSweet}·${item.drinkTemp}·${item.drinkSpec})</h6>
                                     	<div class="number-input">
-                                      		<button class="minus" onclick="changeCart('${item.drinkID}',,'${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}' '${item.number}', 'minus')"></button>
+                                      		<button class="minus" onclick="changeCart('${item.drinkID}','${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}','${item.number}','minus')"></button>
                                       		<input class="quantity" min="1" max="99" name="quantity" value="${item.number}" type="number">
-                                      		<button class="plus" onclick="changeCart('${item.drinkID}','${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}', '${item.number}', 'plus')"></button>
+                                      		<button class="plus" onclick="changeCart('${item.drinkID}','${item.drinkSweet}','${item.drinkTemp}','${item.drinkSpec}','${item.number}','plus')"></button>
                                     	</div>
                                     	
                                     	<!-- 显示单价 -->

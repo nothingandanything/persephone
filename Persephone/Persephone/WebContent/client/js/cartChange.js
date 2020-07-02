@@ -14,6 +14,7 @@ function changeCartList (data) {
 				'		<input class="quantity" min="1" max="99" name="quantity" value="' + data[i].Number + '" type="number">\n' +
 				'		<button class="plus" onclick="changeCart(\'' + data[i].DrinkID + '\',\'' + data[i].DrinkSweet + '\',\'' + data[i].DrinkTemp + '\',\'' + data[i].DrinkSpec + '\',\'' + data[i].Number + '\',\'plus\')"></button>\n' +
 				'	</div>\n';
+
 		if(data[i].DrinkSpec == '超级杯'){
 			var price = data[i].Number * data[i].drink.DrinkPrice_Super;
 			a = a + '	<h6 class="product-price">￥' + parseFloat(data[i].drink.DrinkPrice_Super).toFixed(1) + '</h6>\n' +
