@@ -30,6 +30,16 @@ window.onload = function() {
 
 // 修改模态框
 function checkUpdateFrom() {
+	var bcheckUpdateName = checkUpdateName();
+	var bcheckUpdateSameName = checkUpdateSameName();
+	var bcheckUpdatePwd = checkUpdatePwd();
+	var bcheckUpdatePhone = checkUpdatePhone();
+	alert(bcheckUpdateName);
+	alert(bcheckUpdateSameName);
+	alert(bcheckUpdatePwd);
+	alert(bcheckUpdatePhone);
+	alert(bcheckUpdateName&&bcheckUpdateSameName&&bcheckUpdatePwd&&bcheckUpdatePhone);
+	
 	return checkUpdateName() && checkUpdateSameName() && checkUpdatePwd() && checkUpdatePhone();
 }
 
@@ -38,26 +48,29 @@ function checkUpdateName() {
 	console.log(name);
 	if (name == "") {
 		UpdateNameMsg.innerHTML = "用户名不能为空！";
-		UpdateNameMsg.style.color = "red";
+		UpdateNameMsg.parentNode.style.color = "red";
 		return false;
 	}
 	else if (!/^.{4,8}$/.test(name)) {
 		UpdateNameMsg.innerHTML = "用户名必须为4-8位！";
-		UpdateNameMsg.style.color = "red";
+		UpdateNameMsg.parentNode.style.color = "red";
 		return false;
 	}
 	else {
 		UpdateNameMsg.innerHTML = "&nbsp;";
+		UpdateNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
 
 function checkUpdateSameName(){
 	var name = UpdateNameObj.value;
+	var flag = false;
 	$.ajax({
 		type: "GET",
 		url: "/Persephone/checkName",
 		data: {"UserName": name},
+		async: false,
 		dataType: "text",
 		statusCode: {
 			404: function() {  
@@ -66,16 +79,26 @@ function checkUpdateSameName(){
 		},
 		success: function (result) {
 			if(result == "same") {
-				UpdateNameMsg.innerHTML = "用户名重复!";
-				UpdateNameMsg.style.color = "red";
-				return false;
+				var oldName = document.getElementById("oldName").value;
+				if(name != oldName) {
+					UpdateNameMsg.innerHTML = "用户名重复!";
+					UpdateNameMsg.parentNode.style.color = "red";
+					flag = false;
+				}
+				else {
+					UpdateNameMsg.innerHTML = "&nbsp;";
+					UpdateNameMsg.parentNode.style.color = "black";
+					flag = true;
+				}
 			}
 			else {
 				UpdateNameMsg.innerHTML = "&nbsp;";
-				return checkUpdateName();
+				UpdateNameMsg.parentNode.style.color = "black";
+				flag = checkUpdateName();
 			}
 		}
 	});
+	return flag;
 }
 
 function checkUpdatePwd() {
@@ -92,6 +115,7 @@ function checkUpdatePwd() {
 		}
 	else {
 		UpdatePwdMsg.innerHTML = "&nbsp;";
+		UpdateNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -103,13 +127,14 @@ function checkUpdatePhone() {
 		UpdatePhoneMsg.parentNode.style.color = "red";
 		return false;
 	}
-	else if(!/^1[3458]\d{9}$/.test(pho)) {
+	else if(!/^1[3-9]\d{9}$/.test(pho)) {
 		UpdatePhoneMsg.innerHTML = "手机号码格式不正确!";
 		UpdatePhoneMsg.parentNode.style.color = "red";
 	    return false;
 	}
 	else {
 		UpdatePhoneMsg.innerHTML = "&nbsp;";
+		UpdateNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -123,27 +148,30 @@ function checkAddName() {
 	var name = AddNameObj.value;
 	if (value == "") {
 		AddNameMsg.innerHTML = "用户名不能为空！";
-		AddNameMsg.style.color = "red";
+		AddNameMsg.parentNode.style.color = "red";
 		return false;
 	}
 	else if (!/^.{4,8}$/.test(name)) {
 		AddNameMsg.innerHTML = "用户名必须为4-8位！";
-		AddNameMsg.style.color = "red";
+		AddNameMsg.parentNode.style.color = "red";
 		return false;
 	}
 	else {
 		AddNameMsg.innerHTML = "&nbsp;";
+		UpdateNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
 
 function checkAddSameName(){
 	var name = AddNameObj.value;
+	var flag = false;
 	$.ajax({
 		type: "GET",
 		url: "/Persephone/checkName",
 		data: {"UserName": name},
 		dataType: "text",
+		async: false,
 		statusCode: {
 			404: function() {  
 				alert('提交地址url未发现'); 
@@ -152,15 +180,17 @@ function checkAddSameName(){
 		success: function (result) {
 			if(result == "same") {
 				AddNameMsg.innerHTML = "用户名重复!";
-				AddNameMsg.style.color = "red";
-				return false;
+				AddNameMsg.parentNode.style.color = "red";
+				flag = false;
 			}
 			else {
 				AddNameMsg.innerHTML = "&nbsp;";
-				return checkAddName();
+				UpdateNameMsg.parentNode.style.color = "black";
+				flag = checkAddName();
 			}
 		}
 	});
+	return flag;
 }
 
 function checkAddPwd() {
@@ -177,6 +207,7 @@ function checkAddPwd() {
 		}
 	else {
 		AddPwdMsg.innerHTML = "&nbsp;";
+		UpdateNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }
@@ -195,6 +226,7 @@ function checkAddPhone() {
 	}
 	else {
 		AddPhoneMsg.innerHTML = "&nbsp;";
+		UpdateNameMsg.parentNode.style.color = "black";
 		return true;
 	}
 }

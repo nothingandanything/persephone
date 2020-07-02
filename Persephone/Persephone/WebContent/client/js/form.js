@@ -85,10 +85,12 @@ function checkUserPhone () {
 
 function checkSameName(){
 	var name = UserNameObj.value;
+	var flag = false;
 	$.ajax({
 		type: "GET",
 		url: "/Persephone/checkName",
 		data: {"UserName": name},
+		async: false,
 		dataType: "text",
 		statusCode: {
 			404: function() {  
@@ -99,12 +101,13 @@ function checkSameName(){
 			if(result == "same") {
 				UserNameMsg.innerHTML = "用户名重复!";
 				UserNameObj.parentNode.style.color = "red";
-				return false;
+				flag = false;
 			}
 			else {
 				UserNameMsg.innerHTML = "&nbsp;";
-				return checkUserName();
+				flag = checkUserName();
 			}
 		}
 	});
+	return flag;
 }

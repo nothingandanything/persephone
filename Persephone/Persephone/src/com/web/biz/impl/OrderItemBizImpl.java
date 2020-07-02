@@ -1,5 +1,6 @@
 package com.web.biz.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.web.biz.OrderItemBiz;
@@ -34,6 +35,22 @@ public class OrderItemBizImpl implements OrderItemBiz {
 	@Override
 	public boolean cancelOrderItem(int OrderID) {
 		return orderItemDao.cancelOrderItem(OrderID);
+	}
+
+	/**
+	 * 后台显示总销量
+	 */
+	@Override
+	public int showTotalCount() {
+		return orderItemDao.showTotalCount();
+	}
+
+	/**
+	 * 后台显示每天每种类别的总销量
+	 */
+	@Override
+	public List<HashMap<String, String>> showTotalCountByDay() {
+		return orderItemDao.showTotalCountByDay();
 	}
 
 }

@@ -80,6 +80,7 @@
         // 将从"按钮"解析出来的data值赋给"模态框"的input标签中对于的value里面
         $('#update-id').attr('value', modalid);
         $('#update-name').attr('value', modalname);
+        $('#oldName').attr('value', modalname);
         $('#update-pwd').attr('value', modalpwd);
         $('#update-pho').attr('value', modalpho);
     });

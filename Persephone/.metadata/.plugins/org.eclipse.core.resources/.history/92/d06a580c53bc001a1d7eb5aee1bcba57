@@ -1,0 +1,38 @@
+package com.web.controller.admin;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.web.biz.OrderItemBiz;
+import com.web.biz.impl.OrderItemBizImpl;
+
+@WebServlet(urlPatterns="/showTotalCountByDay")
+public class ShowTotalCountByDayController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 调用业务逻辑层的方法
+		OrderItemBiz orderItemBiz = new OrderItemBizImpl();
+		List<HashMap<String, String>> list = orderItemBiz.showTotalCountByDay();
+		
+		// 分离各数据
+		List<Date> date = new ArrayList<Date>();
+		System.out.println(list.get(0).get("date"));
+		for(Object obj : list) {
+			
+		}
+	}
+}

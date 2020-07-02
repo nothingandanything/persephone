@@ -31,6 +31,6 @@ public class PayOrderController extends HttpServlet {
 		orderBiz.payOrder(OrderID, AddrID);
 		
 		// ×ª·¢
-		req.getRequestDispatcher("/showMe").forward(req, resp);
+		resp.sendRedirect(req.getContextPath()+"/showMe");
 	}
 }

@@ -4,6 +4,7 @@
 
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
@@ -91,6 +92,12 @@
                             		
                             	</tbody>
                         </table>
+                        <div class="row">
+                        	<div class="col-lg-8"></div>
+                        	<div style="margin-left:auto;">
+                            	<a href="${pageContext.request.contextPath}/showMe" class="btn btn-primary active" role="button">返回</a>
+                        	</div>
+                        </div>
                     </div>
                     </div>
 

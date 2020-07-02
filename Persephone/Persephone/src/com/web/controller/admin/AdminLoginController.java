@@ -39,7 +39,7 @@ public class AdminLoginController extends HttpServlet {
 			resp.getWriter().print("<script>alert('登陆成功!');");
 			
 			// 转发
-			resp.sendRedirect(req.getContextPath()+"/showUser");
+			resp.sendRedirect(req.getContextPath()+"/showAdminIndex");
 		}
 		else {
 			resp.getWriter().print("<script>alert('用户名或密码错误!');window.location.href='"

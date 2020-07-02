@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.web.dao.OrderItemDao;
@@ -127,6 +128,88 @@ public class OrderItemDaoImpl implements OrderItemDao {
 			e.printStackTrace();
 		}
 		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 后台显示总销量
+	 */
+	@Override
+	public int showTotalCount() {
+		int TotalCount = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+							
+			// 编写sql
+			String sql = "SELECT SUM(Number) FROM orderitem";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+								
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+						
+			// 循环
+			while(rs.next()){
+				// 取结果集中的第一个值赋值给totalCount
+				TotalCount = rs.getInt(1);
+			}
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TotalCount;
+	}
+
+	/**
+	 * 后台显示每天每种类别的总销量
+	 */
+	@Override
+	public List<HashMap<String, String>> showTotalCountByDay() {
+		// 实例化集合
+		List<HashMap<String, String>> list = new ArrayList<>();
+		
+		try {
+			// 获取数据库的连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+						
+			// 编写sql
+			String sql = "SELECT SUM(orderitem.Number),drinkorder.OrderTime,drink.DrinkType "
+					+ "FROM drinkorder,orderitem,drink "
+					+ "WHERE orderitem.OrderID = drinkorder.OrderID "
+					+ "AND orderitem.DrinkID = drink.DrinkID "
+					+ "AND drinkorder.PayState = 1 "
+					+ "AND drinkorder.OrderTime > DATE_SUB(NOW(), INTERVAL 8 DAY) "
+					+ "GROUP BY drink.DrinkType,drinkorder.OrderTime,drinkorder.OrderTime "
+					+ "ORDER BY drinkorder.OrderTime";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+			
+			// 循环
+			while(rs.next()){
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("num", rs.getString(1));
+				map.put("date", rs.getString(2));
+				map.put("type", rs.getString(3));
+				
+				list.add(map);
+			}
+
+			// 关闭数据库
+			JDBCUtil.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

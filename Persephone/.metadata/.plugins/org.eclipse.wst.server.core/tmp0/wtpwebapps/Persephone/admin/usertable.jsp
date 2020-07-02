@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/userForm.js"></script>
@@ -40,8 +41,8 @@
             <div class="page-header float-right">
                  <div class="page-title">
                       <ol class="breadcrumb text-right">
-                          <li><a href="${pageContext.request.contextPath}/admin/">首页</a></li>
-                          <li><a href="${pageContext.request.contextPath}/admin/usertable.jsp">用户列表</a></li>
+                          <li><a href="${pageContext.request.contextPath}/showAdminIndex">首页</a></li>
+                          <li><a>用户列表</a></li>
                           <li class="active">用户表</li>
                        </ol>
                   </div>
@@ -104,6 +105,7 @@
                                 <!--修改模态框-->
                                 <form id="myUpdateForm" method="post" action="${pageContext.request.contextPath}/changeUser" onsubmit="return checkUpdateFrom();">
                                 	<input type="hidden" id="update-id" name="update-id" value="">
+                                	<input type="hidden" id="oldName" name="oldName" value="">
                                 	<div class="modal fade" id="updateuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 									  <div class="modal-dialog" role="document">
 									    <div class="modal-content">
@@ -128,7 +130,7 @@
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">修改联系方式</label>
 									            <input type="text" class="form-control" id="update-pho" name="update-pho"
-														value="" onkeyup="checkUpdatePhone">
+														value="" onkeyup="checkUpdatePhone()">
 									            <span id="update-phoMsg">&nbsp;</span>
 									          </div>
 									      </div>
@@ -165,7 +167,7 @@
 									          <div class="form-group">
 									            <label for="recipient-name" class="control-label">联系方式</label>
 									            <input type="text" class="form-control" id="add-pho" name="add-pho"
-														value="" onkeyup="checkAddPhone">
+														value="" onkeyup="checkAddPhone()">
 									            <span id="add-phoMsg">&nbsp;</span>
 									          </div>
 									      </div>

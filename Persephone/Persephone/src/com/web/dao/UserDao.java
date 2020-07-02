@@ -75,4 +75,10 @@ public interface UserDao {
 	 * @return
 	 */
 	public boolean deleteUser(int UserID);
+	
+	/**
+	 * 后台显示用户总数
+	 * @return
+	 */
+	public int showUserCount();
 }

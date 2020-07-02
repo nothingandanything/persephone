@@ -8,6 +8,9 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                	<li>
+                        <a href="${pageContext.request.contextPath}/showAdminIndex"><i class="menu-icon fa fa-laptop"></i>首页 </a>
+                    </li>
                     
                     <li class="menu-item-has-children dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>用户列表</a>

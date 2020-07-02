@@ -358,4 +358,39 @@ public class UserDaoImpl implements UserDao {
 		}
 		return count > 0 ? true : false;
 	}
+
+	/**
+	 * 后台显示用户总数
+	 */
+	@Override
+	public int showUserCount() {
+		int UserCount = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+							
+			// 编写sql
+			String sql = "SELECT COUNT(*) FROM `user`";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+								
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+						
+			// 循环
+			while(rs.next()){
+				// 取结果集中的第一个值赋值给totalCount
+				UserCount = rs.getInt(1);
+			}
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return UserCount;
+	}
 }

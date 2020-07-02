@@ -116,4 +116,20 @@ public class OrderBizImpl implements OrderBiz {
 	public boolean deleteOrder(int OrderID) {
 		return orderDao.deleteOrder(OrderID);
 	}
+
+	/**
+	 * 后台显示总营业额
+	 */
+	@Override
+	public float showTotalPrice() {
+		return orderDao.showTotalPrice();
+	}
+
+	/**
+	 * 后台显示订单总数
+	 */
+	@Override
+	public int showOrderCount() {
+		return orderDao.showOrderCount();
+	}
 }

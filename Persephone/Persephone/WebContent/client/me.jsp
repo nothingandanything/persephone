@@ -4,6 +4,7 @@
 
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
@@ -66,10 +67,12 @@
     	
     	function checkSameName(){
     		var name = document.getElementById("UserName").value;
+    		var flag = false;
     		$.ajax({
     			type: "GET",
     			url: "${pageContext.request.contextPath}/checkName",
     			data: {"UserName": name},
+    			async: false,
     			dataType: "text",
     			statusCode: {
     				404: function() {  
@@ -80,14 +83,15 @@
     				if(result == "same") {
     					document.getElementById("UserNameMsg").innerHTML = "用户名重复!";
     					document.getElementById("UserNameMsg").style.color = "red";
-    					return false;
+    					flag = false;
     				}
     				else {
     					document.getElementById("UserNameMsg").innerHTML = "&nbsp;";
-    					return checkName();
+    					flag = checkName();
     				}
     			}
     		});
+    		return flag;
     	}
     	
     	function checkPwdFrom(){
@@ -163,7 +167,7 @@
 				document.getElementById("UserPhoneMsg").parentNode.style.color = "red";
     			return false;
     		}
-    		else if(!/^1[3458]\d{9}$/.test(f.UserPhone.value)) {
+    		else if(!/^1[3-9]\d{9}$/.test(f.UserPhone.value)) {
     			document.getElementById("UserPhoneMsg").innerHTML = "手机号码格式不正确!";
 				document.getElementById("UserPhoneMsg").parentNode.style.color = "red";
     		    return false;

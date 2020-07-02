@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-</head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Ordertable</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">￥<span class="count">23569</span></div>
+                                            <div class="stat-text">￥<span class="count">${toltalMoney}</span></div>
                                             <div class="stat-heading">营业额</div>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">${totalCount}</span></div>
                                             <div class="stat-heading">销量</div>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-text"><span class="count">${orderCount}</span></div>
                                             <div class="stat-heading">订单量</div>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count">${userCount}</span></div>
                                             <div class="stat-heading">用户数</div>
                                         </div>
                                     </div>

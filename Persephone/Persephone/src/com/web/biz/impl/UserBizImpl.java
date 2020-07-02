@@ -89,4 +89,12 @@ public class UserBizImpl implements UserBiz {
 		return userDao.deleteUser(UserID);
 	}
 
+	/**
+	 * 后台显示用户总数
+	 */
+	@Override
+	public int showUserCount() {
+		return userDao.showUserCount();
+	}
+
 }

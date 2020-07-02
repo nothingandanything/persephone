@@ -300,4 +300,74 @@ public class OrderDaoImpl implements OrderDao {
 		return count > 0 ? true : false;
 					
 	}
+
+	/**
+	 * 后台显示总营业额
+	 */
+	@Override
+	public float showTotalPrice() {
+		float TotalPrice = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+							
+			// 编写sql
+			String sql = "SELECT SUM(TotalPrice) FROM drinkorder WHERE PayState = 1";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+								
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+						
+			// 循环
+			while(rs.next()){
+				// 取结果集中的第一个值赋值给totalCount
+				TotalPrice = rs.getFloat(1);
+			}
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TotalPrice;
+	}
+
+	/**
+	 * 后台显示订单总数
+	 */
+	@Override
+	public int showOrderCount() {
+		int OrderCount = 0;
+		
+		try {
+			// 获取数据库连接对象
+			Connection conn = JDBCUtil.getConnectinon();
+							
+			// 编写sql
+			String sql = "SELECT COUNT(*) FROM drinkorder";
+
+			// 编译sql
+			PreparedStatement ps = conn.prepareStatement(sql);
+								
+			// 执行查询
+			ResultSet rs = ps.executeQuery();
+						
+			// 循环
+			while(rs.next()){
+				// 取结果集中的第一个值赋值给totalCount
+				OrderCount = rs.getInt(1);
+			}
+								
+			// 关闭
+			JDBCUtil.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return OrderCount;
+	}
 }

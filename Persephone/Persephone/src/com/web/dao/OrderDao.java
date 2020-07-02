@@ -60,4 +60,16 @@ public interface OrderDao {
 	 * @return
 	 */
 	public boolean deleteOrder(int OrderID);
+	
+	/**
+	 * 后台显示总营业额
+	 * @return
+	 */
+	public float showTotalPrice();
+	
+	/**
+	 * 后台显示订单总数
+	 * @return
+	 */
+	public int showOrderCount();
 }

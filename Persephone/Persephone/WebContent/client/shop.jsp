@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
@@ -135,7 +136,7 @@
                                 	<div class="col-xl-4 col-lg-6 col-sm-6">
                                 	    <div class="product">
                                         	<div class="product-img-wrap">
-                                            	<img src="${pageContext.request.contextPath}/client/img/${drink.picAddres}" alt="img">
+                                            	<img src="${pageContext.request.contextPath}/client/img/${drink.picAddres}" alt="img" style="width:211px;height:160px;">
                                             	<!-- Button trigger modal -->
                                             	<button class="quick-view" type="button" id="${drink.drinkID}"
 													data-toggle="modal" data-target="#quick-view" onclick="showModal(this.id)">Quick View</button>

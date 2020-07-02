@@ -2578,3 +2578,20 @@ java.nio.charset.UnmappableCharacterException: Input length = 1
 	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
 	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:86)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Publishing failed with multiple errors
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\commons-beanutils-1.8.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\commons-fileupload-1.2.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\commons-io-1.4.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\commons-logging-1.1.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\gson-2.8.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\jstl-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-07-02 19:44:33.174
+!MESSAGE Could not delete D:\Git\summer_proj\persephone\Persephone\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Persephone\WEB-INF\lib\mysql-connector-java-5.1.13-bin.jar. May be locked by another process.

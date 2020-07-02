@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Drinktable</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -39,7 +40,7 @@
             <div class="page-header float-right">
                  <div class="page-title">
                       <ol class="breadcrumb text-right">
-                          <li><a href="${pageContext.request.contextPath}/admin/">首页</a></li>
+                          <li><a href="${pageContext.request.contextPath}/showAdminIndex">首页</a></li>
                           <li><a>商品订单</a></li>
                           <li class="active">商品表</li>
                        </ol>

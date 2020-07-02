@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/client/img/logo-mini.png" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
@@ -45,7 +46,7 @@
             <div class="page-header float-right">
                  <div class="page-title">
                       <ol class="breadcrumb text-right">
-                          <li><a href="${pageContext.request.contextPath}/admin/">首页</a></li>
+                          <li><a href="${pageContext.request.contextPath}/showAdminIndex">首页</a></li>
                           <li class="active">用户地址表</li>
                        </ol>
                   </div>
