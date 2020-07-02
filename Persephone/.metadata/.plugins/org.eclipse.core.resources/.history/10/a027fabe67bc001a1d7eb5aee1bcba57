@@ -184,7 +184,6 @@ public class OrderItemDaoImpl implements OrderItemDao {
 					+ "AND orderitem.DrinkID = drink.DrinkID "
 					+ "AND drinkorder.PayState = 1 "
 					+ "AND drinkorder.OrderTime > DATE_SUB(NOW(), INTERVAL 8 DAY) "
-					+ "AND drinkorder.OrderTime < DATE_SUB(NOW(), INTERVAL 1 DAY) "
 					+ "GROUP BY drink.DrinkType,drinkorder.OrderTime,drinkorder.OrderTime "
 					+ "ORDER BY drinkorder.OrderTime";
 

@@ -112,5 +112,52 @@
         
     });
 
+	 $('#ordertable').DataTable({
+	        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]],
+	        ordering: true, //排序功能
+	        
+	        columns: [{
+	        	title: "订单id",
+	        	}, {
+	        	title: "用户id",
+	        	}, {
+	        	title: "地址id",
+	        	}, {
+	        	title: "总价",
+	        	}, {
+	        	title: "交易时间",
+	        	},{
+	        	title: "支付状态",
+	        	},{
+	        	title: "操作",
+	        	}
+	        	]
+	        
+	    });
+	    
+	    $('#orderdetail').DataTable({
+	        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]],
+	        ordering: true, //排序功能
+	        
+	        columns: [{
+	        	title: "#",
+	        	}, {
+	        	title: "饮品名称",
+	        	}, {
+	        	title: "规格",
+	        	}, {
+	        	title: "温度",
+	        	}, {
+	        	title: "甜度",
+	        	},{
+	        	title: "数目",
+	        	},{
+	        	title: "单价",
+	        	},{
+	        	title: "总价",
+	        	}
+	        	]
+	        
+	    });
 
 })(jQuery);

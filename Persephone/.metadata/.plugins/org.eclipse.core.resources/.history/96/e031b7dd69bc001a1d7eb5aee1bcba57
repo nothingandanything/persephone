@@ -68,7 +68,10 @@
                                             <th>联系方式</th>
                                             <th>操作</th>
                                         </tr>
-                                    </thead>  -->  
+                                    </thead>  -->
+                                    		<%!
+                                        	public double total = 0;
+                                        	%>    
                                     <tbody>
                                      <c:forEach items="${order.orderItems}" var="item" varStatus="vs">
                                       
@@ -76,7 +79,7 @@
                                      
                                         <tr>                                 
                                         	<td>
-                                        		<img style="width:60px;height:60px;border-radius:5px;" alt="img" src="${pageContext.request.contextPath}/client/img/${item.drink.picAddres}">
+                                        		<img style="width:60px;height:60px;border-radius:5px;" alt="img" src="${pageContext.request.contextPath}/client/img/drink/${item.drink.picAddres}">
                                         	</td>
                                             
                                         	
@@ -96,6 +99,10 @@
                             					</td>
                             					
                             					   <c:set var="v" value="${item.number * item.drink.drinkPrice_Super}" scope="request"/> 
+        
+                            				<%		
+                                        	 total =total + (Double)request.getAttribute("v");
+                                        	%>   
                                     		</c:if>
                                     		<c:if test="${item.drinkSpec eq '大杯'}">
                             					<td>
@@ -105,6 +112,10 @@
                             						￥${item.number * item.drink.drinkPrice_Big}
                             					</td>
                             					   <c:set var="v" value="${item.number * item.drink.drinkPrice_Super}" scope="request"/> 
+        
+                            				<%		
+                                        	 total =total + (Double)request.getAttribute("v");
+                                        	%>   
                                     		</c:if>
                                     		<c:if test="${item.drinkSpec eq '中杯'}">
                             					<td>
@@ -113,7 +124,11 @@
                             					<td>
                             						￥${item.number * item.drink.drinkPrice_Medium}
                             					</td>
-                            				   <c:set var="v" value="${item.number * item.drink.drinkPrice_Super}" scope="request"/>  
+                            				   <c:set var="v" value="${item.number * item.drink.drinkPrice_Super}" scope="request"/> 
+        
+                            				<%		
+                                        	 total =total + (Double)request.getAttribute("v");
+                                        	%>   
                                     		</c:if>
                                          
                                         </tr>

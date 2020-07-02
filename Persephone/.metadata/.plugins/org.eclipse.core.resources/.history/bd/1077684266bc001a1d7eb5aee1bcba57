@@ -38,7 +38,6 @@ public class CreateOrderController extends HttpServlet {
 			// 购物车中无商品
 			resp.getWriter().print("<script>alert('购物车中无商品！请添加商品');window.location.href='"
 					+ req.getContextPath() + "/showProductByPage?DrinkType=All';</script>");
-			return;
 		}
 		
 		// 设置订单的信息
